@@ -26,11 +26,11 @@ CREATE TABLE wishlist_gifts (
   gift_name VARCHAR(255) NOT NULL,
   price INTEGER NOT NULL,
   notes TEXT,
-  store_url VARCHAR(255),
+  store_url TEXT,
   quantity INTEGER NOT NULL,
   most_wanted BOOLEAN NOT NULL DEFAULT FALSE,
   reserved BOOLEAN NOT NULL DEFAULT FALSE,
-  created_at TIMESTAMP NOT NULL
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE gifters (
