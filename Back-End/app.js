@@ -3,8 +3,12 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes/index");
+const eventsRouter = require("./routes/events");
 const usersRouter = require("./routes/users");
+const wishListGiftsRouter = require("./routes/users");
+const giftersRouter = require("./routes/gifters");
+const login = require("./routes/login");
+const register = require("./routes/register");
 
 const app = express();
 
@@ -14,7 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api/events", eventsRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/wishListGifts", wishListGiftsRouter);
+app.use("/api/gifters", giftersRouter);
+app.use("/login", wishListGiftsRouter);
+app.use("/register", giftersRouter);
 
 module.exports = app;
