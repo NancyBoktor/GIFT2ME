@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 /* login */
 router.post("/login", (req, res, next) => {
@@ -16,9 +16,11 @@ router.post("/login", (req, res, next) => {
     id: 1,
     name: "Nanacy ",
   };
+  const accessToken = jwt.sign(user, "this is a super secret password ");
+  console.log(accessToken);
   res.json({
     success: false,
-    data: user,
+    data: accessToken,
     message: "Login successfully",
   });
 });
