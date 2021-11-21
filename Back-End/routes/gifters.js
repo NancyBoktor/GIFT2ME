@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const {db} = require("../lib/db");
 
-/* GET users listing. */
-router.get("/", (req, res, next) => {
-  res.send("respond with a resource");
+/* GET gifters */
+
+router.get("/", async (req, res, next) => {
+ const {rows} = await db.query(`SELECT * from gifters`);
+ console.log({event : rows})
+ res.json(rows)
 });
 
 module.exports = router;
