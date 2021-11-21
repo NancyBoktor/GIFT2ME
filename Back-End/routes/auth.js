@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+// const getUserByEmail = require("auth-queries");
+
+
 
 /* login */
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
-  if (!email || !password) {
+  if (!email || !password) {  
     return res.status(400).json({
       success: false,
       message: "Please fill all required fields",
@@ -25,7 +28,7 @@ router.post("/login", (req, res, next) => {
   });
 });
 
-/* login */
+/* register */
 router.post("/register", (req, res, next) => {
   const { email, password, f_name, l_name, confirm_password } = req.body;
   if (!f_name || !l_name || !email || !password || !confirm_password) {
