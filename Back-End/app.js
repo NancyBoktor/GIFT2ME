@@ -6,7 +6,8 @@ const cookieSession = require("cookie-session");
 
 const eventsRouter = require("./routes/events");
 const usersRouter = require("./routes/users");
-const wishListGiftsRouter = require("./routes/users");
+const giftsRouter = require("./routes/gifts");
+const selectedGiftsRouter = require("./require/selectedGifts")
 const giftersRouter = require("./routes/gifters");
 const authRouter = require("./routes/auth");
 
@@ -32,7 +33,8 @@ app.use(
 
 app.use("/api/events", eventsRouter);
 app.use("/api/users", usersRouter);
-app.use("/api/wishListGifts", wishListGiftsRouter);
+app.use("/api/gifts", giftsRouter);
+app.use("/api/selectedGifts", selectedGiftsRouter)
 app.use("/api/gifters", giftersRouter);
 app.use("/api/auth", authRouter);
 
