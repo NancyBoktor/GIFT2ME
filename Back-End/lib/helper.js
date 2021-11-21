@@ -5,7 +5,6 @@ const getUserByEmail =  async (email) => {
     return rows[0]
 }
 
-
 module.exports = {
     getUserByEmail
 }

@@ -1,6 +1,6 @@
-DB_HOST=localhost
-DB_USER=msn
-DB_NAME=final
-DB_PASS=wishlist
-DB_PORT=5432
-TOKENSECRET=tokensecret
+DB_HOST = localhost
+DB_USER = msn
+DB_NAME = final
+DB_PASS = wishlist
+DB_PORT = 5432
+TOKENSECRET = tokensecret

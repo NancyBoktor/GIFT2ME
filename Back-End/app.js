@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const cors = require("cors");
+
 const eventsRouter = require("./routes/events");
 const giftsRouter = require("./routes/gifts");
 const selectedGiftsRouter = require("./routes/selectedGifts")
@@ -22,7 +23,6 @@ app.use("/api/events", eventsRouter);
 app.use("/api/gifters", giftersRouter);
 app.use("/api/gifts", giftsRouter);
 app.use("/api/selectedGifts", selectedGiftsRouter);
-
 
 app.get("/logout", (req, res) => {});
 
