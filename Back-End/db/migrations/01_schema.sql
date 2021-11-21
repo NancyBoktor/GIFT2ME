@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS events CASCADE;
-DROP TABLE IF EXISTS wishlist_gifts CASCADE;
+DROP TABLE IF EXISTS gifts CASCADE;
+DROP TABLE IF EXISTS selected_gifts CASCADE;
 DROP TABLE IF EXISTS gifters CASCADE;
 
 CREATE TABLE users (
@@ -20,7 +21,7 @@ CREATE TABLE events (
   description VARCHAR (255)
 );
 
-CREATE TABLE wishlist_gifts (
+CREATE TABLE gifts (
   id SERIAL PRIMARY KEY NOT NULL,
   event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
   gift_name VARCHAR(255) NOT NULL,
@@ -34,7 +35,13 @@ CREATE TABLE wishlist_gifts (
 
 CREATE TABLE gifters (
   id SERIAL PRIMARY KEY NOT NULL,
-  wishlist_gift_id INTEGER REFERENCES wishlist_gifts(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE selected_gifts (
+  id SERIAL PRIMARY KEY NOT NULL,
+  selected_quantity INTEGER,
+  gifter_id INTEGER REFERENCES gifters(id) ON DELETE CASCADE,
+  gift_id INTEGER REFERENCES gifts(id) ON DELETE CASCADE
 );
