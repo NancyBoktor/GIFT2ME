@@ -47,13 +47,13 @@ Create event
 
 invitation
 
-Components:
-
-- button ----> Nancy
-- event-form -> the name, address ----> Nancy
-- share-link
+Components
+- button
+- event-form -> the name, address
+- share-link 
 - gift
-- giftList 
+- giftList
 - gifter - form
-- footer --> Maram
-- navbar ---> Maram
+- footer
+- navbar
+

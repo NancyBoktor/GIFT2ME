@@ -10,30 +10,42 @@ const Login = () => {
     password: ""
   })
 
-  const handleLogin = async () => {
-   const {success, message} = await login(userInfo)
-   if (success) {
-   navigate('/dashboard');
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleLogin = async (event) => {
+  event.preventDefault()
+   try { 
+     await login(userInfo)
+      navigate('/dashboard');
+   } catch(e) {
+     console.log(e)
+     console.log(e.response.status)
+     console.log(e.response.data)
+     console.log(e.response.data.message)
+     setErrorMsg(e.response.data.message)
    }
   }
+
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
+      <span>{errorMsg}</span>
+      <form onSubmit={handleLogin}>
         <label>
           <p>Email</p> 
-          <input type="text" defaultValue={userInfo.email} onChange={(event) => setUserInfo({...userInfo, email: event.target.value })} autoComplete="off" />
+          <input type="email" defaultValue={userInfo.email} onChange={(event) => setUserInfo({...userInfo, email: event.target.value })} autoComplete="off" />
         </label>
         <label>
           <p>Password</p>
           <input type="password" defaultValue={userInfo.password} onChange={(event) => setUserInfo({...userInfo, password: event.target.value })} autoComplete="off" />
         </label>
         <div>
-          <button type="submit" className="login-btn" onClick={handleLogin}>Login</button>
+          <button type="submit" className="login-btn">Login</button>
         </div>
+        </form>
         <div>Don't have an account? |
         <span> Register</span>
         </div>
-        
     </div>
   )
 }

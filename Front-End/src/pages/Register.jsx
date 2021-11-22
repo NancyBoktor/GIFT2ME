@@ -13,18 +13,26 @@ const Register = () => {
     password: "",
     confirm_password: ""
   })
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleRegister = async () => {
-    const {success, message} = await register(newUserInfo)
-    if (success) {
-    navigate('/dashboard');
-    }
-   }
+  const handleRegister = async (event) => {
+    event.preventDefault()
+    try {
+      await register(newUserInfo)
+      navigate('/dashboard');     
+    } catch(e) {
+      console.log(e.response)
+      console.log(e.response.status)
+      console.log(e.response.data)
+      setErrorMsg(e.response.data.message)
+    } 
+  }
 
   return (
-    <div className="register-page">
+    <div className="register-container">
     <section className="register-wrapper">
       <h1>Register</h1>
+      <span>{errorMsg}</span> 
         <form onSubmit={handleRegister}>
         <label>
         <input type="text" placeholder="First Name" defaultValue={newUserInfo.first_name} onChange={(event) => setNewUserInfo({...newUserInfo, first_name: event.target.value })} autoComplete="off"/>
@@ -33,13 +41,13 @@ const Register = () => {
         <input type="text" placeholder="Last Name" defaultValue={newUserInfo.last_name} onChange={(event) => setNewUserInfo({...newUserInfo, last_name: event.target.value })} autoComplete="off"/>
       </label>
       <label>
-        <input type="text" placeholder="Email" defaultValue={newUserInfo.email} onChange={(event) => setNewUserInfo({...newUserInfo, email: event.target.value })} autoComplete="off"/>
+        <input type="email" placeholder="Email" defaultValue={newUserInfo.email} onChange={(event) => setNewUserInfo({...newUserInfo, email: event.target.value })} autoComplete="off"/>
       </label>
       <label> 
         <input type="password" placeholder="Password (min 8 char)" defaultValue={newUserInfo.password} onChange={(event) => setNewUserInfo({...newUserInfo, password: event.target.value })} autoComplete="off"/>
       </label>
       <label>
-        <input type="password" placeholder="Confirm Password" />
+        <input type="password" placeholder="Confirm Password" defaultValue={newUserInfo.confirm_password} onChange={(event) => setNewUserInfo({...newUserInfo, confirm_password: event.target.value })} autoComplete="off"/>
       </label>
       <div>
         <button type="submit" className="register-btn">Register</button>
