@@ -28,7 +28,7 @@ const Login = () => {
           <input type="password" defaultValue={userInfo.password} onChange={(event) => setUserInfo({...userInfo, password: event.target.value })} autoComplete="off" />
         </label>
         <div>
-          <button type="submit" onClick={handleLogin}>Login</button>
+          <button type="submit" className="login-btn" onClick={handleLogin}>Login</button>
         </div>
         <div>Don't have an account? |
         <span> Register</span>
