@@ -2,6 +2,9 @@ import react, { useState } from 'react';
 import  { login } from "../services/auth";
 import { useNavigate } from 'react-router-dom';
 import "./Login.scss";
+import "../components/Navbar.jsx";
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,6 +31,7 @@ const Login = () => {
 
   return(
     <div className="login-wrapper">
+      <Navbar></Navbar>
       <h1>Please Log In</h1>
       <form onSubmit={handleLogin}>
         <label>
@@ -46,7 +50,9 @@ const Login = () => {
         <div>Don't have an account? |
         <span> Register</span>
         </div>
+        <Footer/>
     </div>
+    
   )
 }
 export default Login

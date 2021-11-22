@@ -2,6 +2,8 @@ import react, { useState } from 'react';
 import  { register } from "../services/auth";
 import { useNavigate } from 'react-router-dom';
 import "./Register.scss";
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
+    <Navbar></Navbar>
     <section className="register-wrapper">
       <h1>Register</h1>
         <form onSubmit={handleRegister}>
@@ -70,9 +73,7 @@ const Register = () => {
             </p>
           </div> 
           </section>
-          <footer>
-          <p>Made with ❤️ Maram, Nancy & Shanna</p>
-          </footer>
+          <Footer/>
   </div>
   
   )
