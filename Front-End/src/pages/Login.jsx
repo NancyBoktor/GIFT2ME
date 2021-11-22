@@ -1,6 +1,7 @@
 import react, { useState } from 'react';
 import  { login } from "../services/auth";
 import { useNavigate } from 'react-router-dom';
+import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,16 +20,20 @@ const Login = () => {
     <div className="login-wrapper">
       <h1>Please Log In</h1>
         <label>
-          <p>email</p> 
-          <input type="text"  defaultValue={userInfo.email} onChange={(event) => setUserInfo({...userInfo, email: event.target.value })} autoComplete="off" />
+          <p>Email</p> 
+          <input type="text" defaultValue={userInfo.email} onChange={(event) => setUserInfo({...userInfo, email: event.target.value })} autoComplete="off" />
         </label>
         <label>
           <p>Password</p>
-          <input type="password"  defaultValue={userInfo.password} onChange={(event) => setUserInfo({...userInfo, password: event.target.value })} autoComplete="off" />
+          <input type="password" defaultValue={userInfo.password} onChange={(event) => setUserInfo({...userInfo, password: event.target.value })} autoComplete="off" />
         </label>
         <div>
           <button type="submit" onClick={handleLogin}>Login</button>
         </div>
+        <div>Don't have an account? |
+        <span> Register</span>
+        </div>
+        
     </div>
   )
 }
