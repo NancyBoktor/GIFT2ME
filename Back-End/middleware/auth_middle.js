@@ -17,6 +17,6 @@ const isAuth = (req, res, next) => {
   next();
 }
 
-module.exports ={
+module.exports = {
     isAuth
 }

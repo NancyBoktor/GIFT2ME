@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 const { db } = require("./db");
 
 const getUserByEmail =  async (email) => {
-    const {rows} = await db.query(`SELECT * from users WHERE email = $1` , [email])
+    const {rows} = await db.query(`SELECT * from users WHERE email = $1`, [email])
+    console.log("rows",rows);
     return rows[0]
 }
 

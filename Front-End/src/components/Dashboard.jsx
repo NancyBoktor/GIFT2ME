@@ -1,5 +1,11 @@
 import React from "react";
-import D from "./DayListItem";
 
-const Dashboard (props) => {
+const Dashboard = (props) => {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+  )
 }
+
+export default Dashboard

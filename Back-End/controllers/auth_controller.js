@@ -39,6 +39,7 @@ const login = async (req, res, next) => {
 
 const register =  async (req, res, next) => {
   const { email, password, first_name, last_name, confirm_password } = req.body;
+  console.log("userInfo:", email, password, first_name, last_name, confirm_password)
   // validtaion
   if (!first_name || !last_name || !email || !password || !confirm_password) {
     return res.status(400).json({
@@ -68,8 +69,9 @@ const register =  async (req, res, next) => {
   VALUES ($1, $2, $3 , $4) 
   RETURNING *` , [email, hashPassword, first_name, last_name]);
   const newUser = rows[0]
+  console.log("newUser:", newUser);
   const token = createToken({id: newUser.id, first_name: newUser.first_name, last_name: newUser.last_name})
-
+   console.log("token:", token);
 
     res.cookie("token", token, {
         maxAge: null, // infinite
@@ -77,7 +79,7 @@ const register =  async (req, res, next) => {
         httpOnly: true
     });
     
-    res.status(200).json({ success: true, message: "Login successful" });
+    res.status(200).json({ success: true, message: "Register successful" });
    
 
     
