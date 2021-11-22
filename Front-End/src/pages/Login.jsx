@@ -9,7 +9,6 @@ const Login = ()=> {
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
-      <form>
         <label>
           <p>email</p> 
           <input type="text" value={userInfo.email} onChange={(e)=> setUserInfo({...userInfo ,email:e.target.value })} autoComplete="off"  />
@@ -21,7 +20,6 @@ const Login = ()=> {
         <div>
           <button type="submit" onClick={handleLogin}>Login</button>
         </div>
-      </form>
     </div>
   )
 }
