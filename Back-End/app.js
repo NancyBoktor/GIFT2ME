@@ -31,8 +31,6 @@ app.use("/api/gifters", giftersRouter);
 app.use("/api/gifts", giftsRouter);
 app.use("/api/selectedGifts", selectedGiftsRouter);
 
-app.get("/logout", (req, res) => {});
-
 
 module.exports = app;
 

@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const {db} = require("./db");
 
 const getUserByEmail =  async (email) => {
@@ -5,6 +6,11 @@ const getUserByEmail =  async (email) => {
     return rows[0]
 }
 
+
+const createToken = (data)=>{
+     return jwt.sign(data, process.env.TOKEN_SECRET)
+}
 module.exports = {
-    getUserByEmail
+    getUserByEmail,
+    createToken
 }
