@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
         secure: true,
         httpOnly: true
     });
-    res.status(200).json({ sucess: true, message: "Login successful" });
+    res.status(200).json({ success: true, message: "Login successful" });
     });
 }
 
@@ -77,7 +77,7 @@ const register =  async (req, res, next) => {
         httpOnly: true
     });
     
-    res.status(200).json({ sucess: true, message: "Login successful" });
+    res.status(200).json({ success: true, message: "Login successful" });
    
 
     
