@@ -46,3 +46,14 @@ Create event
 6 - CREATE new record in gifts table (INSERT INTO GIFTS TABLE)
 
 invitation
+
+Components
+- button
+- event-form -> the name, address
+- share-link 
+- gift
+- giftList
+- gifter - form
+- footer
+- navbar
+
