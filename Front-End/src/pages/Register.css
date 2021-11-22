@@ -40,6 +40,10 @@ label {
     border-color: black;
 }
 
+.error-msg {
+  color: red;
+}
+
 .login-redirect:hover {
   color:violet;
 }

@@ -29,7 +29,6 @@ const Login = () => {
   return(
     <div className="login-wrapper">
       <h1>Please Log In</h1>
-      <span>{errorMsg}</span>
       <form onSubmit={handleLogin}>
         <label>
           <p>Email</p> 
@@ -39,6 +38,7 @@ const Login = () => {
           <p>Password</p>
           <input type="password" defaultValue={userInfo.password} onChange={(event) => setUserInfo({...userInfo, password: event.target.value })} autoComplete="off" />
         </label>
+        <span className="error-msg">{errorMsg}</span>
         <div>
           <button type="submit" className="login-btn">Login</button>
         </div>
