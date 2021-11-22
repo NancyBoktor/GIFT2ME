@@ -5,6 +5,7 @@ import "./Register.css";
 
 const Register = () => {
   const navigate = useNavigate();
+
   const [newUserInfo, setNewUserInfo] = useState({ 
     first_name: "",
     last_name: "",
@@ -24,6 +25,7 @@ const Register = () => {
     <div className="register-page">
     <section className="register-wrapper">
       <h1>Register</h1>
+        <form onSubmit={handleRegister}>
         <label>
         <input type="text" placeholder="First Name" defaultValue={newUserInfo.first_name} onChange={(event) => setNewUserInfo({...newUserInfo, first_name: event.target.value })} autoComplete="off"/>
         </label>
@@ -40,8 +42,9 @@ const Register = () => {
         <input type="password" placeholder="Confirm Password" />
       </label>
       <div>
-        <button type="submit" className="register-btn" onClick={handleRegister}>Register</button>
+        <button type="submit" className="register-btn">Register</button>
       </div>
+      </form>
       <br/>
       <div>Already have an account? |
         <span className="login-redirect"> Login</span>
