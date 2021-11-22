@@ -40,6 +40,10 @@ label {
     border-color: black;
 }
 
+.error-msg {
+  color: red;
+}
+
 /* .register-redirect:hover {
   color:violet;
 }

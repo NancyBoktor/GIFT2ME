@@ -32,7 +32,6 @@ const Register = () => {
     <div className="register-container">
     <section className="register-wrapper">
       <h1>Register</h1>
-      <span>{errorMsg}</span> 
         <form onSubmit={handleRegister}>
         <label>
         <input type="text" placeholder="First Name" defaultValue={newUserInfo.first_name} onChange={(event) => setNewUserInfo({...newUserInfo, first_name: event.target.value })} autoComplete="off"/>
@@ -49,6 +48,7 @@ const Register = () => {
       <label>
         <input type="password" placeholder="Confirm Password" defaultValue={newUserInfo.confirm_password} onChange={(event) => setNewUserInfo({...newUserInfo, confirm_password: event.target.value })} autoComplete="off"/>
       </label>
+      <span className="error-msg">{errorMsg}</span>
       <div>
         <button type="submit" className="register-btn">Register</button>
       </div>
