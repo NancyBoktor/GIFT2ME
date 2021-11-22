@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
@@ -28,7 +29,7 @@ router.post("/login", async (req, res, next) => {
       return res.status(401).send("Wrong email or password");
     }
     //create the token 
-    const token = jwt.sign({id : user.id , first_name : user.first_name , last_name : user.last_name}, "this a secret key")
+    const token = jwt.sign({id : user.id , first_name : user.first_name , last_name : user.last_name}, process.env.TOKEN_SECRET)
     return res.json({token})
   });
 });
