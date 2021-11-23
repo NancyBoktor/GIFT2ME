@@ -1,14 +1,11 @@
-import react from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import react from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from './pages/Register';
 import Dashboard from './components/Dashboard';
 import "./App.scss";
+import Logout from "./components/logout";
 
 function App() {
   return (
@@ -18,7 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-
+        <Route path="/logout" element={<Logout />} />
         {/* <Route path="users" element={<Users />}>
           <Route path="/" element={<UsersIndex />} />
           <Route path=":id" element={<UserProfile />} />
