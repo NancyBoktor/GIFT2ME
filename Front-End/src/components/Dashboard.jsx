@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Dashboard.scss";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
-// import data from "./mockData.json" // replacement for api call to database
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
@@ -18,17 +17,23 @@ const Dashboard = (props) => {
   }, []);
 
   const handleDelete = (eventId) => {
-    const newEvents = [...eventNames];
-    const index = eventNames.findIndex((event) => event.id === eventId)
-    newEvents.splice(index, 1)
-    setEventNames(newEvents);
+    console.log("EVENTID:", eventId)
+    return axios
+    .delete(`http://localhost:3001/api/events/delete/${eventId}`, {withCredentials: true})
+    .then((res) => { 
+      console.log("res:", res)
+      const newEvents = [...eventNames]
+      const index = eventNames.findIndex((event) => event.id === eventId)
+      newEvents.splice(index, 1)
+      setEventNames(newEvents)
+    })
   }
 
   const create = () => {
-    navigate('/create-event');
+    navigate('/events');
   }
   const edit = () => {
-    navigate('/create-event/:id');  //<- THIS ROUTE NEEDS TO BE CHANGED
+    navigate('/events/:id');  //<- THIS ROUTE NEEDS TO BE CHANGED
   }
 
   return (
@@ -45,7 +50,6 @@ const Dashboard = (props) => {
           <thead>
             <tr>
               <th>Wishlist</th>
-              <th>Reserved Gifts</th>
               <th>Share Wishlist</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -55,10 +59,9 @@ const Dashboard = (props) => {
             {eventNames.map((event) => (
               <tr>
                 <td>{event.event_name}</td>
-                <td>2 (count qty = 0)</td>
                 <td><FontAwesomeIcon icon={['fas', 'share-alt']} /></td>
                 <td className="click" onClick={edit}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
-                <td className="click" onClick={handleDelete}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
+                <td className="click" onClick={()=> handleDelete(event.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
               </tr>
             ))}
           </tbody>
