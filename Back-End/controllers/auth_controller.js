@@ -93,11 +93,12 @@ const register = async (req, res, next) => {
     secure: true,
     httpOnly: true,
   });
-
+  console.log("res.cookie", res.cookie());
   res.status(200).json({ success: true, message: "Register successful" });
 };
 
 const logout = (req, res, next) => {
+  console.log("logout", req.cookie);
   res.clearCookie("token");
   res.status(200).json({ sucess: true, message: "Logout successfully" });
 };

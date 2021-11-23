@@ -14,6 +14,7 @@ router.get("/", isAuth, async (req, res) => {
 
 // GET events from specific user
 router.get("/:id", isAuth, async (req, res) => {
+  console.log("isAuth", isAuth);
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
     req.current_user_id,
   ]);
@@ -21,6 +22,6 @@ router.get("/:id", isAuth, async (req, res) => {
   res.json(rows);
 });
 
-router.post("/", createEvent);
+router.post("/", isAuth, createEvent);
 
 module.exports = router;
