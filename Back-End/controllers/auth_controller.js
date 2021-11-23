@@ -94,7 +94,7 @@ const register = async (req, res, next) => {
     httpOnly: true,
   });
 
-  res.status(200).json({ success: true, message: "Register successful" });
+  res.status(200).json({ success: true, message: "Register successful",token });
 };
 
 const logout = (req, res, next) => {
