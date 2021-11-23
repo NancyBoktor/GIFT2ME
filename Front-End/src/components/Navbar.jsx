@@ -1,14 +1,69 @@
-import react from 'react';
+import react, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = (props) => {
+  const [userName, setUserName] = useState("");
+
+  // retrieve the token from local storage, if empty string, you need to logged in.
+  const token = window.localStorage.getItem("token");
+
+  // authenticates the user and gets their name to be displayed on the nav bar
+  useEffect(() => {
+    if (token) {
+      const contents = JSON.parse(atob(token.split(".")[1]));
+      setUserName(contents.first_name);
+      console.log("contents", contents);
+    }
+    // axios
+    //   .get("/login")
+    //   .then((res) => {
+    //     const name = res.data.user;
+    //     setUserName(`${name.first_name} ${name.last_name}`);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }, []);
+
+  // handle the logout click
+  const handleClick = (event) => {
+    event.preventDefault();
+    axios
+      .post("/logout")
+      .then((res) => {
+        console.log("logout successful!");
+        // reset the localstorage value to an empty string
+        localStorage.setItem("jwtToken", "", { maxAge: 1 });
+        // redirect to the home page
+        window.location = res.data.redirect;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <nav className='nav'>
-      <span className='logo'>GIFT2ME</span>
-      <span className='span'>Login</span> 
-      <span className='span'> Logout</span>
-      </nav>
-  )
-}
+    <nav>
+      <Link to="/" className="linkbar">
+        GIFT2ME
+      </Link>
+
+      {token && <p>Welcome {userName} !</p>}
+
+      {!token && <Link to="/register">Register</Link>}
+      {!token && (
+        <Link to="/login" className="linkbar">
+          Login
+        </Link>
+      )}
+      {token && (
+        <button onClick={handleClick} className="linkbar">
+          Logout
+        </button>
+      )}
+    </nav>
+  );
+};
 
 export default Navbar;

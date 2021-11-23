@@ -17,11 +17,15 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await login(userInfo);
+      const data = await login(userInfo);
+      const token = data.data.token;
+      console.log("Token", token);
+      localStorage.setItem("token", token);
+      console.log("Data", data);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);
-      console.log(e.response);
+      console.log(e.response.status);
       console.log(e.response.data);
       console.log(e.response.data.message);
       setErrorMsg(e.response.data.message);
@@ -30,7 +34,6 @@ const Login = () => {
 
   return (
     <div id="login-container">
-      <Navbar />
       <section className="login-wrapper">
         <h1>Please Log In</h1>
         <form onSubmit={handleLogin}>
