@@ -30,8 +30,13 @@ const Login = () => {
   }
 
   return(
+<<<<<<< HEAD
     <div className="login-wrapper">
       <Navbar></Navbar>
+=======
+    <div id="login-container">
+    <section className="login-wrapper">
+>>>>>>> component/dashboard
       <h1>Please Log In</h1>
       <form onSubmit={handleLogin}>
         <label>
@@ -50,7 +55,11 @@ const Login = () => {
         <div>Don't have an account? |
         <span> Register</span>
         </div>
+<<<<<<< HEAD
         <Footer/>
+=======
+    </section>
+>>>>>>> component/dashboard
     </div>
     
   )
