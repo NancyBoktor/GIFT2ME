@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "./Dashboard.scss";
-<<<<<<< HEAD
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
-=======
 import data from "./mockData.json" // replacement for api call to database
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
->>>>>>> component/dashboard
 
 const Dashboard = (props) => {
   const navigate = useNavigate();
@@ -22,23 +19,15 @@ const Dashboard = (props) => {
   }
 
   const create = () => {
-    navigate('/create-event');  
+    navigate('/create-event');
   }
   const edit = () => {
     navigate('/create-event/:id');  //<- THIS ROUTE NEEDS TO BE CHANGED
   }
 
-
   return (
-<<<<<<< HEAD
-    <div>
-    <Navbar/>
-      <h1 className="title">Dashboard</h1>
-      <Footer/>
-
-=======
     <div classname="dashboard-container">
-      {/* <Navbar /> */}
+      <Navbar />
       <h1 className="title">My Dashboard</h1>
       <h2>Hey, Ami!</h2>
       <button onClick={create}>
@@ -57,24 +46,19 @@ const Dashboard = (props) => {
             </tr>
           </thead>
           <tbody>
-            {events.map((event)=> (
-               <tr>
-               <td>{event.event_name}</td>
-               <td>2 (count qty = 0)</td>
-               <td><FontAwesomeIcon icon={['fas','share-alt']}/></td>
-               <td className="click" onClick={edit}><FontAwesomeIcon icon={['fas','edit']}/></td>
-               <td className="click" onClick={handleDelete}><FontAwesomeIcon icon={['fas','trash']}/></td>
-             </tr>
+            {events.map((event) => (
+              <tr>
+                <td>{event.event_name}</td>
+                <td>2 (count qty = 0)</td>
+                <td><FontAwesomeIcon icon={['fas', 'share-alt']} /></td>
+                <td className="click" onClick={edit}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
+                <td className="click" onClick={handleDelete}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
+              </tr>
             ))}
-           
           </tbody>
         </table>
       </div>
-
-      
-    
-      {/* <Footer /> */}
->>>>>>> component/dashboard
+      <Footer />
     </div>
   )
 }
