@@ -30,8 +30,8 @@ export default function EventForm() {
           <input type="file" id="imageFile" accept="image/*" multiple />
           <p>UPLOAD YOUR PHOTO</p>
         </div>
-        <form onSubmit={handelEventInfo}>
-          <label>
+        <form onSubmit={handelEventInfo} className="event-form">
+          <label className="text-area">
             <input
               type="text"
               placeholder="MY WISH LIST"
@@ -43,7 +43,7 @@ export default function EventForm() {
               autoComplete="off"
             />
           </label>
-          <label>
+          <label className="text-area">
             <input
               type="date"
               defaultValue={eventInfo.date}
@@ -54,7 +54,7 @@ export default function EventForm() {
               autoComplete="off"
             />
           </label>
-          <label>
+          <label className="text-area">
             <input
               type="text"
               placeholder="Event-Address"
@@ -66,7 +66,7 @@ export default function EventForm() {
               autoComplete="off"
             />
           </label>
-          <label>
+          <label className="text-area">
             <input
               type="text"
               placeholder="My Event Description"

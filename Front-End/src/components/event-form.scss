@@ -29,3 +29,15 @@
   width: 150px;
   height: 150px;
 }
+.event-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.text-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

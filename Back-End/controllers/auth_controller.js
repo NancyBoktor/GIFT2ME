@@ -32,7 +32,10 @@ const login = async (req, res, next) => {
       last_name: user.last_name,
     });
     res.cookie("token", token, {
+<<<<<<< HEAD
       maxAge: null, // infinite
+=======
+>>>>>>> master
       secure: true,
       httpOnly: true,
     });
@@ -91,6 +94,7 @@ const register = async (req, res, next) => {
   console.log("token:", token);
 
   res.cookie("token", token, {
+<<<<<<< HEAD
     maxAge: null, // infinite
     secure: true,
     httpOnly: true,
@@ -100,3 +104,18 @@ const register = async (req, res, next) => {
 };
 
 module.exports = { login, register };
+=======
+    secure: true,
+    httpOnly: true,
+  });
+
+  res.status(200).json({ success: true, message: "Register successful" });
+};
+
+const logout = (req, res, next) => {
+  res.clearCookie("token");
+  res.status(200).json({ sucess: true, message: "Logout successfully" });
+};
+
+module.exports = { login, register, logout };
+>>>>>>> master

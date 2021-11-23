@@ -5,7 +5,8 @@ const { isAuth } = require("../middleware/auth_middle");
 const { createEvent } = require("../controllers/event_controller");
 
 /* GET all events */
-router.get("/", async (req, res) => {
+
+router.get("/", isAuth, async (req, res) => {
   const { rows } = await db.query(`SELECT * from events`);
   console.log({ event: rows });
   res.json(rows);
