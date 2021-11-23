@@ -1,21 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.scss";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
-import data from "./mockData.json" // replacement for api call to database
+// import data from "./mockData.json" // replacement for api call to database
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
+import axios from "axios";
 
 const Dashboard = (props) => {
   const navigate = useNavigate();
-  const [events, setEvents] = useState(data);
+  const [eventNames, setEventNames] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const result = await axios(`http://localhost:3001/api/events`);
+//       setEventNames(result.data)
+//       console.log(result.data)
+//   }; 
+//   fetchData();
+// }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/events', {withCredentials: true})
+      .then(res => setEventNames(res.data));
+  }, []);
 
   const handleDelete = (eventId) => {
-    const newEvents = [...events];
-    const index = events.findIndex((event) => event.id === eventId)
+    const newEvents = [...eventNames];
+    const index = eventNames.findIndex((event) => event.id === eventId)
     newEvents.splice(index, 1)
-    setEvents(newEvents);
+    setEventNames(newEvents);
   }
 
   const create = () => {
@@ -46,7 +61,7 @@ const Dashboard = (props) => {
             </tr>
           </thead>
           <tbody>
-            {events.map((event) => (
+            {eventNames.map((event) => (
               <tr>
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
