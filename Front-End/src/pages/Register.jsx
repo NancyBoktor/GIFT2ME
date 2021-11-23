@@ -36,7 +36,6 @@ const Register = () => {
       <section className="register-wrapper">
         <h1>Register</h1>
         <form onSubmit={handleRegister}>
-          <label>first name</label>
           <input
             type="text"
             placeholder="First Name"
@@ -49,7 +48,6 @@ const Register = () => {
             }
             autoComplete="off"
           />
-          <label>last name</label>
           <input
             type="text"
             placeholder="Last Name"
@@ -63,7 +61,6 @@ const Register = () => {
             autoComplete="off"
           />
 
-          <label>email</label>
           <input
             type="email"
             placeholder="Email"
@@ -73,7 +70,7 @@ const Register = () => {
             }
             autoComplete="off"
           />
-          <label>password</label>
+          
           <input
             type="password"
             placeholder="Password (min 8 char)"
@@ -83,7 +80,7 @@ const Register = () => {
             }
             autoComplete="off"
           />
-          <label>confirm password</label>
+          
           <input
             type="password"
             placeholder="Confirm Password"
