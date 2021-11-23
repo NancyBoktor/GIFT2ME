@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import "./Dashboard.scss";
 import data from "./mockData.json" // replacement for api call to database
-// import "./index.css"
 // import { redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import the library
-import { library } from '@fortawesome/fontawesome-svg-core';
-
-// import your icons
-import { faHome, faShareAlt, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-
-library.add(
-  faHome,
-  faShareAlt,
-  faEdit,
-  faTrash
-);
+import "../fontawesome";
 
 
 const Dashboard = (props) => {
