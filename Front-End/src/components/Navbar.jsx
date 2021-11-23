@@ -47,12 +47,19 @@ const Navbar = (props) => {
       <span className='logo'>GIFT2ME</span>
       </Link>
      
-      <span className='span' >Login</span>
-      <span className='span'> Logout</span>
+      {!token &&
+          <Link to="/login">
+            Login
+          </Link>}
       {!token &&
           <Link to="/register" className="linkbar">
             Register
           </Link>
+        }
+        {token &&
+          <button onClick={handleClick} className="linkbar">
+            Logout
+          </button>
         }
     </nav>
   )
