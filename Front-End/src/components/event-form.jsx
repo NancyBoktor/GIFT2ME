@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
-import Button from "./button";
-import { confirm } from "../services/event-POST";
+import { createEvent } from "../services/event";
 import "./event-form.scss";
 
 export default function EventForm() {
@@ -15,9 +14,9 @@ export default function EventForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const handelEventInfo = async (event) => {
     event.preventDefault();
+    console.log("Event:", eventInfo);
     try {
-      const info = await confirm(eventInfo);
-      console.log("info", info);
+      await createEvent(eventInfo);
       Navigate("/events");
     } catch (e) {
       console.log("error:", e);
@@ -28,8 +27,8 @@ export default function EventForm() {
     <div>
       <div className="event-info">
         <div className="event-card">
-          <label for="imageFile">Select an image:</label>
           <input type="file" id="imageFile" accept="image/*" multiple />
+          <p>UPLOAD YOUR PHOTO</p>
         </div>
         <form onSubmit={handelEventInfo}>
           <label>
@@ -79,7 +78,11 @@ export default function EventForm() {
               autoComplete="off"
             />
           </label>
-          <span className="error-msg">{errorMsg}</span>
+          <span className="error-msg">
+            {() => {
+              setErrorMsg(errorMsg);
+            }}
+          </span>
           <div>
             <button type="submit" className="login-btn">
               Confirm
