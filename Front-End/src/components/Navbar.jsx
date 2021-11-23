@@ -42,8 +42,8 @@ const Navbar = (props) => {
   };
   return (
     <nav className="nav">
-      <Link to="/" className="linkbar">
-        GIFT2ME
+      <Link to="/">
+       <span className="logo"> GIFT2ME</span>
       </Link>
        {token && <p>Welcome {userName} !</p>}
 

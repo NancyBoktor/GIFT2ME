@@ -32,6 +32,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
+      <Navbar/>
       <section className="register-wrapper">
         <h1>Register</h1>
         <form onSubmit={handleRegister}>
