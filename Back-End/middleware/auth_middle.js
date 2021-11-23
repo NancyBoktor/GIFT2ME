@@ -15,10 +15,5 @@ const isAuth = (req, res, next) => {
 };
 
 module.exports = {
-<<<<<<< HEAD
   isAuth,
 };
-=======
-    isAuth
-}
->>>>>>> ed6e7eb07cf7d445dab095e51099651c2fbdf923
