@@ -2,6 +2,7 @@ import react, { useState } from 'react';
 import  { login } from "../services/auth";
 import { useNavigate } from 'react-router-dom';
 import "./Login.scss";
+import "./index.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ const Login = () => {
   }
 
   return(
-    <div className="login-wrapper">
+    <div id="login-container">
+    <section className="login-wrapper">
       <h1>Please Log In</h1>
       <form onSubmit={handleLogin}>
         <label>
@@ -46,6 +48,7 @@ const Login = () => {
         <div>Don't have an account? |
         <span> Register</span>
         </div>
+    </section>
     </div>
   )
 }
