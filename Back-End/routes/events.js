@@ -21,7 +21,6 @@ router.get("/", isAuth, async (req, res) => {
 
 // GET events from specific user
 router.get("/:id", isAuth, async (req, res) => {
-  
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
     req.params.id
   ]);
