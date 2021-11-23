@@ -32,7 +32,6 @@ const login = async (req, res, next) => {
       last_name: user.last_name,
     });
     res.cookie("token", token, {
-      maxAge: null, // infinite
       secure: true,
       httpOnly: true,
     });
@@ -91,7 +90,6 @@ const register = async (req, res, next) => {
   console.log("token:", token);
 
   res.cookie("token", token, {
-    maxAge: null, // infinite
     secure: true,
     httpOnly: true,
   });
@@ -101,11 +99,6 @@ const register = async (req, res, next) => {
 
 const logout = (req, res, next) => {
   res.clearCookie("token");
-  // if (err) {
-  //   return res
-  //     .status(400)
-  //     .json({ success: false, message: "logout wasn't success!" });
-  // }
   res.status(200).json({ sucess: true, message: "Logout successfully" });
 };
 

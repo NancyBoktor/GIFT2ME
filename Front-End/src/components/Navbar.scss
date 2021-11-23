@@ -1,0 +1,23 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #4056A1;
+    height: 40px;
+    width: 100%;
+    color: #FFFFFF;
+    padding: 1.5em;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.logo.nav{
+  
+    margin: 10px;
+}
+
+.span.nav{
+ 
+ justify-self: center;
+}
