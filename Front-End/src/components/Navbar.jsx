@@ -1,7 +1,8 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./Navbar.scss";
+import { logout} from "../services/auth";
 
 const Navbar = (props) => {
   const [userName, setUserName] = useState("");
@@ -16,49 +17,44 @@ const Navbar = (props) => {
       setUserName(contents.first_name);
       console.log("contents", contents);
     }
-    // axios
-    //   .get("/login")
-    //   .then((res) => {
-    //     const name = res.data.user;
-    //     setUserName(`${name.first_name} ${name.last_name}`);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    
   }, []);
 
   // handle the logout click
-  const handleClick = (event) => {
+  const navigate = useNavigate();
+
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleLogout = async (event) => {
     event.preventDefault();
-    axios
-      .post("/logout")
-      .then((res) => {
-        console.log("logout successful!");
-        // reset the localstorage value to an empty string
-        localStorage.setItem("jwtToken", "", { maxAge: 1 });
-        // redirect to the home page
-        window.location = res.data.redirect;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await logout();
+      localStorage.removeItem("token");
+      navigate("/login");
+    } 
+    catch (e) {
+      console.log(e);
+      console.log(e.response.status);
+      console.log(e.response.data);
+      console.log(e.response.data.message);
+      setErrorMsg(e.response.data.message);
+    }
   };
   return (
     <nav>
       <Link to="/" className="linkbar">
         GIFT2ME
       </Link>
-
-      {token && <p>Welcome {userName} !</p>}
+       {token && <p>Welcome {userName} !</p>}
 
       {!token && <Link to="/register">Register</Link>}
       {!token && (
-        <Link to="/login" className="linkbar">
+        <Link to="/login" >
           Login
         </Link>
       )}
       {token && (
-        <button onClick={handleClick} className="linkbar">
+        <button onClick={handleLogout} >
           Logout
         </button>
       )}
