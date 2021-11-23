@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link,useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { logout} from "../services/auth";
+import "./Navbar.scss";
 
 const Navbar = (props) => {
   const [userName, setUserName] = useState("");
@@ -19,7 +20,6 @@ const Navbar = (props) => {
     }
     
   }, []);
-
   // handle the logout click
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ const Navbar = (props) => {
     }
   };
   return (
-    <nav>
+    <nav className="nav">
       <Link to="/" className="linkbar">
         GIFT2ME
       </Link>
