@@ -1,10 +1,10 @@
-// body {
-//   background-repeat:no-repeat;
-//   background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
-//   background-size:cover;
-//   background-position:20% 30%;
-//   text-align:center;
-// }
+body {
+  background-repeat:no-repeat;
+  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
+  background-size:cover;
+  background-position:20% 30%;
+  text-align:center;
+}
 
 .title {
   color: teal;
@@ -15,6 +15,10 @@
   flex-direction: column;
   gap: 10px;
   padding: 1rem;
+}
+
+.click:hover {
+  cursor: pointer;
 }
 
 table {
