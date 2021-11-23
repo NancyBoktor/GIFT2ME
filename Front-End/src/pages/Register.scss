@@ -1,0 +1,72 @@
+.register-container {
+  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-269887.jpeg);
+	background-color:rgba(0,0,0,0);
+	background-position:50% 50%;
+	background-size:cover;
+	background-repeat:no-repeat;
+	padding-top:0;
+	padding-bottom:0;
+	padding-right:0;
+	padding-left:0;
+	margin:0;
+	text-align:center;
+	color:rgb(255,255,255);
+}
+
+.register-wrapper {
+  display: inline-block;
+  border-radius: 20px;
+	background: rgba(255,255,255, 0.8);
+  color: rgb(27, 125, 155);
+  width: 30%;
+  margin-top: 100px;
+  margin-left: 10%;
+  padding: 10px;
+}
+
+label, input {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  margin-bottom: 20px;
+}
+
+.register-btn {
+    background-color:rgb(27, 125, 155); 
+    color: white;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.error-msg {
+  color: red;
+}
+
+.login-redirect:hover {
+  color:violet;
+}
+
+.title-align-right {
+  display: inline-block;
+}
+
+.title {
+font-size: 60px;
+}
+
+.slogan {
+  margin-top:10px;
+}
+
+footer {
+  position: fixed;
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  color: rgb(27, 125, 155);
+}
+
