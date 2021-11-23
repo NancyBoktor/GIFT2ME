@@ -12,6 +12,7 @@ export default function EventForm() {
   });
 
   const [errorMsg, setErrorMsg] = useState("");
+  
   const handelEventInfo = async (event) => {
     event.preventDefault();
     console.log("Event:", eventInfo);
