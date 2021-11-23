@@ -14,7 +14,7 @@ const Navbar = (props) => {
   useEffect(() => {
     axios.get('/isUserAuth', {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer' + token
       }
     })
       .then(res => {
