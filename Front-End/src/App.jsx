@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from './pages/Register';
 import Dashboard from './components/Dashboard';
+import "./App.scss";
 
 function App() {
   return (

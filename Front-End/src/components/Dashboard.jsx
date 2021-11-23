@@ -50,7 +50,7 @@ const Dashboard = (props) => {
               <tr>
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
-                <td><FontAwesomeIcon icon={['fas', 'share-alt']} /></td>
+                <td className="click"><FontAwesomeIcon icon={['fas', 'share-alt']} /></td>
                 <td className="click" onClick={edit}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
                 <td className="click" onClick={handleDelete}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
               </tr>
