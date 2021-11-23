@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { db } = require("../lib/db");
 const { isAuth } = require("../middleware/auth_middle");
-const {createEvent} = require("../controllers/event_controller");
+const { createEvent } = require("../controllers/event_controller");
 
 /* GET all events */
 router.get("/", async (req, res) => {
@@ -20,6 +20,6 @@ router.get("/:id", isAuth, async (req, res) => {
   res.json(rows);
 });
 
-router.post("/", isAuth, createEvent);
+router.post("/", createEvent);
 
 module.exports = router;
