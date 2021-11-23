@@ -12,15 +12,6 @@ const Dashboard = (props) => {
   const navigate = useNavigate();
   const [eventNames, setEventNames] = useState([]);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios(`http://localhost:3001/api/events`);
-//       setEventNames(result.data)
-//       console.log(result.data)
-//   }; 
-//   fetchData();
-// }, []);
-
   useEffect(() => {
     axios.get('http://localhost:3001/api/events', {withCredentials: true})
       .then(res => setEventNames(res.data));
