@@ -6,6 +6,8 @@ import { logout } from "../services/auth";
 import "./Navbar.scss";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import "../fontawesome";
 
 const Navbar = (props) => {
   const [userName, setUserName] = useState("");
@@ -43,7 +45,7 @@ const Navbar = (props) => {
   };
   return (
     <nav className="nav">
-      <Link to="/">
+      <Link to="/" className="link" style={{ textDecoration: 'none' }}>
         <span className="logo">GIFT2ME</span>
       </Link>
       {token && (
@@ -53,19 +55,20 @@ const Navbar = (props) => {
       )}
 
       <span className="">
+        <Link to="/" className="link" style={{ textDecoration: 'none' }}><span><FontAwesomeIcon icon={['fa', 'home']} /> Home </span></Link>
         {!token && (
-          <Link to="/register">
+          <Link to="/register" className="link" style={{ textDecoration: 'none' }}>
             <span className="register-span"> Register </span>
           </Link>
         )}
         {!token && (
-          <Link to="/login">
+          <Link to="/login" className="link" style={{ textDecoration: 'none' }}>
             <span className="login-span"> Login </span>
           </Link>
         )}
         {token && (
           <Stack spacing={2} direction="row">
-            <Button variant="outlined" className="btn" onClick={handleLogout}>
+            <Button variant="outlined" className="link btn" onClick={handleLogout}>
               Logout
             </Button>
           </Stack>

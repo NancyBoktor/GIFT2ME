@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
-// import ConfirmDelete from "../components/ConfirmDelete";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
 
@@ -65,7 +64,7 @@ const Dashboard = (props) => {
               <tr>
                 <td>{event.event_name}</td>
                 <td><FontAwesomeIcon icon={['fas', 'share-alt']} /></td>
-                <td className="click" onClick={edit}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
+                <td className="click" onClick={create}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
                 <td className="click" onClick={() => handleShow(event.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
                 {ReactDOM.createPortal(
                   <Modal show={show[event.id]}>
