@@ -20,7 +20,11 @@ const Register = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
-      await register(newUserInfo);
+      const data = await register(newUserInfo);
+      const token = data.data.token;
+      console.log("Token", token);
+      localStorage.setItem("token", token);
+      console.log("Data", data);
       navigate("/dashboard");
     } catch (e) {
       console.log(e.response);
@@ -32,7 +36,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <Navbar />
+      <Navbar/>
       <section className="register-wrapper">
         <h1>Register</h1>
         <form onSubmit={handleRegister}>
@@ -119,8 +123,7 @@ const Register = () => {
           </p>
         </div>
       </section>
-            <Footer />
-
+      <Footer />
     </div>
   );
 };

@@ -1,22 +1,22 @@
 body {
-  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-269887.jpeg);
-	background-color:rgba(0,0,0,0);
-	background-position:50% 50%;
-	background-size:cover;
-	background-repeat:no-repeat;
-	padding-top:0;
-	padding-bottom:0;
-	padding-right:0;
-	padding-left:0;
-	margin:0;
-	text-align:center;
-	color:rgb(255,255,255);
+  background-image: url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-269887.jpeg);
+  background-color: rgba(0, 0, 0, 0);
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  padding-left: 0;
+  margin: 0;
+  text-align: center;
+  color: rgb(255, 255, 255);
 }
 
 .login-wrapper {
   display: inline-block;
   border-radius: 20px;
-	background: rgba(255,255,255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: rgb(27, 125, 155);
   width: 30%;
   margin-top: 100px;
@@ -24,7 +24,8 @@ body {
   padding: 10px;
 }
 
-label, input {
+label,
+input {
   display: flex;
   justify-content: center;
 }
@@ -34,10 +35,10 @@ label {
 }
 
 .login-btn {
-    background-color:rgb(27, 125, 155); 
-    color: white;
-    border-radius: 10px;
-    border-color: black;
+  background-color: rgb(27, 125, 155);
+  color: white;
+  border-radius: 10px;
+  border-color: black;
 }
 
 .error-msg {
@@ -69,4 +70,3 @@ footer {
   margin-bottom: 0px;
   color: rgb(27, 125, 155);
 } */
-

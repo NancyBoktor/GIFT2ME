@@ -1,0 +1,60 @@
+.event-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-info {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.event-input {
+  margin-bottom: 20px !important;
+  width: 50%;
+  margin: auto;
+}
+.event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #fff;
+  padding: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  position: relative;
+  transform-origin: center center;
+  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  width: 150px;
+  height: 150px;
+}
+.event-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.text-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.add-item-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
