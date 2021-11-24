@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <div id="login-container">
+    <div className="login-background">
       <Navbar/>
       <section className="login-wrapper">
         <h1>Please Log In</h1>

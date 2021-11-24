@@ -35,7 +35,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-background">
       <Navbar/>
       <section className="register-wrapper">
         <h1>Register</h1>
