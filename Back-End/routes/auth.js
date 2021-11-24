@@ -8,6 +8,8 @@ router.post("/login", login);
 
 /* register */
 router.post("/register", register);
+
+/* logout */
 router.post("/logout", isAuth, logout);
 
 module.exports = router;

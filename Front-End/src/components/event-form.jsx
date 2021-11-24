@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { Navigate } from "react-router";
-import { createEvent } from "../services/event";
+import { createEvent, createItem } from "../services/event";
+import CreateGiftForm from "./CreateGiftForm";
+import useVisualMode from "../hooks/useVisualMode";
+import CreateEventForm from "../components/CreateEvent";
+import Navbar from "../components/Navbar";
 import "./event-form.scss";
 
 export default function EventForm() {
+  const CREATEEVEVT = "CREATEEVEVT";
+  const CREATEITEM = "CREATEITEM";
+  const { mode, transition, back } = useVisualMode("CREATEEVEVT");
+
   const [eventInfo, setEventInfo] = useState({
     event_name: "",
     date: "YY/MM/DD",
@@ -11,8 +19,15 @@ export default function EventForm() {
     description: "",
   });
 
-  const [errorMsg, setErrorMsg] = useState("");
-  
+  const [itemInfo, setItemInfo] = useState({
+    gift_name: "",
+    price: 0,
+    notes: "",
+    store_url: ",",
+    quantity: 0,
+    most_wanted: "",
+  });
+
   const handelEventInfo = async (event) => {
     event.preventDefault();
     console.log("Event:", eventInfo);
@@ -24,73 +39,44 @@ export default function EventForm() {
     }
   };
 
+  const handelItemInfo = async (event) => {
+    event.preventDefault();
+
+    try {
+      await createItem(itemInfo);
+      Navigate("/events");
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
+
+  const handelCreateItem = async (event) => {
+    transition(CREATEITEM);
+  };
+
+  const onCancel = () => {
+    back();
+  };
+
   return (
     <div>
-      <div className="event-info">
-        <div className="event-card">
-          <input type="file" id="imageFile" accept="image/*" multiple />
-          <p>UPLOAD YOUR PHOTO</p>
-        </div>
-        <form onSubmit={handelEventInfo} className="event-form">
-          <label className="text-area">
-            <input
-              type="text"
-              placeholder="MY WISH LIST"
-              defaultValue={eventInfo.event_name}
-              onChange={(event) =>
-                setEventInfo({ ...eventInfo, event_name: event.target.value })
-              }
-              required
-              autoComplete="off"
-            />
-          </label>
-          <label className="text-area">
-            <input
-              type="date"
-              defaultValue={eventInfo.date}
-              onChange={(event) =>
-                setEventInfo({ ...eventInfo, date: event.target.value })
-              }
-              required
-              autoComplete="off"
-            />
-          </label>
-          <label className="text-area">
-            <input
-              type="text"
-              placeholder="Event-Address"
-              defaultValue={eventInfo.address}
-              onChange={(event) =>
-                setEventInfo({ ...eventInfo, address: event.target.value })
-              }
-              required
-              autoComplete="off"
-            />
-          </label>
-          <label className="text-area">
-            <input
-              type="text"
-              placeholder="My Event Description"
-              defaultValue={eventInfo.description}
-              onChange={(event) =>
-                setEventInfo({ ...eventInfo, description: event.target.value })
-              }
-              required
-              autoComplete="off"
-            />
-          </label>
-          <span className="error-msg">
-            {() => {
-              setErrorMsg(errorMsg);
-            }}
-          </span>
-          <div>
-            <button type="submit" className="login-btn">
-              Confirm
-            </button>
-          </div>
-        </form>
-      </div>
+      <Navbar />
+      {mode === CREATEEVEVT && (
+        <CreateEventForm
+          onClick={handelCreateItem}
+          onConfirm={handelEventInfo}
+          eventInfo={eventInfo}
+          setEventInfo={setEventInfo}
+        />
+      )}
+      {mode === CREATEITEM && (
+        <CreateGiftForm
+          onCancel={onCancel}
+          onSave={handelItemInfo}
+          itemInfo={itemInfo}
+          setItemInfo={setItemInfo}
+        />
+      )}
     </div>
   );
 }

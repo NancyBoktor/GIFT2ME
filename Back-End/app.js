@@ -27,8 +27,8 @@ app.use(cors(corsOption));
 
 app.use("/api/auth", authRouter);
 app.use("/api/events", eventsRouter);
-app.use("/api/gifters", giftersRouter);
 app.use("/api/gifts", giftsRouter);
+app.use("/api/gifters", giftersRouter);
 app.use("/api/selectedGifts", selectedGiftsRouter);
 
 module.exports = app;

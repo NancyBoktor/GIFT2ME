@@ -14,6 +14,7 @@ const Navbar = (props) => {
     if (token) {
       const contents = JSON.parse(atob(token.split(".")[1]));
       setUserName(contents.first_name);
+      console.log("userName", userName);
       console.log("contents", contents);
     }
     // axios
