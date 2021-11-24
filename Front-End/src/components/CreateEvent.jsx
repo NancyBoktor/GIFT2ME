@@ -19,10 +19,10 @@ export default function CreateEventForm(props) {
   const handleCreateEvent = async () => {
     console.log("Event:", eventInfo);
     try {
-      const {data} = await createEvent(eventInfo);
-      if (data.success){
-      navigate(`/gifts?event_id=${data.data.id}`);
-
+      const { data } = await createEvent(eventInfo);
+      console.log("event-Data", data);
+      if (data.success) {
+        navigate(`/gifts?event_id=${data.data.id}`);
       }
     } catch (e) {
       console.log("error:", e);

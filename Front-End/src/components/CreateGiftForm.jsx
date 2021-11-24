@@ -4,18 +4,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Fab from "@mui/material/Fab";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import "./CreateGiftForm.scss";
 
 export default function CreateItemForm(props) {
   const [itemInfo, setItemInfo] = useState(props);
   console.log("props", props);
+  
 
   return (
     <div className="create-item-form">
@@ -74,15 +70,10 @@ export default function CreateItemForm(props) {
               setItemInfo({ ...itemInfo, quantity: event.target.value })
             }
           />
-          <TextField
-            id="outlined-multiline-static"
-            label="Most Wanted"
-            multiline
-            rows={4}
-            value={itemInfo.most_wanted}
-            onChange={(event) =>
-              setItemInfo({ ...itemInfo, most_wanted: event.target.value })
-            }
+
+          <FormControlLabel
+            control={<Checkbox defaultChecked />}
+            label="Most wanted"
           />
         </div>
       </Box>
