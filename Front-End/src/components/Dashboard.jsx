@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Dashboard.scss";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
@@ -10,6 +10,20 @@ import "../fontawesome";
 const Dashboard = (props) => {
   const navigate = useNavigate();
   const [events, setEvents] = useState(data);
+  const [userName, setUserName] = useState("");
+
+  // retrieve the token from local storage, if empty string, you need to logged in.
+  const token = window.localStorage.getItem("token");
+
+  // authenticates the user and gets their name to be displayed on the nav bar
+  useEffect(() => {
+    if (token) {
+      const contents = JSON.parse(atob(token.split(".")[1]));
+      setUserName(contents.first_name);
+      console.log("contents", contents);
+    }
+  }, []);
+
 
   const handleDelete = (eventId) => {
     const newEvents = [...events];
@@ -24,6 +38,8 @@ const Dashboard = (props) => {
   const edit = () => {
     navigate("/events/:id"); //<- THIS ROUTE NEEDS TO BE CHANGED
   };
+
+  
 
   return (
     <div classname="dashboard-container">
@@ -49,7 +65,7 @@ const Dashboard = (props) => {
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
                 <td>
-                  <FontAwesomeIcon icon={["fas", "share-alt"]} />
+                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my birthday`}><FontAwesomeIcon icon={["fas", "share-alt"]} /></a>
                 </td>
                 <td className="click" onClick={edit}>
                   <FontAwesomeIcon icon={["fas", "edit"]} />
