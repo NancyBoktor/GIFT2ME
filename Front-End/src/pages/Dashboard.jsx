@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Dashboard.scss";
-import Navbar from "./Navbar.jsx";
-import Footer from "./Footer";
+// import Navbar from "./Navbar.jsx";
+// import Footer from "./Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
