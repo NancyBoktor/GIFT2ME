@@ -1,16 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-<<<<<<< HEAD
-import Register from './pages/Register';
-import Dashboard from './components/Dashboard';
-import "./App.scss";
-=======
 import Register from "./pages/Register";
 import Dashboard from "./components/Dashboard";
 import EventForm from "./components/event-form";
 import CreateGiftForm from "./components/CreateGiftForm";
->>>>>>> master
 import Logout from "./components/logout";
 
 function App() {
