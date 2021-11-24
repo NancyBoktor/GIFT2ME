@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./Invite.scss";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
@@ -8,56 +8,70 @@ import { useNavigate } from 'react-router-dom';
 import "../index.jsx";
 
 const Invite = (props) => {
+  const [inputFields, setInputFields] = useState([
+    { name: "", email: "" }
+  ]);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("inputfields", inputFields)
+  };
+
+  const handleInputChange = (index, event) => {
+    const values = [...inputFields];
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
+    } else {
+      values[index].email = event.target.value;
+    }
+    setInputFields(values)
+  }
+
+  const handleAddFields = () => {
+    const values = [...inputFields];
+    values.push({ name: '', email: '' });
+    setInputFields(values);
+  };
+
   return (
-    <div>
+    <>
       <Navbar />
       <h1>Invitation List</h1>
       <div className="block">
-      <form>
-        <div className="form-group">
-          <label for="formGroupExampleInput">Name</label>
-          <input type="text" className="fields form-control" id="formGroupExampleInput" placeholder="Name" />
-        </div>
-        <div className="form-group">
-          <label for="formGroupExampleInput2">Email</label>
-          <input type="email" className="fields form-control" id="formGroupExampleInput2" placeholder="Email" />
-        </div>
-      </form>
-      <button type="button" class="lng btn btn-info">Send Invites</button>
-      <button type="button" class="lng btn btn-info">Copy Share Link</button>
+        <form onSubmit={handleSubmit}>
+          {inputFields.map((inputField, index) => (
+              <Fragment key={`${inputField}~${index}`}>
+              <div className="form-group">
+                <label for="formGroupExampleInput">Name</label>
+                <input 
+                type="text" 
+                name="name" 
+                value={inputField.name}
+                onChange={event => handleInputChange(index, event)} 
+                className="fields form-control" 
+                id="formGroupExampleInput" 
+                placeholder="Name" />
+              </div>
+              <div className="form-group">
+                <label for="formGroupExampleInput2">Email</label>
+                <input 
+                type="email" 
+                name="email"
+                value={inputField.email}
+                onChange={event => handleInputChange(index, event)} 
+                className="fields form-control" 
+                id="formGroupExampleInput2" 
+                placeholder="Email" />
+               </div>
+              </Fragment>
+          ))}
+        </form>
+        <div type="button" onClick={() => handleAddFields()}>+ Add Rows</div>
+        <button type="button" class="lng btn btn-info" onSubmit={handleSubmit}>Send Invites</button>
+        <button type="button" class="lng btn btn-info">Copy Share Link</button>
       </div>
-
-      {/* <div className="block">
-        <div className="name-email">
-        <div className="title">
-          <span>Name</span>
-        </div>
-        <div className="title">
-          <span>Email</span>
-        </div>
-        </div>
-        <div className="columns">
-        <div className="name-column">
-          <input type="text" className="name" placeholder="Name" maxLength="50"/>
-        </div>
-        <div className="email-column">
-          <input type="email" className="email" placeholder="Email" maxLength="50"/>
-        </div>
-        </div>
-        <div>
-        <button type="button" className="add-row"> 
-        <span>+ Add Row</span>
-        </button>
-        <div>
-        <button type="button" className="add-row">Send Invites</button>
-        </div>
-        <div>
-        <button type="button" className="add-row">Copy Share Link</button>
-        </div>
-      </div>
-      </div> */}
       <Footer />
-    </div>
+    </>
   )
 }
 
