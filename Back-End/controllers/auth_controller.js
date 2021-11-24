@@ -35,7 +35,7 @@ const login = async (req, res, next) => {
       secure: true, 
       httpOnly: true
     });
-    res.status(200).json({ success: true, message: "Login successful" });
+    res.status(200).json({ success: true, message: "Login successful", token });
   });
 };
 
@@ -94,10 +94,13 @@ const register = async (req, res, next) => {
     httpOnly: true
   });
 
-  res.status(200).json({ success: true, message: "Register successful" });
+  res
+    .status(200)
+    .json({ success: true, message: "Register successful", token });
 };
 
 const logout = (req, res, next) => {
+  console.log("logout", req.cookie);
   res.clearCookie("token");
   res.status(200).json({ sucess: true, message: "Logout successfully" });
 };

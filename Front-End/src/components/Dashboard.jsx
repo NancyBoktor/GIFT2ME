@@ -40,10 +40,8 @@ const Dashboard = (props) => {
     <div classname="dashboard-container">
       <Navbar />
       <h1 className="title">My Dashboard</h1>
-      <h2>Hey, Ami</h2>
-      <button onClick={create}>
-        Make an Event
-      </button>
+      <h2>Hey, Ami!</h2>
+      <button onClick={create}>Make an Event</button>
 
       <div className="event-container">
         <table>
@@ -69,7 +67,7 @@ const Dashboard = (props) => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

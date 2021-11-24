@@ -2,14 +2,14 @@ import react from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-const Home = () => {
+const Gift = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <h2>Home Page</h2>
       <Footer></Footer>
     </div>
   );
 };
 
-export default Home;
+export default Gift;

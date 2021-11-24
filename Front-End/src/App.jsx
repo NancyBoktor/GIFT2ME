@@ -1,9 +1,10 @@
-import react from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./components/Dashboard";
+import EventForm from "./components/event-form";
+import CreateGiftForm from "./components/CreateGiftForm";
 import Logout from "./components/logout";
 
 function App() {
@@ -15,11 +16,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard key="events"/>} />
         <Route path="/logout" element={<Logout />} />
-        {/* <Route path="users" element={<Users />}>
-          <Route path="/" element={<UsersIndex />} />
-          <Route path=":id" element={<UserProfile />} />
-          <Route path="me" element={<OwnUserProfile />} />
-        </Route> */}
+        <Route path="/events" element={<EventForm />} />
+        <Route path="/gifts"  element={<CreateGiftForm />} />
       </Routes>
     </BrowserRouter>
   );
