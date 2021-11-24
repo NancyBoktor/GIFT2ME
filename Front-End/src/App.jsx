@@ -3,8 +3,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./components/Dashboard";
-import EventForm from "./components/event-form";
-import CreateGiftForm from "./components/CreateGiftForm";
+import CreateEvent from "./pages/CreateEvent";
+import CreateGifts from "./pages/CreateGifts";
 import Logout from "./components/logout";
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/events" element={<EventForm />} />
-        <Route path="/gifts"  element={<CreateGiftForm />} />
+        <Route path="/events" element={<CreateEvent />} />
+        <Route path="/gifts" element={<CreateGifts />} />
       </Routes>
     </BrowserRouter>
   );

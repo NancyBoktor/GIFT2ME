@@ -2,21 +2,28 @@ const { db } = require("../lib/db");
 
 const createGift = async (req, res, next) => {
   const {
+    event_id,
     gift_name,
     price,
     notes,
     store_url,
     quantity,
     most_wanted,
-    event_id,
   } = req.body;
-  const { rows } = db.query(
-    `INSERT INTO gifts (gift_name, gift_name, price, notes,store_url,quantity,most_wanted )
-     VALUES ($1, $2, $3, $4 , $5,$6,$7) RETURNING * `,
-    [gift_name, gift_name, price, notes, store_url, quantity, most_wanted]
-  );
-  res.json({ success: true, data: rows });
+
+  try {
+    const { rows } = await db.query(
+      `INSERT INTO gifts ( event_id, gift_name, price, notes, store_url, quantity, most_wanted )
+     VALUES ($1, $2, $3, $4 , $5, $6, $7) RETURNING * `,
+      [event_id, gift_name, price, notes, store_url, quantity, most_wanted]
+    );
+    //console.log("giftData", rows);
+    res.json({ success: true, data: rows });
+  } catch (error) {
+    console.log(error);
+  }
 };
+
 const getGifts = async (req, res, next) => {
   const { event_id } = req.body;
   const { rows } = db.query(`SELECT * FROM  gifts  WHERE event_id=$1 `, [
