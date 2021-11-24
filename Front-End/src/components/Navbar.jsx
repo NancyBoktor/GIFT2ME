@@ -1,8 +1,8 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
-import { logout} from "../services/auth";
+import { logout } from "../services/auth";
 import "./Navbar.scss";
 
 const Navbar = (props) => {
@@ -18,7 +18,7 @@ const Navbar = (props) => {
       setUserName(contents.first_name);
       console.log("contents", contents);
     }
-    
+
   }, []);
   // handle the logout click
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Navbar = (props) => {
       await logout();
       localStorage.removeItem("token");
       navigate("/login");
-    } 
+    }
     catch (e) {
       console.log(e);
       console.log(e.response.status);
@@ -43,21 +43,24 @@ const Navbar = (props) => {
   return (
     <nav className="nav">
       <Link to="/">
-       <span className="logo"> GIFT2ME</span>
+        <span className="logo"> GIFT2ME</span>
       </Link>
-       {token && <p>Welcome {userName} !</p>}
+      {token && <p>Welcome {userName} !</p>}
 
-      {!token && <Link to="/register">Register</Link>}
-      {!token && (
-        <Link to="/login" >
-          Login
-        </Link>
-      )}
-      {token && (
-        <button onClick={handleLogout} >
-          Logout
-        </button>
-      )}
+      <span className="">
+        {!token && <Link to="/register"><span className="register-span">  Register  </span></Link>}
+        {!token && (
+          <Link to="/login" >
+            <span className="login-span">  Login  </span>
+          </Link>
+        )}
+        {token && (
+          <button className="btn" onClick={handleLogout} >
+            Logout
+          </button>
+        )}
+
+      </span>
     </nav>
   );
 };
