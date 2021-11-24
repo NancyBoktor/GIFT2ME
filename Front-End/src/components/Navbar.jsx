@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { logout } from "../services/auth";
 import "./Navbar.scss";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 const Navbar = (props) => {
   const [userName, setUserName] = useState("");
@@ -19,7 +21,6 @@ const Navbar = (props) => {
       console.log("userName", userName);
       console.log("contents", contents);
     }
-
   }, []);
   // handle the logout click
   const navigate = useNavigate();
@@ -32,8 +33,7 @@ const Navbar = (props) => {
       await logout();
       localStorage.removeItem("token");
       navigate("/login");
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e);
       console.log(e.response.status);
       console.log(e.response.data);
@@ -44,23 +44,32 @@ const Navbar = (props) => {
   return (
     <nav className="nav">
       <Link to="/">
-        <span className="logo"> GIFT2ME</span>
+        <span className="logo">GIFT2ME</span>
       </Link>
-      {token && <p>Welcome {userName} !</p>}
+      {token && (
+        <p className="welcom-user-name">
+          <h3>Welcome {userName}!</h3>
+        </p>
+      )}
 
       <span className="">
-        {!token && <Link to="/register"><span className="register-span">  Register  </span></Link>}
         {!token && (
-          <Link to="/login" >
-            <span className="login-span">  Login  </span>
+          <Link to="/register">
+            <span className="register-span"> Register </span>
+          </Link>
+        )}
+        {!token && (
+          <Link to="/login">
+            <span className="login-span"> Login </span>
           </Link>
         )}
         {token && (
-          <button className="btn" onClick={handleLogout} >
-            Logout
-          </button>
+          <Stack spacing={2} direction="row">
+            <Button variant="outlined" className="btn" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Stack>
         )}
-
       </span>
     </nav>
   );
