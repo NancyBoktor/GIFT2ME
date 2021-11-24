@@ -1,6 +1,4 @@
 .nav {
-    display: flex;
-    justify-content: space-between;
     background-color: #4056A1;
     height: 40px;
     width: 100%;
@@ -12,12 +10,24 @@
     left: 0;
 }
 
-.logo.nav{
-  
-    margin: 10px;
+.logo{
+    font-size:x-large;
+    float: left;
 }
+.login-reg-container{
+display: flex;
+justify-content: flex-end;
 
-.span.nav{
- 
- justify-self: center;
+   
 }
+.login-span{
+    padding-left: 20px;
+    padding-right: 50px;
+}
+.register-span{
+    padding: 20px;
+}
+.btn{
+    margin: 50px;
+   
+   }
