@@ -1,0 +1,46 @@
+.block {
+  display:flex;
+  flex-direction:column;
+  border:solid pink;
+  border-radius: 20px;
+	background: rgba(255,255,255, 0.8);
+  width: 50%;
+  text-align:center;
+  align-items: center;
+}
+
+// .name-email {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .title {
+//   flex-grow: 0;
+//   flex-shrink: 1;
+// }
+
+// .columns {
+//   align-items: flex-end;
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// input {
+//   background-color: transparent;
+//   border: none;
+//   border-bottom: 0.1rem solid teal;
+//   box-sizing: border-box;
+//   display: block;
+//   width: 100%;
+// }
+
+.fields {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.1rem solid teal;
+}
+
+.lng {
+  background-color: teal;
+  border-color: teal;
+}

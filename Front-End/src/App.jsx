@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./components/Dashboard";
+import Invite from "./components/Invite";
 import Logout from "./components/logout";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/invite" element={<Invite />} />
+        
         <Route path="/logout" element={<Logout />} />
         {/* <Route path="users" element={<Users />}>
           <Route path="/" element={<UsersIndex />} />
