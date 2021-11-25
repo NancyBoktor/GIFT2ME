@@ -63,7 +63,7 @@ const Dashboard = (props) => {
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
                 <td>
-                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} ${window.location}/${event.id}`}>
+                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} %2C%0A here is my wishlist link :) ${window.location}/${event.id}`}>
                     <FontAwesomeIcon icon={["fas", "share-alt"]} /></a>
                 </td>
                 <td className="click" onClick={edit}>
