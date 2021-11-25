@@ -6,8 +6,13 @@
 //   text-align:center;
 // }
 
+// .confirm-msg {
+//   color: black;
+// }
+
 .delete-warning {
   color: red;
+  font-size: small;
 }
 
 .title {
@@ -56,13 +61,12 @@ td {
 }
 
 th {
-  // background-color: rgb(117, 201, 250);
-  background-color: teal;
+  background-color: rgb(66, 194, 194);
   text-transform: uppercase;
 }
 
 td {
-  background-color: rgb(80, 196, 180);
+  background-color: transparent;
 }
 
 // form {

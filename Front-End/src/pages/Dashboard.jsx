@@ -7,9 +7,19 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
 import axios from "axios";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const Dashboard = (props) => {
+const theme = createTheme({
+  palette: {
+    cancel: {
+      main: '#808080',
+    },
+  },
+});
+
+const Dashboard = () => {
   const navigate = useNavigate();
   const [eventNames, setEventNames] = useState([]);
   const [show, setShow] = useState({});
@@ -47,7 +57,13 @@ const Dashboard = (props) => {
       <Navbar />
       <h1 className="title">My Dashboard</h1>
 
-      <button onClick={create}>Make an Event</button>
+      <Button
+          variant="outlined"
+          href="#outlined-buttons"
+          onClick={create}
+        >
+          Make an Event
+        </Button>
 
       <div className="event-container">
         <table>
@@ -68,18 +84,22 @@ const Dashboard = (props) => {
                 <td className="click" onClick={() => handleShow(event.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
                 {ReactDOM.createPortal(
                   <Modal show={show[event.id]}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton onClick={() => handleClose(event.id)}>
                       <Modal.Title>Delete Event</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
-                      <p>Are you sure you wish to delete this event?</p>
+                      <p className="confirm-msg">Are you sure you wish to delete this event?</p>
                       <p className="delete-warning">This action cannot be undone</p>
                     </Modal.Body>
 
                     <Modal.Footer>
-                      <Button onClick={() => handleClose(event.id)} variant="secondary">Cancel</Button>
-                      <Button onClick={() => handleDelete(event.id)} variant="primary">Delete</Button>
+                    <div>
+                    <ThemeProvider theme={theme}>
+                      <Button onClick={() => handleClose(event.id)} variant="contained" color="cancel">Cancel</Button>
+                      </ThemeProvider>
+                      </div>
+                      <Button onClick={() => handleDelete(event.id)} variant="outlined" color="error">Delete</Button>
                     </Modal.Footer>
                   </Modal>,
                   document.body
