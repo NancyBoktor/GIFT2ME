@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
 
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [userName, setUserName] = useState("");
 
   // retrieve the token from local storage, if empty string, you need to logged in.

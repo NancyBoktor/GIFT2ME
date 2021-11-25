@@ -98,7 +98,7 @@ const Dashboard = () => {
                     <Modal.Footer>
                       <div>
                         <ThemeProvider theme={theme}>
-                          <Button onClick={() => handleClose(event.id)} variant="contained" color="cancel">Cancel</Button>
+                          <Button onClick={() => handleClose(event.id)} variant="outlined" color="cancel">Cancel</Button>
                         </ThemeProvider>
                       </div>
                       <Button onClick={() => handleDelete(event.id)} variant="outlined" color="error">Delete</Button>
