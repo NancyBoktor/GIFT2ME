@@ -18,6 +18,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/events" element={<EventForm />} />
         <Route path="/gifts"  element={<CreateGiftForm />} />
+        {/* <Route path="/events/:id" element={<Wishlist />} /> */}
       </Routes>
     </BrowserRouter>
   );

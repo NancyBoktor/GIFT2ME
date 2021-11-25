@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.scss";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer";
@@ -39,8 +39,6 @@ const Dashboard = (props) => {
     navigate("/events/:id"); //<- THIS ROUTE NEEDS TO BE CHANGED
   };
 
-  
-
   return (
     <div classname="dashboard-container">
       <Navbar />
@@ -65,7 +63,7 @@ const Dashboard = (props) => {
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
                 <td>
-                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${event.date} at ${event.address}`}>
+                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} ${window.location}/${event.id}`}>
                     <FontAwesomeIcon icon={["fas", "share-alt"]} /></a>
                 </td>
                 <td className="click" onClick={edit}>
