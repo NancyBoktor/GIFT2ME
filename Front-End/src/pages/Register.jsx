@@ -37,102 +37,107 @@ const Register = () => {
 
   return (
     <>
-    <div className="register-background">
-      <Navbar/>
-      <section className="register-wrapper">
-        <h1>Register</h1>
-        <form >
-          
-          <input
-            type="text"
-            placeholder="First Name"
-            defaultValue={newUserInfo.first_name}
-            onChange={(event) =>
-              setNewUserInfo({
-                ...newUserInfo,
-                first_name: event.target.value,
-              })
-            }
-            autoComplete="off"
-          />
-          
-          <input
-            type="text"
-            placeholder="Last Name"
-            defaultValue={newUserInfo.last_name}
-            onChange={(event) =>
-              setNewUserInfo({
-                ...newUserInfo,
-                last_name: event.target.value,
-              })
-            }
-            autoComplete="off"
-          />
+      <div className="register-background">
+        <Navbar />
+        <section className="register-wrapper">
+          <h2>Register</h2>
+          <form >
+            <label>
+              <input
+                type="text"
+                placeholder="First Name"
+                defaultValue={newUserInfo.first_name}
+                onChange={(event) =>
+                  setNewUserInfo({
+                    ...newUserInfo,
+                    first_name: event.target.value,
+                  })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <label>
 
-          
-          <input
-            type="email"
-            placeholder="Email"
-            defaultValue={newUserInfo.email}
-            onChange={(event) =>
-              setNewUserInfo({ ...newUserInfo, email: event.target.value })
-            }
-            autoComplete="off"
-          />
-          
-          <input
-            type="password"
-            placeholder="Password (min 8 char)"
-            defaultValue={newUserInfo.password}
-            onChange={(event) =>
-              setNewUserInfo({ ...newUserInfo, password: event.target.value })
-            }
-            autoComplete="off"
-          />
-          
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            defaultValue={newUserInfo.confirm_password}
-            onChange={(event) =>
-              setNewUserInfo({
-                ...newUserInfo,
-                confirm_password: event.target.value,
-              })
-            }
-            autoComplete="off"
-          />
-          <span className="error-msg">{errorMsg}</span>
-          <div>
-          <Button
+              <input
+                type="text"
+                placeholder="Last Name"
+                defaultValue={newUserInfo.last_name}
+                onChange={(event) =>
+                  setNewUserInfo({
+                    ...newUserInfo,
+                    last_name: event.target.value,
+                  })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <input
+                type="email"
+                placeholder="Email"
+                defaultValue={newUserInfo.email}
+                onChange={(event) =>
+                  setNewUserInfo({ ...newUserInfo, email: event.target.value })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Password (min 8 char)"
+                defaultValue={newUserInfo.password}
+                onChange={(event) =>
+                  setNewUserInfo({ ...newUserInfo, password: event.target.value })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                defaultValue={newUserInfo.confirm_password}
+                onChange={(event) =>
+                  setNewUserInfo({
+                    ...newUserInfo,
+                    confirm_password: event.target.value,
+                  })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <span className="error-msg">{errorMsg}</span>
+            <div>
+              <Button
                 variant="contained"
                 onClick={handleRegister}
               >
                 Register
               </Button>
+            </div>
+          </form>
+          <br />
+          <div>
+            Already have an account? | <Link to="/login"><span>Login</span></Link>
           </div>
-        </form>
-        <br />
-        <div>
-        Already have an account? | <Link to="/login"><span>Login</span></Link>
-        </div>
-      </section>
-      <section className="title-align-right">
-        <div className="title-align-right">
-          <h1 className="title">GIFT2ME</h1>
-        </div>
-        <div className="slogan-div">
-          <p className="slogan">
-            <span>
-              An easy app to help event organizers request gifts from friends
-              and family
-            </span>
-          </p>
-        </div>
-      </section>
-      
-    </div>
-    <Footer />
+        </section>
+        <section className="title-align-right">
+          <div className="title-align-right">
+            <h1 className="title">GIFT2ME</h1>
+          </div>
+          <div className="slogan-div">
+            <p className="slogan">
+              <span>
+                An easy app to help event organizers request gifts from friends
+                and family
+              </span>
+            </p>
+          </div>
+        </section>
+
+      </div>
+      <Footer />
     </>
   );
 };
