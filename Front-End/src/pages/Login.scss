@@ -1,17 +1,9 @@
-.login-container {
-  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-269887.jpeg);
-	background-color:rgba(0,0,0,0);
-	background-position:50% 50%;
-	background-size:cover;
-	background-repeat:no-repeat;
-  background-attachment: fixed;
-	padding-top:0;
-	padding-bottom:0;
-	padding-right:0;
-	padding-left:0;
-	margin:0;
-	text-align:center;
-	color:rgb(255,255,255);
+.login-background {
+  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:50% 10%;
+  min-height: 100vh;
 }
 
 .login-wrapper {
@@ -45,7 +37,7 @@ label {
   color: red;
 }
 
-/* .register-redirect:hover {
+.register-redirect:hover {
   color:violet;
 }
 
@@ -61,13 +53,4 @@ font-size: 60px;
   margin-top:10px;
 }
 
-footer {
-  position: fixed;
-  height: 50px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-  color: rgb(27, 125, 155);
-} */
 

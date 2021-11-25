@@ -1,9 +1,13 @@
+$primary: rgb(70, 197, 219);
+$secondary: #72D6C9;
+$terinary: purple;
+
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #4056a1;
-  height: 40px;
+  background-image: linear-gradient(to bottom left, $primary, $secondary);
+  height: 5%;
   width: 100%;
   color: #ffffff;
   padding: 1.5em;
@@ -13,23 +17,64 @@
   left: 0;
 }
 
+.logo-container {
+  display: flex;
+  margin-top: -25px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.link {
+  color: white;
+}
+
 .logo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: x-large;
+  font-size: 45px;
+  color: $terinary;
+  font-family: 'Road Rage', cursive;
 }
+
+img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
 .login-reg-container {
   display: flex;
   justify-content: flex-end;
 }
+
+.home {
+  padding-left: 20px;
+}
+
+.welcome-span {
+  color: $terinary;
+}
+
 .login-span {
   padding-left: 20px;
-  padding-right: 50px;
 }
+
 .register-span {
   padding: 20px;
 }
+
+.logout-span:hover {
+color: #0d6efd;
+cursor:pointer;
+}
+
+.logout-span {
+  padding-left: 20px;
+}
+
 .btn {
   display: flex;
   flex-direction: row;
@@ -38,10 +83,5 @@
   font-size: smaller;
   margin-right: 35px;
 }
-.welcom-user-name {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 70%;
-  justify-content: end;
-}
+
+

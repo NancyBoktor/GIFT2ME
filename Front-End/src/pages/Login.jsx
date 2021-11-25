@@ -35,7 +35,8 @@ const Login = () => {
   };
 
   return (
-    <div id="login-container">
+    <>
+    <div className="login-background">
       <Navbar/>
       <section className="login-wrapper">
         <h1>Please Log In</h1>
@@ -73,8 +74,10 @@ const Login = () => {
           Don't have an account? |<span> Register</span>
         </div>
       </section>
-      <Footer />
-    </div>
+      
+    </div> 
+    <Footer />
+    </>
   );
 };
 export default Login;
