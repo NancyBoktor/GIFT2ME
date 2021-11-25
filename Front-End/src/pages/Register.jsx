@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import { register } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Register.scss";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer";
@@ -110,8 +110,7 @@ const Register = () => {
         </form>
         <br />
         <div>
-          Already have an account? |
-          <span className="login-redirect"> Login</span>
+        Already have an account? | <Link to="/login"><span>Login</span></Link>
         </div>
       </section>
       <section className="title-align-right">
