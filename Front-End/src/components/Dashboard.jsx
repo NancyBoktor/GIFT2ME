@@ -65,7 +65,8 @@ const Dashboard = (props) => {
                 <td>{event.event_name}</td>
                 <td>2 (count qty = 0)</td>
                 <td>
-                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my birthday`}><FontAwesomeIcon icon={["fas", "share-alt"]} /></a>
+                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${event.date} at ${event.address}`}>
+                    <FontAwesomeIcon icon={["fas", "share-alt"]} /></a>
                 </td>
                 <td className="click" onClick={edit}>
                   <FontAwesomeIcon icon={["fas", "edit"]} />
