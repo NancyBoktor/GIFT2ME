@@ -1,0 +1,28 @@
+.event-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.event-form-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 200px;
+}
+.event-name {
+  font-family: system-ui, sans-serif;
+  font-style: italic;
+  font-weight: revert;
+  color: rgb(30, 136, 168);
+}
+.event-input-info {
+  font-family: revert;
+  font-style: italic;
+  color: #199ecd;
+}

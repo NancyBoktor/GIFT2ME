@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 import { createGift } from "../services/gift";
 import { Navigate } from "react-router";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 //import GiftCard from "../components/GiftForm";
 
 import Box from "@mui/material/Box";
@@ -11,17 +9,18 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
-import "./CreateGifts.scss";
+import MultipleSelectButton from "./MultipleSelectButton";
+import DescriptionAlerts from "./Alert";
+import "./CreateGiftModel.scss";
 import { integerPropType } from "@mui/utils";
 
-export default function CreateGiftForm() {
-  const query_string = window.location.search;
-  let event_id = query_string.substr(10, query_string.length - 1);
-  event_id = parseInt(event_id);
+export default function CreateGiftForm(props) {
+  // const query_string = window.location.search;
+  // let event_id = query_string.substr(10, query_string.length - 1);
+  // event_id = parseInt(event_id);
 
   const [giftInfo, setGiftInfo] = useState({
-    event_id,
+    event_id: props.event_id,
     gift_name: "",
     price: integerPropType,
     notes: "",
@@ -32,31 +31,35 @@ export default function CreateGiftForm() {
 
   const handelCreateGift = async (event) => {
     //event.preventDefault();
+    if (!giftInfo.event_id) {
+      return <DescriptionAlerts />;
+    }
     try {
-      const giftData = await createGift(giftInfo);
-      setGiftInfo({ ...giftInfo, event_id: giftData.data.event_id });
+      const giftData = await createGift(giftInfo, giftInfo.event_id);
+      // setGiftInfo({ ...giftInfo, event_id: giftData.data.event_id });
 
       console.log("giftInfo", giftInfo);
-      Navigate(`/gifts?event_id=${giftInfo.event_id}`);
+      //  Navigate(`/gifts?event_id=${giftInfo.event_id}`);
     } catch (e) {
       console.log("error:", e);
     }
   };
 
-  const onCancel = () => {
-    Navigate(`/gifts?event_id=${giftInfo.event_id}`);
+  const onSave = async () => {
+    const data = handelCreateGift();
+    console.log("%%%%%%%%%%%", data);
+    props.onCancel();
+    return data;
   };
 
-  // const onSave = async () => {
-  //   const data = handelCreateGift();
-  //   console.log("gift-data", data);
-  //   return data;
-  // };
-
   return (
-    <div>
-      <Navbar />
-      <div className="create-item-form">
+    <div className="create-gift-model">
+      <Button className="close-button" onClick={props.onCancel}>
+        X
+      </Button>
+      {/* <MultipleSelectButton /> */}
+      <div>Greate your Gift :) </div>
+      <div className="create-Gift-form">
         <Box
           component="form"
           sx={{
@@ -76,6 +79,8 @@ export default function CreateGiftForm() {
               onChange={(event) =>
                 setGiftInfo({ ...giftInfo, gift_name: event.target.value })
               }
+              required
+              autoComplete="off"
             />
             <TextField
               id="outlined-textarea"
@@ -128,30 +133,18 @@ export default function CreateGiftForm() {
             <Button
               variant="outlined"
               href="#outlined-buttons"
-              onClick={onCancel}
+              onClick={props.onCancel}
             >
               Cancel
             </Button>
             <Button
               variant="outlined"
               href="#outlined-buttons"
-              onClick={handelCreateGift}
+              onClick={onSave}
             >
               Save
             </Button>
           </Stack>
-        </div>
-        <div className="gift-card">
-          {
-            // <GiftCard
-            //   gift_name={giftInfo.gift_name}
-            //   store_url={giftInfo.store_url}
-            //   most_wanted={giftInfo.most_wanted}
-            //   notes={giftInfo.notes}
-            //   price={giftInfo.price}
-            //   Quantity={giftInfo.quantity}
-            // />
-          }
         </div>
       </div>
     </div>

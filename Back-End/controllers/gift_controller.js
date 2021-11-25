@@ -26,7 +26,7 @@ const createGift = async (req, res, next) => {
 
 const getGifts = async (req, res, next) => {
   const { event_id } = req.body;
-  const { rows } = db.query(`SELECT * FROM  gifts  WHERE event_id=$1 `, [
+  const { rows } = await db.query(`SELECT * FROM  gifts  WHERE event_id=$1 `, [
     event_id,
   ]);
   res.json({ success: true, data: rows });

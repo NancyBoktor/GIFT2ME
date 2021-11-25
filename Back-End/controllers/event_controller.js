@@ -8,6 +8,7 @@ const createEvent = async (req, res, next) => {
      VALUES ($1, $2, $3, $4 , $5) RETURNING * `,
     [user_id, event_name, date, address, description]
   );
+  console.log("----event-Data--Back-end", rows[0]);
   res.json({ success: true, data: rows[0] });
 };
 

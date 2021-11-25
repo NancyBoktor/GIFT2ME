@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 100px;
+  margin-top: 100px;
 }
 
 .event-info {
@@ -42,12 +42,6 @@
   width: 150px;
   height: 150px;
 }
-.event-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
 
 .text-area {
   display: flex;
@@ -59,4 +53,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+.create-event-button {
+  font-family: "Courier New", Courier, monospace;
+  color: red;
 }

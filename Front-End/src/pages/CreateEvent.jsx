@@ -1,31 +1,44 @@
 import { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { createEvent } from "../services/event";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import CreateEventForm from "../components/CreateEventForm";
+import CreateGiftModel from "../components/CreateGiftModel";
+import DescriptionAlerts from "../components/Alert";
 import "./CreateEvent.scss";
 
-export default function CreateEventForm() {
-  const navigate = useNavigate();
-  const [eventInfo, setEventinfo] = useState({
+export default function CreateEventPage() {
+  const [openGiftModel, setOpenGiftModel] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
+
+  const onCancel = () => {
+    setOpenGiftModel(false);
+  };
+  const [eventData, setEventData] = useState({
     event_name: "",
-    date: "YY/MM/DD",
+    date: "",
     address: "",
     description: "",
   });
-
-  const handleChange = (key, value) => {
-    setEventinfo({ ...eventInfo, [key]: value });
-  };
-
+  console.log("\\\\\\\\", eventData);
+  console.log();
   const handleCreateEvent = async () => {
-    console.log("Event:", eventInfo);
     try {
-      const { data } = await createEvent(eventInfo);
-      console.log("event-Data", data);
-      if (data.success) {
-        navigate(`/gifts?event_id=${data.data.id}`);
-      }
+      const { data } = await createEvent(eventData);
+      console.log("--->---->--->afteraxios", data);
+      setEventData({
+        ...eventData,
+        event_name: data.data.event_name,
+        date: data.data.date,
+        address: data.data.address,
+        description: data.data.description,
+        event_id: data.data.id,
+      });
+      console.log("--->---->--->afterstate", eventData);
+      console.log("--->---->--->afterstate_event_id", eventData.event_id);
+      console.log("--->---->--->afterstate_event_id", eventData.event_name);
+      // should render the gift table
+      return data;
     } catch (e) {
       console.log("error:", e);
     }
@@ -35,46 +48,21 @@ export default function CreateEventForm() {
       <Navbar />
       <div className="event-page">
         <div className="event-info">
-          <TextField
-            className="event-input"
-            required
-            label="Event Name"
-            defaultValue={eventInfo.event_name}
-            onChange={(e) => handleChange("event_name", e.target.value)}
-          />
-
-          <TextField
-            className="event-input"
-            required
-            id="outlined-required"
-            label="Date"
-            defaultValue={eventInfo.date}
-            onChange={(e) => handleChange("date", e.target.value)}
-            type="date"
-          />
-
-          <TextField
-            className="event-input"
-            required
-            id="outlined-required"
-            label="Address"
-            defaultValue={eventInfo.address}
-            onChange={(e) => handleChange("address", e.target.value)}
-          />
-
-          <TextField
-            className="event-input"
-            required
-            id="outlined-required"
-            label="Description"
-            rows={3}
-            multiline
-            defaultValue={eventInfo.description}
-            onChange={(e) => handleChange("description", e.target.value)}
-          />
-          <Button variant="contained" onClick={handleCreateEvent}>
-            Create Event
+          <CreateEventForm eventData={eventData} setEventData={setEventData} />
+          <Button
+            onClick={() => {
+              setOpenGiftModel(true);
+              handleCreateEvent(eventData);
+            }}
+          >
+            <h5 className="create-event-button">Create Event</h5>
           </Button>
+          {eventData.event_id && openGiftModel && (
+            <CreateGiftModel onCancel={onCancel} event_id={eventData.id} />
+          )}
+          {!eventData.event_id && openGiftModel && (
+            <DescriptionAlerts onClose={() => setOpenAlert(false)} />
+          )}
         </div>
       </div>
     </div>
