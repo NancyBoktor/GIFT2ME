@@ -28,7 +28,8 @@
 table {
   border-collapse: collapse;
   border-radius: 10px;
-  width: 100%;
+  table-layout: auto;
+  width: 80%;
 }
 
 th:first-of-type {
@@ -51,6 +52,7 @@ td {
   text-align:center;
   padding: 8px;
   font-size: 32px;
+  overflow: hidden;
 }
 
 th {
