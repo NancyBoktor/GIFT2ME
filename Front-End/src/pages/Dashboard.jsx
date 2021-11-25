@@ -66,6 +66,7 @@ const Dashboard = () => {
   }
 
   return (
+    <>
     <div classname="dashboard-container">
       <Navbar />
       <h1 className="title">My Dashboard</h1>
@@ -128,8 +129,9 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 };
 
