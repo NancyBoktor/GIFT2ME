@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
 
+
 const Navbar = (props) => {
   const [userName, setUserName] = useState("");
 
@@ -46,7 +47,7 @@ const Navbar = (props) => {
   return (
     <nav className="nav">
       <Link to="/" className="link" style={{ textDecoration: 'none' }}>
-        <span className="logo">GIFT2ME</span>
+        <img src="/orange.png" alt="logo" /><span className="logo">GIFT2ME</span>
       </Link>
       {token && (
         <p className="welcom-user-name">
