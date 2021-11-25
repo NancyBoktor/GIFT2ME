@@ -1,9 +1,11 @@
 .event-page {
-  width: 100%;
+  width: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 100px;
 }
+
 .event-info {
   width: 80%;
   height: 100%;

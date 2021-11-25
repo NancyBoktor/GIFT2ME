@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { createEvent } from "../services/event";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import "./CreateEvent.scss";
 
 export default function CreateEventForm() {
@@ -30,48 +31,51 @@ export default function CreateEventForm() {
     }
   };
   return (
-    <div className="event-page">
-      <div className="event-info">
-        <TextField
-          className="event-input"
-          required
-          label="Event Name"
-          defaultValue={eventInfo.event_name}
-          onChange={(e) => handleChange("event_name", e.target.value)}
-        />
+    <div>
+      <Navbar />
+      <div className="event-page">
+        <div className="event-info">
+          <TextField
+            className="event-input"
+            required
+            label="Event Name"
+            defaultValue={eventInfo.event_name}
+            onChange={(e) => handleChange("event_name", e.target.value)}
+          />
 
-        <TextField
-          className="event-input"
-          required
-          id="outlined-required"
-          label="Date"
-          defaultValue={eventInfo.date}
-          onChange={(e) => handleChange("date", e.target.value)}
-          type="date"
-        />
+          <TextField
+            className="event-input"
+            required
+            id="outlined-required"
+            label="Date"
+            defaultValue={eventInfo.date}
+            onChange={(e) => handleChange("date", e.target.value)}
+            type="date"
+          />
 
-        <TextField
-          className="event-input"
-          required
-          id="outlined-required"
-          label="Address"
-          defaultValue={eventInfo.address}
-          onChange={(e) => handleChange("address", e.target.value)}
-        />
+          <TextField
+            className="event-input"
+            required
+            id="outlined-required"
+            label="Address"
+            defaultValue={eventInfo.address}
+            onChange={(e) => handleChange("address", e.target.value)}
+          />
 
-        <TextField
-          className="event-input"
-          required
-          id="outlined-required"
-          label="Description"
-          rows={3}
-          multiline
-          defaultValue={eventInfo.description}
-          onChange={(e) => handleChange("description", e.target.value)}
-        />
-        <Button variant="contained" onClick={handleCreateEvent}>
-          Create Event
-        </Button>
+          <TextField
+            className="event-input"
+            required
+            id="outlined-required"
+            label="Description"
+            rows={3}
+            multiline
+            defaultValue={eventInfo.description}
+            onChange={(e) => handleChange("description", e.target.value)}
+          />
+          <Button variant="contained" onClick={handleCreateEvent}>
+            Create Event
+          </Button>
+        </div>
       </div>
     </div>
   );
