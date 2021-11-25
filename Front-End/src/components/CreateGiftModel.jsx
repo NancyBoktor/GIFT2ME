@@ -1,5 +1,5 @@
 import { createGift } from "../services/gift";
-import { Navigate } from "react-router";
+//import { Navigate } from "react-router";
 import { useState } from "react";
 //import GiftCard from "../components/GiftForm";
 
@@ -9,12 +9,14 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import MultipleSelectButton from "./MultipleSelectButton";
+//import MultipleSelectButton from "./MultipleSelectButton";
 import DescriptionAlerts from "./Alert";
 import "./CreateGiftModel.scss";
 import { integerPropType } from "@mui/utils";
+//import { Redirect } from "react-router";
 
 export default function CreateGiftForm(props) {
+  const [redirectUrl, setRedirectUrl] = useState(false);
   // const query_string = window.location.search;
   // let event_id = query_string.substr(10, query_string.length - 1);
   // event_id = parseInt(event_id);
@@ -89,6 +91,15 @@ export default function CreateGiftForm(props) {
               href={giftInfo}
               multiline
             />
+            {/* <Button
+                onClick={() => {
+                  setRedirectUrl(true);
+                }}
+              >
+                {setRedirectUrl && <Redirect to={giftInfo.store_url} />}
+              </Button>
+            </TextField> */}
+
             <TextField
               id="outlined-textarea"
               label="Notes (optional)"
