@@ -57,13 +57,15 @@ const Dashboard = () => {
       <Navbar />
       <h1 className="title">My Dashboard</h1>
 
-      <Button
-          variant="outlined"
-          href="#outlined-buttons"
+      <div className="create-event-btn">
+        <Button
+          variant="contained"
+          href="#contained-buttons"
           onClick={create}
         >
           Make an Event
         </Button>
+      </div>
 
       <div className="event-container">
         <table>
@@ -94,10 +96,10 @@ const Dashboard = () => {
                     </Modal.Body>
 
                     <Modal.Footer>
-                    <div>
-                    <ThemeProvider theme={theme}>
-                      <Button onClick={() => handleClose(event.id)} variant="contained" color="cancel">Cancel</Button>
-                      </ThemeProvider>
+                      <div>
+                        <ThemeProvider theme={theme}>
+                          <Button onClick={() => handleClose(event.id)} variant="contained" color="cancel">Cancel</Button>
+                        </ThemeProvider>
                       </div>
                       <Button onClick={() => handleDelete(event.id)} variant="outlined" color="error">Delete</Button>
                     </Modal.Footer>

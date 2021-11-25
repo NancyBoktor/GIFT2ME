@@ -16,7 +16,13 @@
 }
 
 .title {
-  color: teal;
+  color: rgb(14, 105, 224);
+  margin-top: 10%;
+  margin-bottom: 50px;
+}
+
+.create-event-btn {
+  margin-bottom: 50px;
 }
 
 .event-container {
@@ -35,6 +41,8 @@ table {
   border-radius: 10px;
   table-layout: auto;
   width: 80%;
+  margin-left:auto; 
+  margin-right:auto;
 }
 
 th:first-of-type {

@@ -7,7 +7,7 @@ $terinary: purple;
   flex-direction: row;
   justify-content: space-between;
   background-image: linear-gradient(to bottom left, $primary, $secondary);
-  height: 20px;
+  height: 5%;
   width: 100%;
   color: #ffffff;
   padding: 1.5em;
@@ -15,6 +15,15 @@ $terinary: purple;
   z-index: 1;
   top: 0;
   left: 0;
+}
+
+.logo-container {
+  display: flex;
+  margin-top: -25px;
+}
+
+.wrapper {
+  display: flex;
 }
 
 .link {
@@ -25,7 +34,7 @@ $terinary: purple;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 50px;
+  font-size: 45px;
   color: $terinary;
   font-family: 'Road Rage', cursive;
 }
@@ -40,6 +49,15 @@ img {
   display: flex;
   justify-content: flex-end;
 }
+
+.home {
+  padding-left: 20px;
+}
+
+.welcome-span {
+  color: $terinary;
+}
+
 .login-span {
   padding-left: 20px;
 }
@@ -65,10 +83,5 @@ cursor:pointer;
   font-size: smaller;
   margin-right: 35px;
 }
-.welcom-user-name {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 70%;
-  justify-content: end;
-}
+
+

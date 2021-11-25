@@ -45,18 +45,26 @@ const Navbar = (props) => {
     }
   };
   return (
+    <div>
     <nav className="nav">
       <Link to="/" className="link" style={{ textDecoration: 'none' }}>
-        <img src="/orange.png" alt="logo" /><span className="logo">GIFT2ME</span>
+        <div className="logo-container">
+          <img src="/orange.png" alt="logo" />
+          <h3 className="logo">GIFT2ME</h3>
+        </div>
       </Link>
+      <span className="wrapper">
+        
       {token && (
-        <p className="welcom-user-name">
-          <h3>Welcome {userName}!</h3>
-        </p>
+        <span className="welcome-span">
+          <h5>Welcome, {userName}!</h5>
+          
+        </span>
+        
       )}
-
-      <span className="">
-        <Link to="/" className="link" style={{ textDecoration: 'none' }}><span><FontAwesomeIcon icon={['fa', 'home']}/> Home </span></Link>
+        <Link to="/" className="link" style={{ textDecoration: 'none' }}>
+          <span className="home"><FontAwesomeIcon icon={['fa', 'home']}/> Home </span>
+        </Link>
         {!token && (
           <Link to="/register" className="link" style={{ textDecoration: 'none' }}>
             <span className="register-span"> Register </span>
@@ -72,6 +80,8 @@ const Navbar = (props) => {
         )}
       </span>
     </nav>
+    
+    </div>
   );
 };
 
