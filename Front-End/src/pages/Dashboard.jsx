@@ -95,8 +95,9 @@ const Dashboard = () => {
               <tr>
                 <td>{event.event_name}</td>
                 <td>
-                  <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} %2C%0A here is my wishlist link :) ${window.location}/${event.id}`} />
-                  <FontAwesomeIcon icon={['fas', 'share-alt']} />
+                <a href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} %2C%0A here is my wishlist link :) ${window.location}/${event.id}`}>
+                  <FontAwesomeIcon icon={['fas', 'share-alt']} /> 
+                  </a>
                 </td>
                 <td className="click" onClick={create}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
                 <td className="click" onClick={() => handleShow(event.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
