@@ -45,7 +45,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div>
+
     <nav className="nav">
       <Link to="/" className="link" style={{ textDecoration: 'none' }}>
         <div className="logo-container">
@@ -81,7 +81,6 @@ const Navbar = () => {
       </span>
     </nav>
     
-    </div>
   );
 };
 

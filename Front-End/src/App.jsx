@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import EventForm from "./components/event-form";
 import CreateGiftForm from "./components/CreateGiftForm";
 import Logout from "./components/logout";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/events" element={<EventForm />} />
         <Route path="/gifts"  element={<CreateGiftForm />} />
+        <Route path="/about"  element={<About />} />
       </Routes>
     </BrowserRouter>
   );

@@ -35,6 +35,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <div className="register-background">
       <Navbar/>
       <section className="register-wrapper">
@@ -126,8 +127,10 @@ const Register = () => {
           </p>
         </div>
       </section>
-      <Footer />
+      
     </div>
+    <Footer />
+    </>
   );
 };
 
