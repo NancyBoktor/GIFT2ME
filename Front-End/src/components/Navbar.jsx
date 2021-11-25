@@ -55,7 +55,7 @@ const Navbar = (props) => {
       )}
 
       <span className="">
-        <Link to="/" className="link" style={{ textDecoration: 'none' }}><span><FontAwesomeIcon icon={['fa', 'home']} /> Home </span></Link>
+        <Link to="/" className="link" style={{ textDecoration: 'none' }}><span><FontAwesomeIcon icon={['fa', 'home']}/> Home </span></Link>
         {!token && (
           <Link to="/register" className="link" style={{ textDecoration: 'none' }}>
             <span className="register-span"> Register </span>
@@ -67,11 +67,7 @@ const Navbar = (props) => {
           </Link>
         )}
         {token && (
-          <Stack spacing={2} direction="row">
-            <Button variant="outlined" className="link btn" onClick={handleLogout}>
-              Logout
-            </Button>
-          </Stack>
+            <span className="logout-span" onClick={handleLogout}> Logout </span>
         )}
       </span>
     </nav>
