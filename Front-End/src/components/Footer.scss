@@ -1,3 +1,18 @@
-.footer{
-  display: flex;
+$secondary: #72D6C9;
+$primary: rgb(70, 197, 219);
+
+footer {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+background-image: linear-gradient(to bottom left, $primary, $secondary);
+height: 100px;
+width: 100%;
+color: #ffffff;
+padding: 1.5em;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
 }

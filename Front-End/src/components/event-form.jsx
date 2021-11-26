@@ -5,6 +5,7 @@ import CreateGiftForm from "./CreateGiftForm";
 import useVisualMode from "../hooks/useVisualMode";
 import CreateEventForm from "../components/CreateEvent";
 import Navbar from "../components/Navbar";
+import Footer from "./Footer";
 import "./event-form.scss";
 
 export default function EventForm() {
@@ -59,7 +60,7 @@ export default function EventForm() {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
       {mode === CREATEEVEVT && (
         <CreateEventForm
@@ -77,6 +78,7 @@ export default function EventForm() {
           setItemInfo={setItemInfo}
         />
       )}
-    </div>
+       <Footer />
+    </>
   );
 }

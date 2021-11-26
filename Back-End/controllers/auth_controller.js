@@ -33,8 +33,8 @@ const login = async (req, res, next) => {
       email:user.email
     });
     res.cookie("token", token, {
-      secure: true,
-      httpOnly: true,
+      secure: true, 
+      httpOnly: true
     });
     res.status(200).json({ success: true, message: "Login successful", token });
   });
@@ -92,7 +92,7 @@ const register = async (req, res, next) => {
 
   res.cookie("token", token, {
     secure: true,
-    httpOnly: true,
+    httpOnly: true
   });
 
   res

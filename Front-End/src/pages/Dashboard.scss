@@ -1,0 +1,93 @@
+// body {
+//   background-repeat:no-repeat;
+//   background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
+//   background-size:cover;
+//   background-position:20% 30%;
+//   text-align:center;
+// }
+
+// .confirm-msg {
+//   color: black;
+// }
+
+.delete-warning {
+  color: red;
+  font-size: small;
+}
+
+.title {
+  color: rgb(14, 105, 224);
+  margin-top: 10%;
+  margin-bottom: 50px;
+}
+
+.create-event-btn {
+  margin-bottom: 50px;
+}
+
+.event-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.click:hover {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  table-layout: auto;
+  width: 80%;
+  margin-left:auto; 
+  margin-right:auto;
+  margin-bottom: 100px;
+}
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ffffff;
+  // border: none;
+  text-align:center;
+  padding: 8px;
+  font-size: 32px;
+  overflow: hidden;
+}
+
+th {
+  background-color: rgb(66, 194, 194);
+  text-transform: uppercase;
+}
+
+td {
+  background-color: transparent;
+}
+
+// form {
+//   display: flex;
+//   gap: 5px;
+// }
+
+// form td:last-child {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+// form * {
+//   font-size: 28px;
+// }

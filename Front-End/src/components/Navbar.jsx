@@ -6,8 +6,11 @@ import { logout } from "../services/auth";
 import "./Navbar.scss";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import "../fontawesome";
 
-const Navbar = (props) => {
+
+const Navbar = () => {
   const [userName, setUserName] = useState("");
 
   // retrieve the token from local storage, if empty string, you need to logged in.
@@ -42,36 +45,49 @@ const Navbar = (props) => {
     }
   };
   return (
-    <nav className="nav">
-      <Link to="/">
-        <span className="logo">GIFT2ME</span>
-      </Link>
-      {token && (
-        <p className="welcom-user-name">
-          <h3>Welcome {userName}!</h3>
-        </p>
-      )}
 
-      <span className="">
+    
+      <nav className="nav">
+      <Link to="/" className="link" style={{ textDecoration: 'none' }}>
+        <div className="logo-container">
+          <img className="orange" src="/orange.png" alt="logo" />
+          <h3 className="logo">GIFT2ME</h3>
+        </div>
+      </Link>
+      
+      <div className="wrapper">
+        
+      {token && (
+        <span className="welcome-span">
+          <h5>Welcome, {userName}!</h5>
+          
+        </span>
+        
+      )}
+        <Link to="/" className="link" style={{ textDecoration: 'none' }}>
+          <span className="home"><FontAwesomeIcon icon={['fa', 'home']}/> Home </span>
+        </Link>
+        {token && (<Link to="/dashboard" className="link" style={{ textDecoration: 'none' }}>
+          <span className="home">Dashboard </span>
+        </Link> 
+        )}
         {!token && (
-          <Link to="/register">
+          <Link to="/register" className="link" style={{ textDecoration: 'none' }}>
             <span className="register-span"> Register </span>
           </Link>
         )}
         {!token && (
-          <Link to="/login">
+          <Link to="/login" className="link" style={{ textDecoration: 'none' }}>
             <span className="login-span"> Login </span>
           </Link>
         )}
         {token && (
-          <Stack spacing={2} direction="row">
-            <Button variant="outlined" className="btn" onClick={handleLogout}>
-              Logout
-            </Button>
-          </Stack>
+            <span className="logout-span" onClick={handleLogout}> Logout </span>
         )}
-      </span>
+      </div>
     </nav>
+    
+    
   );
 };
 
