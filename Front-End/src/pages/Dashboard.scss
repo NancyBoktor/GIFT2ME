@@ -1,10 +1,15 @@
+$primary: rgb(70, 197, 219);
+$secondary: #72D6C9;
+$terinary: rgb(209, 16, 113);
+$button: rgb(105, 102, 102);
+
 .delete-warning {
   color: red;
   font-size: small;
 }
 
 .title {
-  color: rgb(14, 105, 224);
+  color: $button;
   margin-top: 10%;
   margin-bottom: 50px;
 }
@@ -49,7 +54,7 @@ tr:last-of-type td:last-of-type {
 
 th,
 td {
-  border: 1px solid #ffffff;
+  border-top: 2px solid $primary;
   text-align:center;
   padding: 8px;
   font-size: 32px;
@@ -57,10 +62,26 @@ td {
 }
 
 th {
-  background-color: rgb(66, 194, 194);
+  background-image: linear-gradient(to bottom left, $primary, $secondary);
   text-transform: uppercase;
 }
 
 td {
-  background-color: transparent;
+  background: rgba(193, 206, 206, 0.9);
+}
+
+th {
+  border: 0;
+}
+
+#share {
+  color: $primary;
+}
+
+.edit {
+  color: #66cabd;
+}
+
+.trash {
+  color: $primary
 }
