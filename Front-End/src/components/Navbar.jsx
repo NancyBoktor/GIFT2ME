@@ -67,6 +67,10 @@ const Navbar = () => {
         <Link to="/" className="link" style={{ textDecoration: 'none' }}>
           <span className="home"><FontAwesomeIcon icon={['fa', 'home']}/> Home </span>
         </Link>
+        {token && (<Link to="/dashboard" className="link" style={{ textDecoration: 'none' }}>
+          <span className="home">Dashboard </span>
+        </Link> 
+        )}
         {!token && (
           <Link to="/register" className="link" style={{ textDecoration: 'none' }}>
             <span className="register-span"> Register </span>
