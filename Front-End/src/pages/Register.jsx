@@ -51,7 +51,7 @@ const Register = () => {
         <div className="parent-container">
           <section className="register-wrapper">
             <h2 className="register-title">Register</h2>
-            <form >
+            <form onSubmit={handleRegister}>
               <label>
                 <input
                   type="text"
@@ -123,7 +123,7 @@ const Register = () => {
                 <Button
                   variant="contained"
                   color="mybutton"
-                  onClick={handleRegister}
+                  type="submit"
                 >
                   Register
                 </Button>

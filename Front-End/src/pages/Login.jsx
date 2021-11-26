@@ -82,7 +82,7 @@ const Login = () => {
               <Button
                 variant="contained"
                 color="mybutton"
-                onClick={handleLogin}
+                type="submit"
               >
                 Login
               </Button>
