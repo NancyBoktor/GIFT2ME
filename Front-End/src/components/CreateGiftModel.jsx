@@ -1,57 +1,36 @@
-import { createGift } from "../services/gift";
-//import { Navigate } from "react-router";
 import { useState } from "react";
-//import GiftCard from "../components/GiftForm";
-
+import { createGift } from "../services/gift";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-//import MultipleSelectButton from "./MultipleSelectButton";
-import DescriptionAlerts from "./Alert";
+
 import "./CreateGiftModel.scss";
-import { integerPropType } from "@mui/utils";
-//import { Redirect } from "react-router";
 
 export default function CreateGiftForm(props) {
-  const [redirectUrl, setRedirectUrl] = useState(false);
-  // const query_string = window.location.search;
-  // let event_id = query_string.substr(10, query_string.length - 1);
-  // event_id = parseInt(event_id);
-
   const [giftInfo, setGiftInfo] = useState({
     event_id: props.event_id,
     gift_name: "",
-    price: integerPropType,
+    price: 0,
     notes: "",
-    store_url: URL,
-    quantity: integerPropType,
+    store_url: "",
+    quantity: 0,
     most_wanted: false,
   });
 
   const handelCreateGift = async (event) => {
-    //event.preventDefault();
-    if (!giftInfo.event_id) {
-      return <DescriptionAlerts />;
+    if (!props.event_id) {
+      return false;
     }
+    console.log(";;;;;;;;event id", props.event_id);
     try {
-      const giftData = await createGift(giftInfo, giftInfo.event_id);
-      // setGiftInfo({ ...giftInfo, event_id: giftData.data.event_id });
-
-      console.log("giftInfo", giftInfo);
-      //  Navigate(`/gifts?event_id=${giftInfo.event_id}`);
+      await createGift(giftInfo);
+      props.onCancel();
     } catch (e) {
       console.log("error:", e);
     }
-  };
-
-  const onSave = async () => {
-    const data = handelCreateGift();
-    console.log("%%%%%%%%%%%", data);
-    props.onCancel();
-    return data;
   };
 
   return (
@@ -59,7 +38,7 @@ export default function CreateGiftForm(props) {
       <Button className="close-button" onClick={props.onCancel}>
         X
       </Button>
-      {/* <MultipleSelectButton /> */}
+
       <div>Greate your Gift :) </div>
       <div className="create-Gift-form">
         <Box
@@ -89,17 +68,12 @@ export default function CreateGiftForm(props) {
               label="Website Link (optional)"
               placeholder="http://...."
               href={giftInfo}
+              value={giftInfo.store_url}
+              onChange={(event) =>
+                setGiftInfo({ ...giftInfo, store_url: event.target.value })
+              }
               multiline
             />
-            {/* <Button
-                onClick={() => {
-                  setRedirectUrl(true);
-                }}
-              >
-                {setRedirectUrl && <Redirect to={giftInfo.store_url} />}
-              </Button>
-            </TextField> */}
-
             <TextField
               id="outlined-textarea"
               label="Notes (optional)"
@@ -151,7 +125,7 @@ export default function CreateGiftForm(props) {
             <Button
               variant="outlined"
               href="#outlined-buttons"
-              onClick={onSave}
+              onClick={handelCreateGift}
             >
               Save
             </Button>

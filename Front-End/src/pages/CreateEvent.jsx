@@ -9,40 +9,29 @@ import "./CreateEvent.scss";
 
 export default function CreateEventPage() {
   const [openGiftModel, setOpenGiftModel] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false);
+  const [eventId, setEventId] = useState(0);
 
   const onCancel = () => {
     setOpenGiftModel(false);
   };
+
   const [eventData, setEventData] = useState({
     event_name: "",
     date: "",
     address: "",
     description: "",
   });
-  console.log("\\\\\\\\", eventData);
-  console.log();
+
   const handleCreateEvent = async () => {
+    setOpenGiftModel(true);
     try {
       const { data } = await createEvent(eventData);
-      console.log("--->---->--->afteraxios", data);
-      setEventData({
-        ...eventData,
-        event_name: data.data.event_name,
-        date: data.data.date,
-        address: data.data.address,
-        description: data.data.description,
-        event_id: data.data.id,
-      });
-      console.log("--->---->--->afterstate", eventData);
-      console.log("--->---->--->afterstate_event_id", eventData.event_id);
-      console.log("--->---->--->afterstate_event_id", eventData.event_name);
-      // should render the gift table
-      return data;
+      setEventId(data.data.id);
     } catch (e) {
       console.log("error:", e);
     }
   };
+
   return (
     <div>
       <Navbar />
@@ -52,16 +41,16 @@ export default function CreateEventPage() {
           <Button
             onClick={() => {
               setOpenGiftModel(true);
-              handleCreateEvent(eventData);
+              handleCreateEvent();
             }}
           >
             <h5 className="create-event-button">Create Event</h5>
           </Button>
-          {eventData.event_id && openGiftModel && (
-            <CreateGiftModel onCancel={onCancel} event_id={eventData.id} />
+          {openGiftModel && !!eventId && (
+            <CreateGiftModel onCancel={onCancel} event_id={eventId} />
           )}
-          {!eventData.event_id && openGiftModel && (
-            <DescriptionAlerts onClose={() => setOpenAlert(false)} />
+          {openGiftModel && !!!eventId && (
+            <DescriptionAlerts onClose={onCancel} />
           )}
         </div>
       </div>

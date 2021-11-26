@@ -18,14 +18,6 @@ export default function CreateEventForm(props) {
     dialogContent: "",
     required: false,
   });
-
-  //   const [eventData, setEventData] = useState({
-  //     event_name: "",
-  //     date: "",
-  //     address: "",
-  //     description: "",
-  //   });
-
   const handleClickOpen = ({
     key,
     type,
@@ -55,16 +47,6 @@ export default function CreateEventForm(props) {
   };
 
   const handleClose = () => setOpen(false);
-
-  //   const handleCreateEvent = async () => {
-  //     try {
-  //       const { data } = await createEvent(eventData);
-
-  //       // should render the gift table
-  //     } catch (e) {
-  //       console.log("error:", e);
-  //     }
-  //   };
 
   return (
     <div>
@@ -117,9 +99,7 @@ export default function CreateEventForm(props) {
                 : "Please Fill the description"}
             </h5>
           </Button>
-          {/* <Button variant="text" onClick={handleCreateEvent}>
-            Create Event
-          </Button> */}
+
           <CreateEventModal
             open={open}
             handleClose={handleClose}

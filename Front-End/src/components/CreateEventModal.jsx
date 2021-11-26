@@ -16,13 +16,10 @@ const CreateEventModal = (props) => {
     open,
     handleClose,
     type,
-    label,
-    onChange,
     dialogContent,
     multiline = false,
     required = false,
     defaultValue,
-    handleCancel,
     handleSave,
   } = props;
   return (

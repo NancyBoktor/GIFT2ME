@@ -10,7 +10,7 @@ const createGift = async (req, res, next) => {
     quantity,
     most_wanted,
   } = req.body;
-
+  console.log(";;;;;;;;;;;;", req.body);
   try {
     const { rows } = await db.query(
       `INSERT INTO gifts ( event_id, gift_name, price, notes, store_url, quantity, most_wanted )
