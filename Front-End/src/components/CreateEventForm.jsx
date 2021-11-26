@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
 // import { createEvent } from "../services/event";
 // import { useNavigate } from "react-router-dom";
-import Present from "../img/Gift.png";
+//import Present from "../img/Gift.png";
 
 import "./CreateEventForm.scss";
 
