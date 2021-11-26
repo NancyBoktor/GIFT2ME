@@ -3,6 +3,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 40%;
+  background-attachment:fixed;
   text-align: center;
   margin: 0;
   font-family: "Raleway", "Open Sans", "sans-serif";
