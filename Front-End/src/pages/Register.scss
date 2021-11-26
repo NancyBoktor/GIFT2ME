@@ -13,9 +13,7 @@ $button: rgb(105, 102, 102);
 
 .parent-container {
   display: inline-flex;
-  // justify-content: space-evenly;
   align-items: center;
-  // align-content: space-between;
   gap: 30px;
 }
 
@@ -26,8 +24,6 @@ $button: rgb(105, 102, 102);
   color: $button;
   width: 100%;
   margin-top: 150px;
-  // margin-left: auto;
-  // margin-right: auto;
   padding: 10px;
 }
 
@@ -44,19 +40,11 @@ label {
   color: red;
 }
 
-// .logo-container-2 {
-//   display: flex;
-//   flex-direction: row;
-// }
-
 .logo-2 {
   font-size: 130px;
   font-family: 'Road Rage', cursive;
   color: $terinary;
   width:100%;
-  // margin-top:250px;
-  // display: flex;
-  // justify-content: space-between;
 }
 
 .orange-2 {
@@ -68,7 +56,6 @@ label {
 
 .title-logo {
   display: inline-flex;
-  // justify-content: space-evenly;
   align-items: flex-end;
   align-content: space-between;
   gap: 30px;
@@ -77,10 +64,6 @@ label {
 
 .slogan {
   color: $button;
-  // background: rgba(255,255,255, 0.8);
-  // border-radius: 20px;
-  // border-width: 30%;
-  // position: relative;
   width:75%;
 }
 
