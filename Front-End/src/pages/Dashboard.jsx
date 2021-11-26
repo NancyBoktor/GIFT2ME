@@ -77,7 +77,7 @@ const Dashboard = () => {
           href="#contained-buttons"
           onClick={create}
         >
-          Make an Event
+          Create Event
         </Button>
       </div>
 
@@ -85,7 +85,7 @@ const Dashboard = () => {
         <table>
           <thead id="no-border">
             <tr>
-              <th>Wishlist</th>
+              <th>Events</th>
               <th>Share Wishlist</th>
               <th>Edit</th>
               <th>Delete</th>
