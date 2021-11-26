@@ -1,6 +1,6 @@
 # GIFT2ME
 
-A simple website designed to allow users to share wishlists with their friends and family!
+A simple website designed to allow users to create events where they can share a gift wishlist with their friends and family!
 
 
 TITLE
