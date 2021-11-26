@@ -6,6 +6,12 @@ export const createEvent = async ({
   address,
   description,
 }) => {
+  console.log("------>beforaxios", {
+    event_name,
+    date,
+    address,
+    description,
+  });
   return axios({
     url: "http://localhost:3001/api/events",
     method: "post",
@@ -13,4 +19,3 @@ export const createEvent = async ({
     withCredentials: true,
   });
 };
-

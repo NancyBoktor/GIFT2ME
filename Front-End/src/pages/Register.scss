@@ -1,13 +1,13 @@
 $primary: rgb(70, 197, 219);
-$secondary: #72D6C9;
+$secondary: #72d6c9;
 $terinary: rgb(209, 16, 113);
 $button: rgb(105, 102, 102);
 
 .register-background {
-  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
-  background-repeat:no-repeat;
-  background-size:cover;
-  background-position:70% 30%;
+  background-image: url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% 30%;
   min-height: 100vh;
 }
 
@@ -20,14 +20,15 @@ $button: rgb(105, 102, 102);
 .register-wrapper {
   display: inline-block;
   border-radius: 20px;
-	background: rgba(255,255,255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: $button;
   width: 100%;
   margin-top: 150px;
   padding: 10px;
 }
 
-label, input {
+label,
+input {
   display: flex;
   justify-content: center;
 }
@@ -42,9 +43,9 @@ label {
 
 .logo-2 {
   font-size: 130px;
-  font-family: 'Road Rage', cursive;
+  font-family: "Road Rage", cursive;
   color: $terinary;
-  width:100%;
+  width: 100%;
 }
 
 .orange-2 {
@@ -64,9 +65,9 @@ label {
 
 .slogan {
   color: $button;
-  width:75%;
+  width: 75%;
 }
 
 .logo-container-2 {
-margin-top: 150px;
+  margin-top: 150px;
 }

@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
-// import { createEvent } from "../services/event";
-// import { useNavigate } from "react-router-dom";
-//import Present from "../img/Gift.png";
 
 import "./CreateEventForm.scss";
 
 export default function CreateEventForm(props) {
-  //   const navigate = useNavigate();
   const { eventData, setEventData } = props;
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({

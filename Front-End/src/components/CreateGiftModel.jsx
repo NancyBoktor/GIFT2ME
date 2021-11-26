@@ -24,7 +24,7 @@ export default function CreateGiftForm(props) {
     if (!props.event_id) {
       return false;
     }
-    console.log(";;;;;;;;event id", props.event_id);
+    //console.log(";;;;;;;;event id", props.event_id);
     try {
       await createGift(giftInfo);
       props.onCancel();

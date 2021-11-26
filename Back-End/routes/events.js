@@ -4,15 +4,15 @@ const { db } = require("../lib/db");
 const { isAuth } = require("../middleware/auth_middle");
 const {
   createEvent,
-  getAllEvents,
+  //getAllEvents,
 } = require("../controllers/event_controller");
 
-/* GET all events */
-router.get("/all", async (req, res) => {
-  const { rows } = await db.query(`SELECT * from events`);
-  console.log({ event: rows });
-  res.json(rows);
-});
+// /* GET all events */
+// router.get("/all", async (req, res) => {
+//   const { rows } = await db.query(`SELECT * from events`);
+//   console.log({ event: rows });
+//   res.json(rows);
+// });
 
 // GET events for logged in user
 router.get("/", isAuth, async (req, res) => {
@@ -42,5 +42,8 @@ router.delete("/delete/:id", isAuth, async (req, res) => {
   console.log({ event: rows });
   res.json(rows);
 });
+
+router.post("/", isAuth, createEvent);
+// router.get("/", isAuth, getAllEvents);
 
 module.exports = router;
