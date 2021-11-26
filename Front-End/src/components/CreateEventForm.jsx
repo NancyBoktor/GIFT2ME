@@ -60,7 +60,7 @@ export default function CreateEventForm(props) {
                 alt="thumbnail"
               />
             </div>
-            <p className="card-text">Upload your photo</p>
+            <p className="card-text">Event Image</p>
           </div>
         </div>
         <div className="event-form">
