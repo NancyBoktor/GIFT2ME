@@ -5,6 +5,15 @@ import "./Login.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    mybutton: {
+      main: '#72D6C9',
+    },
+  },
+});
 
 
 const Login = () => {
@@ -69,12 +78,15 @@ const Login = () => {
             </label>
             <span className="error-msg">{errorMsg}</span>
             <div>
+            <ThemeProvider theme={theme}>
               <Button
                 variant="contained"
+                color="mybutton"
                 onClick={handleLogin}
               >
                 Login
               </Button>
+              </ThemeProvider>
             </div>
           </form>
           <div>

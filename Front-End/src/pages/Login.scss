@@ -1,16 +1,23 @@
+$primary: rgb(70, 197, 219);
+$secondary: #72D6C9;
+$terinary: rgb(209, 16, 113);
+$button: rgb(105, 102, 102);
+
 .login-background {
   background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
   background-repeat:no-repeat;
   background-size:cover;
   background-position:50% 10%;
   min-height: 100vh;
+  
 }
+
 
 .login-wrapper {
   display: inline-block;
   border-radius: 20px;
 	background: rgba(255,255,255, 0.8);
-  color: rgb(27, 125, 155);
+  color: $button;
   width: 30%;
   margin-top: 200px;
   margin-left: auto;

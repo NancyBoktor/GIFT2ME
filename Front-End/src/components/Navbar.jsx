@@ -46,14 +46,16 @@ const Navbar = () => {
   };
   return (
 
-    <nav className="nav">
+    
+      <nav className="nav">
       <Link to="/" className="link" style={{ textDecoration: 'none' }}>
         <div className="logo-container">
-          <img src="/orange.png" alt="logo" />
+          <img className="orange" src="/orange.png" alt="logo" />
           <h3 className="logo">GIFT2ME</h3>
         </div>
       </Link>
-      <span className="wrapper">
+      
+      <div className="wrapper">
         
       {token && (
         <span className="welcome-span">
@@ -78,8 +80,9 @@ const Navbar = () => {
         {token && (
             <span className="logout-span" onClick={handleLogout}> Logout </span>
         )}
-      </span>
+      </div>
     </nav>
+    
     
   );
 };
