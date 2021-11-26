@@ -17,7 +17,6 @@ Friends or family that go to the share link can then reserve items on the wishli
 When the quantity of an item hits zero the item will be reserved and can no longer be selected by other guests.
 A resevered badge will appear on that specific gift.
 
-
 ## Sample Pages
 TITLE
 ![""](url)

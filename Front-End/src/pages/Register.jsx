@@ -95,7 +95,7 @@ const Register = () => {
               <label>
                 <input
                   type="password"
-                  placeholder="Password (min 8 char)"
+                  placeholder="Password"
                   defaultValue={newUserInfo.password}
                   onChange={(event) =>
                     setNewUserInfo({ ...newUserInfo, password: event.target.value })
