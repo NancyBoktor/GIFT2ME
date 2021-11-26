@@ -12,8 +12,8 @@ const Footer = () => {
         </div>
         <div>
           © 2021 GIFT2ME, Inc.
-          | <Link to="/"> Privacy Policy </Link>
-          | <Link to="/"> Terms of Use </Link>
+          | <Link to="/privacy_policy"> Privacy Policy </Link>
+          | <Link to="/terms"> Terms of Use </Link>
           | <Link to="/about"> About </Link>
         </div>
       </div>
