@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  margin-left: 70px;
 }
 
 .event-form-wrapper {
@@ -12,9 +13,12 @@
   justify-content: center;
 }
 
-.img {
-  width: 250px;
+.event-card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
 .event-name {
   font-family: system-ui, sans-serif;
   font-style: italic;
@@ -25,4 +29,58 @@
   font-family: revert;
   font-style: italic;
   color: #199ecd;
+}
+
+.card {
+  padding: 0.3rem 0.3rem 0.8rem 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  transform: rotate(-7deg);
+  height: 250px;
+  width: 270px;
+}
+.inner-card {
+  background: #fff;
+  padding: 5px;
+  box-shadow: wheat;
+  z-index: 0;
+  position: relative;
+  transform-origin: center center;
+  transform: rotate(-0.6deg);
+  width: 100%;
+}
+
+.card .inner-card p {
+  font-family: "Amatic SC";
+  margin-bottom: 0;
+  padding: 10px 15px 0 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  min-height: 2rem;
+  cursor: pointer;
+  color: #666;
+}
+.event-img {
+  background: #fff;
+  width: fit-content;
+  height: fit-content;
+  box-shadow: wheat;
+  z-index: 0;
+  position: relative;
+  transform-origin: center center;
+  transform: rotate(-0.6deg);
+  width: 100%;
+}
+.card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
 }

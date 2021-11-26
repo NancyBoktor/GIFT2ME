@@ -51,8 +51,17 @@ export default function CreateEventForm(props) {
   return (
     <div>
       <div className="event-form-wrapper">
-        <div>
-          <img className="img" src={Present} alt="Present" />
+        <div className="event-card-row">
+          <div class="card">
+            <div class="inner-card">
+              <img
+                className="event-img"
+                src="https://media-exp1.licdn.com/dms/image/C4D1BAQGPUNNtGVN_5Q/company-background_10000/0/1611841931800?e=2159024400&v=beta&t=XOYWnftOzpjtSkmhPqTsytKSIGBT4wVGZxELPLMdNVw"
+                alt="thumbnail"
+              />
+            </div>
+            <p className="card-text">Upload your photo</p>
+          </div>
         </div>
         <div className="event-form">
           <Button
