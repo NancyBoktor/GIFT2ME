@@ -56,4 +56,3 @@ Components
 - gifter - form
 - footer
 - navbar
-

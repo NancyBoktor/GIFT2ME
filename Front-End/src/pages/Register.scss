@@ -1,36 +1,33 @@
-.register-container {
-  background-image: url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-269887.jpeg);
-  background-color: rgba(0, 0, 0, 0);
-  background-position: 50% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 0;
-  padding-left: 0;
-  margin: 0;
-  text-align: center;
-  color: rgb(255, 255, 255);
+$primary: rgb(70, 197, 219);
+$secondary: #72D6C9;
+$terinary: rgb(209, 16, 113);
+$button: rgb(105, 102, 102);
+
+.register-background {
+  background-image:url(https://irp.cdn-website.com/md/pexels/dms3rep/multi/pexels-photo-5485041.jpeg);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:70% 30%;
+  min-height: 100vh;
+}
+
+.parent-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .register-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  border-radius: 20px;
+	background: rgba(255,255,255, 0.8);
+  color: $button;
+  width: 100%;
+  margin-top: 150px;
+  padding: 10px;
 }
 
-.register-wrapper {
-  display: flex;
-  flex-direction: column;
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-}
-
-label,
-input {
+label, input {
   display: flex;
   justify-content: center;
 }
@@ -39,39 +36,37 @@ label {
   margin-bottom: 20px;
 }
 
-.register-btn {
-  background-color: rgb(27, 125, 155);
-  color: white;
-  border-radius: 10px;
-  border-color: black;
-}
-
 .error-msg {
   color: red;
 }
 
-.login-redirect:hover {
-  color: violet;
+.logo-2 {
+  font-size: 130px;
+  font-family: 'Road Rage', cursive;
+  color: $terinary;
+  width:100%;
 }
 
-.title-align-right {
-  display: inline-block;
+.orange-2 {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 100px;
 }
 
-.title {
-  font-size: 60px;
+.title-logo {
+  display: inline-flex;
+  align-items: flex-end;
+  align-content: space-between;
+  gap: 30px;
+  margin-bottom: 10px;
 }
 
 .slogan {
-  margin-top: 10px;
+  color: $button;
+  width:75%;
 }
 
-footer {
-  position: fixed;
-  height: 50px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-  color: rgb(27, 125, 155);
+.logo-container-2 {
+margin-top: 150px;
 }

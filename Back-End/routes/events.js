@@ -2,15 +2,20 @@ const express = require("express");
 const router = express.Router();
 const { db } = require("../lib/db");
 const { isAuth } = require("../middleware/auth_middle");
-const { createEvent , getAllEvents} = require("../controllers/event_controller");
+const {
+  createEvent,
+  getAllEvents,
+} = require("../controllers/event_controller");
 
 /* GET all events */
+router.get("/all", async (req, res) => {
+  const { rows } = await db.query(`SELECT * from events`);
+  console.log({ event: rows });
+  res.json(rows);
+});
 
-router.get("/", isAuth, getAllEvents);
-
-// GET events from specific user
-router.get("/:id", isAuth, async (req, res) => {
-  // console.log("isAuth", isAuth);
+// GET events for logged in user
+router.get("/", isAuth, async (req, res) => {
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
     req.current_user_id,
   ]);
@@ -18,6 +23,24 @@ router.get("/:id", isAuth, async (req, res) => {
   res.json(rows);
 });
 
-router.post("/", isAuth, createEvent);
+// GET events from specific user
+router.get("/:id", isAuth, async (req, res) => {
+  // console.log("isAuth", isAuth);
+  const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
+    req.params.id,
+  ]);
+  console.log({ event: rows });
+  res.json(rows);
+});
+
+// Delete an event for specific user
+router.delete("/delete/:id", isAuth, async (req, res) => {
+  console.log("REQ.PARAMS:", req.params.id);
+  const { rows } = await db.query(`DELETE from events WHERE id = $1`, [
+    req.params.id,
+  ]);
+  console.log({ event: rows });
+  res.json(rows);
+});
 
 module.exports = router;

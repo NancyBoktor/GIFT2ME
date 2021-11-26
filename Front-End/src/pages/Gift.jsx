@@ -6,7 +6,7 @@ const Gift = () => {
   return (
     <div>
       <Navbar />
-      <h2>Home Page</h2>
+      <h2>Gift</h2>
       <Footer></Footer>
     </div>
   );

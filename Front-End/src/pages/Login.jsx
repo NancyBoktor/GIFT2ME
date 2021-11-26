@@ -1,9 +1,20 @@
 import react, { useState } from "react";
 import { login } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    mybutton: {
+      main: '#72D6C9',
+    },
+  },
+});
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,56 +36,67 @@ const Login = () => {
       navigate("/dashboard");
     } catch (e) {
       console.log(e);
-      if(e.response){
-      console.log(e.response.status);
-      console.log(e.response.data);
-      console.log(e.response.data.message);
-      setErrorMsg(e.response.data.message);
-    }
+      if (e.response) {
+        console.log(e.response.status);
+        console.log(e.response.data);
+        console.log(e.response.data.message);
+        setErrorMsg(e.response.data.message);
+      }
     }
   };
 
   return (
-    <div id="login-container">
-      <Navbar/>
-      <section className="login-wrapper">
-        <h1>Please Log In</h1>
-        <form onSubmit={handleLogin}>
-          <label>
-            <p>Email</p>
-            <input
-              type="email"
-              defaultValue={userInfo.email}
-              onChange={(event) =>
-                setUserInfo({ ...userInfo, email: event.target.value })
-              }
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            <p>Password</p>
-            <input
-              type="password"
-              defaultValue={userInfo.password}
-              onChange={(event) =>
-                setUserInfo({ ...userInfo, password: event.target.value })
-              }
-              autoComplete="off"
-            />
-          </label>
-          <span className="error-msg">{errorMsg}</span>
+    <>
+      <div className="login-background">
+        <Navbar />
+        <section className="login-wrapper">
+          <h2>Login</h2>
+          <form onSubmit={handleLogin}>
+            <label>
+
+              <input
+                type="email"
+                placeholder="email"
+                defaultValue={userInfo.email}
+                onChange={(event) =>
+                  setUserInfo({ ...userInfo, email: event.target.value })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <label>
+
+              <input
+                type="password"
+                placeholder="**********"
+                defaultValue={userInfo.password}
+                onChange={(event) =>
+                  setUserInfo({ ...userInfo, password: event.target.value })
+                }
+                autoComplete="off"
+              />
+            </label>
+            <span className="error-msg">{errorMsg}</span>
+            <div>
+            <ThemeProvider theme={theme}>
+              <Button
+                variant="contained"
+                color="mybutton"
+                type="submit"
+              >
+                Login
+              </Button>
+              </ThemeProvider>
+            </div>
+          </form>
           <div>
-            <button type="submit" className="login-btn">
-              Login
-            </button>
+            Don't have an account? | <Link to="/register"><span>Register</span></Link>
           </div>
-        </form>
-        <div>
-          Don't have an account? |<span> Register</span>
-        </div>
-      </section>
+        </section>
+
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 export default Login;
