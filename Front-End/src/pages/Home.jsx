@@ -74,6 +74,8 @@ const Home = () => {
         <p id="words">Share</p>
       </div>
 
+      <img src="collage.png" />
+
 
       <Footer />
     </>
