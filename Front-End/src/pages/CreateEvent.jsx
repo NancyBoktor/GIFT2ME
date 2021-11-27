@@ -72,13 +72,17 @@ export default function CreateEventPage() {
             <h5 className="create-event-button">Add Gifts</h5>
           </Button>
           {openGiftModel && (
-            <CreateGiftModel onCancel={onCancel} event_id={eventId} />
+            <CreateGiftModel
+              onCancel={onCancel}
+              event_id={eventId}
+              handelGetGifts={handelGetGifts}
+            />
           )}
         </div>
       </div>
       <GiftListItem />
-      {eventId &&
-        gifts.map((gift) => (
+      {/* {eventId &&
+        Array.isArray(gifts).map((gift) => (
           <TableRow
             key={gift.id}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -91,7 +95,7 @@ export default function CreateEventPage() {
             <TableCell align="right">{gift.price}</TableCell>
             <TableCell align="right">{gift.quantity}</TableCell>
           </TableRow>
-        ))}
+        ))} */}
     </div>
   );
 }

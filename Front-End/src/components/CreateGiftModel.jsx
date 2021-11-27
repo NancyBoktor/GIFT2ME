@@ -28,6 +28,7 @@ export default function CreateGiftForm(props) {
       await createGift(giftInfo);
       console.log("giftInfo", giftInfo);
       props.onCancel();
+      props.handelGetGifts();
     } catch (e) {
       console.log("error:", e);
     }

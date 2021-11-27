@@ -1,11 +1,22 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import "./CreateEventForm.scss";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+
+import Paper from "@mui/material/Paper";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
 export default function CreateEventForm(props) {
   const { eventData, setEventData } = props;
@@ -73,7 +84,20 @@ export default function CreateEventForm(props) {
         >
           <div>
             <div>
-              <TextField
+              <Grid item xs={8}>
+                <Item
+                  onClick={() =>
+                    handleClickOpen({
+                      key: "event_name",
+                      type: "text",
+                      dialogContent: "Please choose an event name",
+                    })
+                  }
+                >
+                  {eventData.event_name ? eventData.event_name : "Event Name"}
+                </Item>
+              </Grid>
+              {/* <TextField
                 required
                 id="outlined-required"
                 label="Required"
@@ -87,7 +111,7 @@ export default function CreateEventForm(props) {
                     dialogContent: "Please choose an event name",
                   })
                 }
-              />
+              /> */}
             </div>
             <div>
               <TextField
@@ -119,8 +143,10 @@ export default function CreateEventForm(props) {
             </div>
             <div>
               <TextField
-                id="outlined-multiline-flexible"
+                id="outlined-multiline-static"
                 label="Optional"
+                multiline
+                rows={4}
                 defaultValue={
                   eventData.description ? eventData.description : "Description"
                 }
