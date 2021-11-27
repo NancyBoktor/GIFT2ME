@@ -22,7 +22,8 @@ export default function CreateGiftForm(props) {
   //   most_wanted: false,
   // });
 
-  const handelCreateGift = async (event) => {
+  const handelCreateGift = async () => {
+    console.log(">>>>>>", giftInfo);
     if (!giftInfo.event_id) {
       return;
     }
