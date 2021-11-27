@@ -5,10 +5,10 @@ import "./Home.scss";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ListAltIcon from '@mui/icons-material/ListAlt';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import ShareIcon from '@mui/icons-material/Share';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import EventIcon from '@mui/icons-material/Event';
 
 const theme = createTheme({
   palette: {
@@ -57,10 +57,10 @@ const Home = () => {
           <div id="icon-children"><HowToRegIcon id="icon-children" fontSize="large" /></div>
         </div>
         <div id="circle">
-          <div id="icon-children"><AddBoxIcon id="icon-children" fontSize="large" /></div>
+          <div id="icon-children"><EventIcon id="icon-children" fontSize="large" /></div>
         </div>
         <div id="circle">
-          <div id="icon-children"><ListAltIcon id="icon-children" fontSize="large" /></div>
+          <div id="icon-children"><CardGiftcardIcon id="icon-children" fontSize="large" /></div>
         </div>
         <div id="circle">
           <div id="icon-children"><ShareIcon id="icon-children" fontSize="large" /></div>
