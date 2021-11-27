@@ -13,8 +13,4 @@ const createEvent = async (req, res, next) => {
   res.json({ success: true, data: rows[0] });
 };
 
-// const getAllEvents = async (req, res) => {
-//   const { rows } = await db.query(`SELECT * from events`);
-//   res.json(rows);
-// };
 module.exports = { createEvent };
