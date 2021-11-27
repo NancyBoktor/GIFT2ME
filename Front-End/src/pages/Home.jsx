@@ -30,37 +30,42 @@ const Home = () => {
         <div class="top-children phrase">Gifting made easy
         </div>
         <div id="regg">
-        <ThemeProvider theme={theme}>
-          <Link to="/register" className="reg-btn" style={{ textDecoration: 'none' }}>
-            <Button
-              variant="contained"
-              href="#contained-buttons"
-              color="pink"
-              size="large"
-            >
-              Register Now
-            </Button>
-          </Link>
-        </ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Link to="/register" className="reg-btn" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="contained"
+                href="#contained-buttons"
+                color="pink"
+                size="large"
+              >
+                Register Now
+              </Button>
+            </Link>
+          </ThemeProvider>
         </div>
 
       </div>
 
-      <div className="reasons">
-        <div id="circle"><p id="words">Register</p></div>
-        <div id="circle"><p id="words">Create Events</p></div>
-        <div id="circle"><p id="words">Make Wishlist</p></div>
-        <div id="circle"><p id="words">Share</p></div>
-      </div>
       <div className="icons">
-        <HowToRegIcon fontSize="large"/>
-        <AddBoxIcon fontSize="large"/>
-        <ListAltIcon fontSize="large"/>
-        <ShareIcon fontSize="large"/>
+        <div id="circle">
+          <div id="icon-children"><HowToRegIcon id="icon-children" fontSize="large" /></div>
+        </div>
+        <div id="circle">
+          <div id="icon-children"><AddBoxIcon id="icon-children" fontSize="large" /></div>
+        </div>
+        <div id="circle">
+          <div id="icon-children"><ListAltIcon id="icon-children" fontSize="large" /></div>
+        </div>
+        <div id="circle">
+          <div id="icon-children"><ShareIcon id="icon-children" fontSize="large" /></div>
+        </div>
       </div>
 
-      <div className="homepage-content">
-        <p>WORDS</p>
+      <div className="caption">
+        <p id="words">Register</p>
+        <p id="words">Create Events</p>
+        <p id="words">Make Wishlist</p>
+        <p id="words">Share</p>
       </div>
 
 
