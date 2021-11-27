@@ -20,16 +20,16 @@ router.get("/:id", isAuth, async (req, res) => {
   //console.log({ event: rows });
   res.json(rows);
 });
-// GET events for logged in user
-// router.get("/", isAuth, async (req, res) => {
-//   console.log("-;;;;;;useridbackend", req.current_user_id);
-//   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
-//     req.current_user_id,
-//   ]);
+// GET events for logged in user. * DO NOT TOUCH*
+router.get("/", isAuth, async (req, res) => {
+  console.log("req.current_user_id", req.current_user_id);
+  const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
+    req.current_user_id,
+  ]);
 
-//   console.log({ event: rows });
-//   res.json(rows);
-// });
+  console.log({ event: rows });
+  res.json(rows);
+});
 
 // Delete an event for specific user
 router.delete("/delete/:id", isAuth, async (req, res) => {
