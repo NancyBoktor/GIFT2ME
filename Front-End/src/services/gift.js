@@ -26,11 +26,19 @@ export const createGift = async ({
   });
 };
 
+<<<<<<< HEAD
 export const getGifts = async (eventId) => {
   return axios({
     url: "http://localhost:3001/api/gifts",
     method: "get",
     data: { eventId },
+=======
+export const getGifts = async (event_id) => {
+  return axios({
+    url: "http://localhost:3001/api/gifts",
+    method: "get",
+    params: { event_id },
+>>>>>>> feature/gifts
     withCredentials: true,
   });
 };
