@@ -4,12 +4,6 @@ import { createEvent } from "../services/event";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
-<<<<<<< HEAD
-import GiftListItem from "../components/GiftListItem";
-import { getGifts } from "../services/gift";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-=======
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
@@ -19,7 +13,6 @@ import GiftListHeader from "../components/GiftListHeader";
 import Paper from "@mui/material/Paper";
 import Footer from "../components/Footer";
 import { getGifts } from "../services/gift";
->>>>>>> feature/gifts
 import "./CreateEvent.scss";
 
 export default function CreateEventPage() {
@@ -37,13 +30,9 @@ export default function CreateEventPage() {
   const [openGiftModel, setOpenGiftModel] = useState(false);
 
   const [eventId, setEventId] = useState(0);
-<<<<<<< HEAD
-  const [gifts, setGifts] = useState([]);
-=======
 
   const [gifts, setGifts] = useState([]);
 
->>>>>>> feature/gifts
   const onCancel = () => {
     setOpenGiftModel(false);
   };
@@ -128,24 +117,6 @@ export default function CreateEventPage() {
           )}
         </div>
       </div>
-<<<<<<< HEAD
-      <GiftListItem />
-      {eventId &&
-        gifts.map((gift) => (
-          <TableRow
-            key={gift.id}
-            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-          >
-            <TableCell align="right">{gift.gift_name}</TableCell>
-            <TableCell component="th" scope="row">
-              {gift.stor_url}
-            </TableCell>
-            <TableCell align="right">{gift.notes}</TableCell>
-            <TableCell align="right">{gift.price}</TableCell>
-            <TableCell align="right">{gift.quantity}</TableCell>
-          </TableRow>
-        ))}
-=======
       {gifts.length > 0 && (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -169,7 +140,6 @@ export default function CreateEventPage() {
           </Table>
         </TableContainer>
       )}
->>>>>>> feature/gifts
     </div>
   );
 }
