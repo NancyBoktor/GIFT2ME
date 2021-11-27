@@ -9,16 +9,18 @@ import Checkbox from "@mui/material/Checkbox";
 import MultipleSelectButton from "./MultipleSelectButton";
 import "./CreateGiftModel.scss";
 import Modal from "@mui/material/Modal";
+
 export default function CreateGiftForm(props) {
-  const [giftInfo, setGiftInfo] = useState({
-    event_id: "",
-    gift_name: "",
-    price: 0,
-    notes: "",
-    store_url: "",
-    quantity: 0,
-    most_wanted: false,
-  });
+  const { giftInfo, setGiftInfo } = props;
+  // const [giftInfo, setGiftInfo] = useState({
+  //   event_id: "",
+  //   gift_name: "",
+  //   price: 0,
+  //   notes: "",
+  //   store_url: "",
+  //   quantity: 0,
+  //   most_wanted: false,
+  // });
 
   const handelCreateGift = async (event) => {
     if (!giftInfo.event_id) {
