@@ -39,6 +39,8 @@ export default function CreateEventPage() {
         <div className="event-info">
           <CreateEventForm eventData={eventData} setEventData={setEventData} />
           <Button
+           variant="contained"
+           href="#contained-buttons"
             onClick={() => {
               handleCreateEvent();
             }}
@@ -46,6 +48,8 @@ export default function CreateEventPage() {
             <h5 className="create-event-button">Create Event</h5>
           </Button>
           <Button
+           variant="contained"
+           href="#contained-buttons"
             onClick={() => {
               setOpenGiftModel(true);
             }}
