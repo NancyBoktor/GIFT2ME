@@ -1,21 +1,18 @@
 $primary: rgb(70, 197, 219);
 $secondary: #72D6C9;
 $terinary: rgb(209, 16, 113);
+$button: #696666;
 $link: #0d6efd;
 
-// .event-form {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: center;
-//   margin-left: 70px;
-// }
+.event {
+  margin-top: 5%;
+  margin-bottom: 100px;
+}
 
 .event-form-wrapper {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  gap: 100px;
 }
 
 .event-card-row {
@@ -32,22 +29,14 @@ $link: #0d6efd;
 
 #event-btns {
   display:flex;
+  color: $button;
   // justify-content: center;
   
 }
 
-.event-name {
-  font-family: system-ui, sans-serif;
-  font-style: italic;
-  font-weight: revert;
-  color: rgb(30, 136, 168);
-}
-
 #desc {
-  // display: inline;
-  color: $link;
+  color: $button;
   border: solid 1px $link;
-  font-weight: bold;
   border-radius: 1.2%;
   padding: 10px;
   text-transform: uppercase;
@@ -56,8 +45,6 @@ $link: #0d6efd;
   width: 20em;
   height: 200px;
   overflow-wrap: break-word;
-
- 
 }
 
 .card {
@@ -113,9 +100,3 @@ $link: #0d6efd;
   flex-direction: column;
   align-items: center;
 }
-
-// .event-field span {
-//     display: inline-block;
-//     width: 5em;
-//     border: 1px solid black;
-// }

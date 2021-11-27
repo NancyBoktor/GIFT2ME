@@ -46,6 +46,7 @@ export default function CreateEventForm(props) {
 
   return (
     <div>
+      <h1 className="event">Create Event </h1>
       <div className="event-form-wrapper">
         <div className="event-card-row">
           <div class="card">
@@ -126,6 +127,7 @@ export default function CreateEventForm(props) {
 
           <div id="event-btns">
             <Button
+              style={{color: '#696666', fontFamily:'Raleway'}}
               variant="outlined"
               href="#outlined-buttons"
               onClick={() =>
@@ -141,6 +143,7 @@ export default function CreateEventForm(props) {
           </div>
           <div id="event-btns">
             <Button
+              style={{color: '#696666', fontFamily:'Raleway'}}
               variant="outlined"
               href="#outlined-buttons"
               onClick={() => handleClickOpen({ key: "date", type: "date" })}
@@ -152,6 +155,7 @@ export default function CreateEventForm(props) {
           </div>
           <div id="event-btns">
             <Button
+              style={{color: '#696666', fontFamily:'Raleway'}}
               variant="outlined"
               href="#outlined-buttons"
               onClick={() =>
