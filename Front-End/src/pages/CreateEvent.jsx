@@ -1,23 +1,22 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
-import { createEvent } from "../services/event";
+import { createEvent, getEvents } from "../services/event";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
-import DescriptionAlerts from "../components/Alert";
+
 import "./CreateEvent.scss";
 
 export default function CreateEventPage() {
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [eventId, setEventId] = useState(0);
-
   const onCancel = () => {
     setOpenGiftModel(false);
   };
 
   const [eventData, setEventData] = useState({
     event_name: "",
-    date: "",
+    date: null,
     address: "",
     description: "",
   });
@@ -31,6 +30,7 @@ export default function CreateEventPage() {
       console.log("error:", e);
     }
   };
+  console.log("event Date", eventData);
 
   return (
     <div>
@@ -40,17 +40,20 @@ export default function CreateEventPage() {
           <CreateEventForm eventData={eventData} setEventData={setEventData} />
           <Button
             onClick={() => {
-              setOpenGiftModel(true);
               handleCreateEvent();
             }}
           >
             <h5 className="create-event-button">Create Event</h5>
           </Button>
-          {openGiftModel && !!eventId && (
+          <Button
+            onClick={() => {
+              setOpenGiftModel(true);
+            }}
+          >
+            <h5 className="create-event-button">Add Gifts to event</h5>
+          </Button>
+          {openGiftModel && (
             <CreateGiftModel onCancel={onCancel} event_id={eventId} />
-          )}
-          {openGiftModel && !!!eventId && (
-            <DescriptionAlerts onClose={onCancel} />
           )}
         </div>
       </div>
