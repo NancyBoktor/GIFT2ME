@@ -25,8 +25,13 @@ const Home = () => {
       <div className="top">
 
         <div id="top-children">
-          <img className="hp-image" alt="bar" src="https://images.unsplash.com/photo-1510284876186-b1a84b94418f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
+          <img className="hp-image" alt="bar" src="https://images.pexels.com/photos/5469758/pexels-photo-5469758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         </div>
+        {/* https://images.pexels.com/photos/3422495/pexels-photo-3422495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
+        {/* https://images.pexels.com/photos/3307696/pexels-photo-3307696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
+        {/* https://images.pexels.com/photos/1303082/pexels-photo-1303082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
+        
+        
         <div class="top-children phrase">Gifting made easy
         </div>
         <div id="regg">

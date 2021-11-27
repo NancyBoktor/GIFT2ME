@@ -9,13 +9,6 @@ $link: #0d6efd;
   flex-direction: column;
 }
 
-// .top-children {
-//   // display:flex;
-
-
-//   gap:100px;
-// }
-
 #regg{
   position: absolute;
   bottom: 60%;
@@ -34,7 +27,10 @@ $link: #0d6efd;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: $secondary;
+  // color: $secondary;
+  // color: $terinary;
+  // color: $primary;
+  color: white;
 }
 
 .reg-btn {
@@ -49,7 +45,7 @@ display:column;
 #circle {
 display:flex;
 justify-content: center;
-background: $primary;
+background-image: linear-gradient(to bottom left, $primary, $secondary);
 border-radius: 50%;
 border: dotted $terinary;
 width: 200px;
