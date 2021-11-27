@@ -62,9 +62,9 @@ const Home = () => {
       </div>
 
       <div className="caption">
-        <p id="words">Register</p>
-        <p id="words">Create Events</p>
-        <p id="words">Make Wishlist</p>
+        <p id="words">Register</p> <span id="arrow">➠</span>
+        <p id="words">Create Events</p> <span id="arrow">➠</span>
+        <p id="words">Make Wishlist</p> <span id="arrow">➠</span>
         <p id="words">Share</p>
       </div>
 
