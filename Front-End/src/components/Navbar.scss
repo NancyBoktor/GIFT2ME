@@ -1,6 +1,7 @@
 $primary: rgb(70, 197, 219);
 $secondary: #72D6C9;
 $terinary: rgb(209, 16, 113);
+$link: #0d6efd;
 
 .nav {
   display: flex;
@@ -67,7 +68,7 @@ $terinary: rgb(209, 16, 113);
 }
 
 .logout-span:hover {
-color: #0d6efd;
+color: $link;
 cursor:pointer;
 }
 
