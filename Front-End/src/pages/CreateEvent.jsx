@@ -50,7 +50,7 @@ export default function CreateEventPage() {
               setOpenGiftModel(true);
             }}
           >
-            <h5 className="create-event-button">Add Gifts to event</h5>
+            <h5 className="create-event-button">Add Gifts</h5>
           </Button>
           {openGiftModel && (
             <CreateGiftModel onCancel={onCancel} event_id={eventId} />

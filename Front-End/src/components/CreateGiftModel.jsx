@@ -46,7 +46,7 @@ export default function CreateGiftForm(props) {
           X
         </Button>
 
-        <div>Greate your Gift :) </div>
+        <div>Add Gift </div>
         <div className="create-Gift-form">
           <Box
             component="form"
@@ -61,7 +61,7 @@ export default function CreateGiftForm(props) {
               <TextField
                 id="outlined-multiline-flexible"
                 label="What would you like?"
-                placeholder="Chocklete!!"
+                placeholder="Chocolate!!"
                 multiline
                 maxRows={4}
                 value={giftInfo.gift_name}
@@ -85,7 +85,7 @@ export default function CreateGiftForm(props) {
               <TextField
                 id="outlined-textarea"
                 label="Notes (optional)"
-                placeholder="i want it to be red :)"
+                placeholder="no white chocolate >:("
                 value={giftInfo.notes}
                 onChange={(event) =>
                   setGiftInfo({ ...giftInfo, notes: event.target.value })
@@ -110,32 +110,31 @@ export default function CreateGiftForm(props) {
                   setGiftInfo({ ...giftInfo, quantity: event.target.value })
                 }
               />
-
-              <FormControlLabel
-                control={<Checkbox defaultChecked={giftInfo.most_wanted} />}
-                label="Most wanted"
-                defaultValue={false}
-                onChange={(event) =>
-                  setGiftInfo({ ...giftInfo, most_wanted: true })
-                }
-              />
             </div>
+            <FormControlLabel
+              control={<Checkbox defaultChecked={giftInfo.most_wanted} />}
+              label="Most Wanted"
+              defaultValue={false}
+              onChange={(event) =>
+                setGiftInfo({ ...giftInfo, most_wanted: true })
+              }
+            />
           </Box>
-          <div>
+          <div className="modal-buttons">
             <Stack direction="row" spacing={2}>
-              <Button
+              {/* <Button
                 variant="outlined"
                 href="#outlined-buttons"
                 onClick={props.onCancel}
               >
                 Cancel
-              </Button>
+              </Button> */}
               <Button
                 variant="outlined"
                 href="#outlined-buttons"
                 onClick={handelCreateGift}
               >
-                Save
+                ADD
               </Button>
             </Stack>
           </div>
