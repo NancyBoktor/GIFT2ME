@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
 
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+
 import "./CreateEventForm.scss";
 
 export default function CreateEventForm(props) {
@@ -59,52 +62,129 @@ export default function CreateEventForm(props) {
             <p className="card-text">Event Image</p>
           </div>
         </div>
-        <div className="event-form">
-          <Button
-            variant="text"
-            onClick={() => handleClickOpen({ key: "event_name", type: "text" })}
-          >
-            <h1 className="event-name">
-              {eventData.event_name
-                ? eventData.event_name
-                : "My Wish List Name"}
-            </h1>
-          </Button>
-          <Button
-            variant="text"
-            onClick={() => handleClickOpen({ key: "date", type: "date" })}
-          >
-            <h5 className="event-input-info">
-              {eventData.date ? eventData.date : "Please Fill the date"}
-            </h5>
-          </Button>
-          <Button
-            variant="text"
-            onClick={() => handleClickOpen({ key: "address", type: "text" })}
-          >
-            <h5 className="event-input-info">
-              {eventData.address ? eventData.address : "Event Adress here!!"}
-            </h5>
-          </Button>
 
-          <Button
-            variant="text"
-            onClick={() =>
-              handleClickOpen({
-                key: "description",
-                type: "text",
-                multiline: true,
-                dialogContent: "Please fill the description",
-              })
-            }
-          >
-            <h5 className="event-input-info">
-              {eventData.description
-                ? eventData.description
-                : "Please Fill the description"}
-            </h5>
-          </Button>
-
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <div>
+            <div>
+              <TextField
+                required
+                id="outlined-required"
+                label="Required"
+                defaultValue={
+                  eventData.event_name ? eventData.event_name : "Event Name"
+                }
+                onClick={() =>
+                  handleClickOpen({
+                    key: "event_name",
+                    type: "text",
+                    dialogContent: "Please choose an event name",
+                  })
+                }
+              />
+            </div>
+            <div>
+              <TextField
+                id="outlined-optional"
+                label="Optional"
+                defaultValue={eventData.date ? eventData.date : "Date"}
+                onClick={() =>
+                  handleClickOpen({
+                    key: "date",
+                    type: "date",
+                    dialogContent: "Please set a date",
+                  })
+                }
+              />
+            </div>
+            <div>
+              <TextField
+                id="outlined-optional"
+                label="Optional"
+                defaultValue={eventData.address ? eventData.address : "Address"}
+                onClick={() =>
+                  handleClickOpen({
+                    key: "address",
+                    type: "text",
+                    dialogContent: "Please fill the address",
+                  })
+                }
+              />
+            </div>
+            <div>
+              <TextField
+                id="outlined-multiline-flexible"
+                label="Optional"
+                defaultValue={
+                  eventData.description ? eventData.description : "Description"
+                }
+                onClick={() =>
+                  handleClickOpen({
+                    key: "description",
+                    type: "text",
+                    multiline: true,
+                    dialogContent: "Please fill the description",
+                  })
+                }
+              />
+            </div>
+            {/* <Button
+              variant="text"
+              onClick={() =>
+                handleClickOpen({ key: "event_name", type: "text" })
+              }
+            >
+              <h1 className="event-name">
+                {eventData.event_name
+                  ? eventData.event_name
+                  : "My Wishlist Name"}
+              </h1>
+            </Button> */}
+            {/* <Button
+                variant="text"
+                onClick={() => handleClickOpen({ key: "date", type: "date" })}
+              >
+                <h5 className="event-input-info">
+                  {eventData.date ? eventData.date : "Event Date!!"}
+                </h5>
+              </Button> */}
+            {/* <Button
+                variant="text"
+                onClick={() =>
+                  handleClickOpen({ key: "address", type: "text" })
+                }
+              >
+                <h5 className="event-input-info">
+                  {eventData.address
+                    ? eventData.address
+                    : "Event Adress here!!"}
+                </h5>
+              </Button> */}
+            {/* 
+              <Button
+                variant="text"
+                onClick={() =>
+                  handleClickOpen({
+                    key: "description",
+                    type: "text",
+                    multiline: true,
+                    dialogContent: "Please fill the description",
+                  })
+                }
+              >
+                <h5 className="event-input-info">
+                  {eventData.description
+                    ? eventData.description
+                    : "Description"}
+                </h5>
+              </Button> */}
+          </div>
           <CreateEventModal
             open={open}
             handleClose={handleClose}
@@ -116,7 +196,7 @@ export default function CreateEventForm(props) {
             handleSave={handleSave}
             required={modalData.required}
           />
-        </div>
+        </Box>
       </div>
     </div>
   );

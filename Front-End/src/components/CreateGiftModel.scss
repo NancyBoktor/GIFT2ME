@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 500px;
   height: 600px;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: rgb(226, 229, 240);
 }
 
@@ -17,14 +18,14 @@
   margin-top: 100px;
 }
 
-// .gift-card {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   margin-top: 70px;
-// }
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .close-button {
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  // justify-content: right;
 }
+
