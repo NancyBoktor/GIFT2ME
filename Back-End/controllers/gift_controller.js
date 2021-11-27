@@ -25,11 +25,14 @@ const createGift = async (req, res, next) => {
 };
 
 const getGifts = async (req, res, next) => {
-  const { event_id } = req.body;
-  const { rows } = await db.query(`SELECT * FROM  gifts  WHERE event_id=$1 `, [
-    event_id,
+  console.log("*********", req.body);
+  const { eventId } = req.body;
+  // const { userId } = req.current_user_id;
+  const { gifts } = await db.query(`SELECT * FROM  gifts  WHERE event_id=$1`, [
+    eventId,
   ]);
-  res.json({ success: true, data: rows });
+  console.log("^^^^^^^^", gifts);
+  res.json({ success: true, data: gifts });
 };
 
 module.exports = { createGift, getGifts };

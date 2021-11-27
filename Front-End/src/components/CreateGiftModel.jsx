@@ -24,7 +24,6 @@ export default function CreateGiftForm(props) {
     if (!giftInfo.event_id) {
       return;
     }
-
     try {
       await createGift(giftInfo);
       console.log("giftInfo", giftInfo);

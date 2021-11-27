@@ -24,7 +24,7 @@ const CreateEventModal = (props) => {
   } = props;
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Subscribe</DialogTitle>
+      <DialogTitle></DialogTitle>
       <DialogContent>
         <DialogContentText>{dialogContent}</DialogContentText>
         <TextField
@@ -41,7 +41,7 @@ const CreateEventModal = (props) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={() => handleSave(inputRef.current.value)}>Save</Button>
+        <Button onClick={() => handleSave(inputRef.current.value)}>Set</Button>
       </DialogActions>
     </Dialog>
   );

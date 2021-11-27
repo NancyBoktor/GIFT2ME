@@ -13,11 +13,11 @@ const { createEvent } = require("../controllers/event_controller");
 
 // GET events from specific user
 router.get("/:id", isAuth, async (req, res) => {
-  console.log("Back---->end", req.params);
+  //console.log("Back---->end", req.params);
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
     req.params.id,
   ]);
-  console.log({ event: rows });
+  //console.log({ event: rows });
   res.json(rows);
 });
 // GET events for logged in user
@@ -37,11 +37,10 @@ router.delete("/delete/:id", isAuth, async (req, res) => {
   const { rows } = await db.query(`DELETE from events WHERE id = $1`, [
     req.params.id,
   ]);
-  console.log({ event: rows });
+  //console.log({ event: rows });
   res.json(rows);
 });
 
 router.post("/", isAuth, createEvent);
-
 
 module.exports = router;
