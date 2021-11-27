@@ -27,12 +27,6 @@ const Home = () => {
         <div id="top-children">
           <img className="hp-image" alt="bar" src="https://images.pexels.com/photos/5469758/pexels-photo-5469758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
         </div>
-         {/* WOMEN https://images.pexels.com/photos/5469719/pexels-photo-5469719.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
-        {/* WHITE WOOD https://images.pexels.com/photos/3422495/pexels-photo-3422495.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
-        {/* GREEN PRESENT https://images.pexels.com/photos/3307696/pexels-photo-3307696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
-        {/* BROWN WOOD RED/CREME https://images.pexels.com/photos/1303082/pexels-photo-1303082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 */}
-        
-        
         <div class="top-children phrase">Gifting made easy
         </div>
         <div id="regg">
@@ -49,9 +43,7 @@ const Home = () => {
             </Link>
           </ThemeProvider>
         </div>
-
       </div>
-
       <div className="icons">
         <div id="circle">
           <div id="icon-children"><HowToRegIcon id="icon-children" fontSize="large" /></div>
@@ -73,10 +65,7 @@ const Home = () => {
         <p id="words">Make Wishlist</p> <span id="arrow">➠</span>
         <p id="words">Share</p>
       </div>
-
-      <img src="collage.png" />
-
-
+      <img alt="collage" src="collage.png" />
       <Footer />
     </>
   );

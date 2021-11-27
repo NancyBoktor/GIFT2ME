@@ -1,11 +1,9 @@
 import react, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { logout } from "../services/auth";
 import "./Navbar.scss";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../fontawesome";
 
