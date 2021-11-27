@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
-import { createEvent, getEvents } from "../services/event";
+import { createEvent } from "../services/event";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
@@ -22,7 +22,6 @@ export default function CreateEventPage() {
   });
 
   const handleCreateEvent = async () => {
-    setOpenGiftModel(true);
     try {
       const { data } = await createEvent(eventData);
       setEventId(data.data.id);

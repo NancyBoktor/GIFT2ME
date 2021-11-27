@@ -75,7 +75,7 @@ export default function CreateEventForm(props) {
             onClick={() => handleClickOpen({ key: "date", type: "date" })}
           >
             <h5 className="event-input-info">
-              {eventData.date ? eventData.date : "Please Fill the date"}
+              {eventData.date ? eventData.date : "Event Date!!"}
             </h5>
           </Button>
           <Button
@@ -99,9 +99,7 @@ export default function CreateEventForm(props) {
             }
           >
             <h5 className="event-input-info">
-              {eventData.description
-                ? eventData.description
-                : "Please Fill the description"}
+              {eventData.description ? eventData.description : "Description"}
             </h5>
           </Button>
 
