@@ -23,7 +23,7 @@ const CreateEventModal = (props) => {
     handleSave,
   } = props;
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle></DialogTitle>
       <DialogContent>
         <DialogContentText>{dialogContent}</DialogContentText>
