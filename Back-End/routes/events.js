@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { db } = require("../lib/db");
 const { isAuth } = require("../middleware/auth_middle");
-const { createEvent } = require("../controllers/event_controller");
+const { createEvent, editEvent } = require("../controllers/event_controller");
+const { route } = require("./gifts");
 
 // /* GET all events */
 // router.get("/all", async (req, res) => {
@@ -20,6 +21,25 @@ router.get("/:id", isAuth, async (req, res) => {
   //console.log({ event: rows });
   res.json(rows[0]);
 });
+
+// EDIT AN EVENT
+router.put("/:id", isAuth, async (req, res) => {
+  // console.log("res:", res)
+  const user_id = req.current_user_id;
+  const { event_name, date, address, description } = req.body;
+  const event_id = req.params.id;
+  console.log("user_id:", user_id)
+  console.log("req.body:", { event_id, event_name, date, address, description })
+  const { rows } = await db.query(
+    `UPDATE events SET event_name = $1, date = $2, address = $3, description = $4 WHERE id = $5`,
+      [event_name, date, address, description, event_id
+    ]);
+  // res.json(rows[0]);
+  res.json({ success: true, data: rows[0] });
+}
+)
+
+
 // GET events for logged in user. * DO NOT TOUCH*
 router.get("/", isAuth, async (req, res) => {
   console.log("req.current_user_id", req.current_user_id);

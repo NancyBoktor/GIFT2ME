@@ -13,4 +13,4 @@ const createEvent = async (req, res, next) => {
   res.json({ success: true, data: rows[0] });
 };
 
-module.exports = { createEvent };
+module.exports = { createEvent};

@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+
 export default function GiftListHeader() {
   return (
     <TableHead>
@@ -16,6 +17,9 @@ export default function GiftListHeader() {
         <TableCell align="right">Price&nbsp;($)</TableCell>
         <TableCell align="right">Quantity</TableCell>
         <TableCell align="right">Notes</TableCell>
+        <TableCell align="right">Most Wanted</TableCell>
+        <TableCell align="right">Edit</TableCell>
+        <TableCell align="right">Delete</TableCell>
       </TableRow>
     </TableHead>
   );
