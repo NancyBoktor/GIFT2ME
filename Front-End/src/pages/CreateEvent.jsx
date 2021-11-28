@@ -10,7 +10,7 @@ import TableBody from "@mui/material/TableBody";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import GiftListHeader from "../components/GiftListHeader";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import Footer from "../components/Footer";
 import { getGifts } from "../services/gift";
 import "./CreateEvent.scss";
@@ -19,6 +19,22 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 // import axios from "axios";
 import { getEvent } from "../services/event";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import "../fontawesome";
+
+import axios from "axios";
+import { Modal } from "react-bootstrap";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ReactDOM from "react-dom";
+
+const theme = createTheme({
+  palette: {
+    cancel: {
+      main: '#808080',
+    },
+  },
+});
 
 export default function CreateEventPage() {
   const navigate = useNavigate()
@@ -38,6 +54,7 @@ export default function CreateEventPage() {
   const [gifts, setGifts] = useState([]);
   const { id } = useParams();
   const [event, setEvent] = useState();
+  const [show, setShow] = useState({});
 
   const onCancel = () => {
     setOpenGiftModel(false);
@@ -113,8 +130,24 @@ export default function CreateEventPage() {
     }
   };
 
+  const handleDelete = (giftId) => {
+    console.log("giftId:", giftId)
+    return axios
+      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, { withCredentials: true })
+      .then((res) => {
+        console.log("res:", res)
+        const newGifts = [...gifts]
+        const index = gifts.findIndex((gift) => gift.id === giftId)
+        gifts.splice(index, 1)
+        setGifts(newGifts)
+      });
+  }
+
+  const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
+  const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
+
   return (
-    <div>
+    <>
       <Navbar />
       <div className="event-page">
         <div className="event-info">
@@ -150,7 +183,7 @@ export default function CreateEventPage() {
         </div>
       </div>
       {gifts.length > 0 && (
-        <TableContainer component={Paper}>
+        <TableContainer >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <GiftListHeader />
             <TableBody>
@@ -166,14 +199,40 @@ export default function CreateEventPage() {
                   <TableCell align="right">{gift.price}</TableCell>
                   <TableCell align="right">{gift.quantity}</TableCell>
                   <TableCell align="right">{gift.notes}</TableCell>
+                  <TableCell align="right">{gift.most_wanted === true && <FontAwesomeIcon icon={['fas', 'heart']} /> } </TableCell>
+                  <TableCell align="right"><FontAwesomeIcon icon={['fas', 'edit']} /></TableCell>
+                  <TableCell align="right" className="click trash" onClick={() => handleShow(gift.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></TableCell>
+                  {ReactDOM.createPortal(
+                  <Modal show={show[gift.id]}>
+                    <Modal.Header closeButton onClick={() => handleClose(gift.id)}>
+                      <Modal.Title>Delete Gift</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                      <p className="confirm-msg">Are you sure you wish to delete this gift?</p>
+                      <p className="delete-warning">This action cannot be undone</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                      <div>
+                        <ThemeProvider theme={theme}>
+                          <Button onClick={() => handleClose(gift.id)} variant="outlined" color="cancel">Cancel</Button>
+                        </ThemeProvider>
+                      </div>
+                      <Button onClick={() => handleDelete(gift.id)} variant="outlined" color="error">Delete</Button>
+                    </Modal.Footer>
+                  </Modal>,
+                  document.body
+                )}
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       )}
-    </div>
+      <Footer />
+    </>
   );
 }
 
-//
+

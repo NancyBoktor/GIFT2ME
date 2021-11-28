@@ -24,22 +24,21 @@ export default function CreateGiftForm(props) {
   //   most_wanted: false,
   // });
 
-  const handelCreateGift = async () => {
+  const handleCreateGift = async () => {
     
     // console.log(">>>>>>", giftInfo);
     if (!giftInfo.event_id) {
-      console.log("something")
       return;
     }
     try {
       const { data } = await createGift(giftInfo);
-      console.log("dataa:", data)
+      console.log("data:", data)
       props.onCancel();
       setGifts(prev => [...prev, data.data[0]])
       navigate(`/events/${data.data[0].event_id}`);
-      console.log("yoooo", data.data)
+      // console.log("data.date:", data.data)
      // console.log("giftInfo", giftInfo);
-      // props.onCancel();
+    
     } catch (e) {
       console.log("error:", e);
     }
@@ -133,17 +132,10 @@ export default function CreateGiftForm(props) {
           </Box>
           <div className="modal-buttons">
             <Stack direction="row" spacing={2}>
-              {/* <Button
-                variant="outlined"
-                href="#outlined-buttons"
-                onClick={props.onCancel}
-              >
-                Cancel
-              </Button> */}
               <Button
                 variant="outlined"
                 href="#outlined-buttons"
-                onClick={handelCreateGift}
+                onClick={handleCreateGift}
               >
                 ADD
               </Button>
