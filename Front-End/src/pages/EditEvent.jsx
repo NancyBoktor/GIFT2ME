@@ -113,7 +113,7 @@ export default function CreateEventPage() {
       //   description: "",
       // })
       // console.log("dataaaa:", data)
-      navigate(`/events/${id}`);
+      // navigate(`/events/${id}`);
     } catch (e) {
       console.log("error:", e);
     }
@@ -173,7 +173,7 @@ export default function CreateEventPage() {
               handleEditEvent();
             }}
           >
-            <h5 className="create-event-button">Edit Event</h5>
+            <h5 className="create-event-button">Edit</h5>
           </Button>
           <Button
             variant="contained"

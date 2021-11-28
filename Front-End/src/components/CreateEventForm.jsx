@@ -44,7 +44,7 @@ export default function CreateEventForm(props) {
   };
 
   const handleClose = () => setOpen(false);
-  console.log("event date ",eventData.date);
+
   return (
     <div>
       <h1 className="event">Create Event </h1>
@@ -61,71 +61,7 @@ export default function CreateEventForm(props) {
             <p className="card-text">Event Image</p>
           </div>
         </div>
-
         <div className="event-btn-fields">
-          {/* <div>
-            <TextField
-                required
-                id="outlined-required"
-                label="Required"
-                defaultValue={
-                  eventData.event_name ? eventData.event_name : "Event Name"
-                }
-                onClick={() =>
-                  handleClickOpen({
-                    key: "event_name",
-                    type: "text",
-                    dialogContent: "Please choose an event name",
-                  })
-                }
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-optional"
-                label="Optional"
-                defaultValue={eventData.date ? eventData.date : "Date"}
-                onClick={() =>
-                  handleClickOpen({
-                    key: "date",
-                    type: "date",
-                    dialogContent: "Please set a date",
-                  })
-                }
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-optional"
-                label="Optional"
-                defaultValue={eventData.address ? eventData.address : "Address"}
-                onClick={() =>
-                  handleClickOpen({
-                    key: "address",
-                    type: "text",
-                    dialogContent: "Please fill the address",
-                  })
-                }
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-multiline-flexible"
-                label="Optional"
-                defaultValue={
-                  eventData.description ? eventData.description : "Description"
-                }
-                onClick={() =>
-                  handleClickOpen({
-                    key: "description",
-                    type: "text",
-                    multiline: true,
-                    dialogContent: "Please fill the description",
-                  })
-                }
-              />
-          </div> */}
-
           <div id="event-btns">
             <Button
               style={{color: '#696666', fontFamily:'Raleway'}}
