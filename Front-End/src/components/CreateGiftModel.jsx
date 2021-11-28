@@ -9,9 +9,11 @@ import Checkbox from "@mui/material/Checkbox";
 import MultipleSelectButton from "./MultipleSelectButton";
 import "./CreateGiftModel.scss";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateGiftForm(props) {
-  const { giftInfo, setGiftInfo } = props;
+  const navigate = useNavigate();
+  const { giftInfo, setGiftInfo, setGifts } = props;
   // const [giftInfo, setGiftInfo] = useState({
   //   event_id: "",
   //   gift_name: "",
@@ -23,14 +25,21 @@ export default function CreateGiftForm(props) {
   // });
 
   const handelCreateGift = async () => {
-    console.log(">>>>>>", giftInfo);
+    
+    // console.log(">>>>>>", giftInfo);
     if (!giftInfo.event_id) {
+      console.log("something")
       return;
     }
     try {
-      await createGift(giftInfo);
-      console.log("giftInfo", giftInfo);
+      const { data } = await createGift(giftInfo);
+      console.log("dataa:", data)
       props.onCancel();
+      setGifts(prev => [...prev, data.data[0]])
+      navigate(`/events/${data.data[0].event_id}`);
+      console.log("yoooo", data.data)
+     // console.log("giftInfo", giftInfo);
+      // props.onCancel();
     } catch (e) {
       console.log("error:", e);
     }

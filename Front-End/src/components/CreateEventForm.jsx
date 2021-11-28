@@ -5,7 +5,7 @@ import CreateEventModal from "./CreateEventModal";
 import "./CreateEventForm.scss";
 
 export default function CreateEventForm(props) {
-  const { eventData, setEventData } = props;
+  const { eventData, setEventData, event } = props;
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({
     type: "",
@@ -137,7 +137,7 @@ export default function CreateEventForm(props) {
               <h1 className="event-name">
                 {eventData.event_name
                   ? eventData.event_name
-                  : "Event Name"}
+                  : (event?.event_name ? event.event_name : "Event Name")}
               </h1>
             </Button>
           </div>

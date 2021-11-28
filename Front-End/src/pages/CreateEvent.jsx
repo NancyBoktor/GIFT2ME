@@ -15,7 +15,13 @@ import Footer from "../components/Footer";
 import { getGifts } from "../services/gift";
 import "./CreateEvent.scss";
 
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+// import axios from "axios";
+import { getEvent } from "../services/event";
+
 export default function CreateEventPage() {
+  const navigate = useNavigate()
   const [giftInfo, setGiftInfo] = useState({
     event_id: "",
     gift_name: "",
@@ -29,9 +35,9 @@ export default function CreateEventPage() {
 
   const [openGiftModel, setOpenGiftModel] = useState(false);
 
-  const [eventId, setEventId] = useState(0);
-
   const [gifts, setGifts] = useState([]);
+  const { id } = useParams();
+  const [event, setEvent] = useState();
 
   const onCancel = () => {
     setOpenGiftModel(false);
@@ -50,10 +56,34 @@ export default function CreateEventPage() {
     }
   }, [giftInfo.event_id]);
 
+
+  useEffect (() => {
+    if(!id) {
+      return;
+    }
+    handelGiftsList(id);
+    (async () => {
+    try {
+      const { data } = await getEvent(id);
+  console.log("data:", data)
+  setEvent(data)
+    } catch (e) {
+      console.log("error:", e);
+    }
+  })()
+  }, [id])
+
+
   const handleCreateEvent = async () => {
     try {
       const { data } = await createEvent(eventData);
-      setEventId(data.data.id);
+      setEventData({
+        event_name: "",
+        date: null,
+        address: "",
+        description: "",
+      })
+      navigate(`/events/${data.data.id}`);
     } catch (e) {
       console.log("error:", e);
     }
@@ -61,7 +91,7 @@ export default function CreateEventPage() {
   // console.log("event Date", eventData);
   const handelGetGifts = async () => {
     try {
-      const gifts = await getGifts(eventId);
+      const gifts = await getGifts(event.id);
       setGifts(gifts);
     } catch (e) {
       console.log("error:", e);
@@ -88,7 +118,7 @@ export default function CreateEventPage() {
       <Navbar />
       <div className="event-page">
         <div className="event-info">
-          <CreateEventForm eventData={eventData} setEventData={setEventData} />
+          <CreateEventForm eventData={eventData} event={event} setEventData={setEventData} />
           <Button
             variant="contained"
             href="#contained-buttons"
@@ -110,9 +140,11 @@ export default function CreateEventPage() {
           {openGiftModel && (
             <CreateGiftModel
               onCancel={onCancel}
-              event_id={eventId}
+              event_id={event.id}
               giftInfo={giftInfo}
               setGiftInfo={setGiftInfo}
+              setGifts={setGifts}
+            
             />
           )}
         </div>

@@ -16,9 +16,18 @@ export const createEvent = async ({
 
 export const getEvents = async (user_id) => {
   return axios({
-    url: `http://localhost:3001/api/events/${user_id}`,
+    url: `http://localhost:3001/api/events`,
     method: "get",
     data: user_id,
+    withCredentials: true,
+  });
+};
+
+export const getEvent = async (event_id) => {
+return axios({
+  url: `http://localhost:3001/api/events/${event_id}`,
+    method: "get",
+    data: event_id,
     withCredentials: true,
   });
 };

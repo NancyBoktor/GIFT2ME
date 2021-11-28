@@ -11,14 +11,14 @@ const { createEvent } = require("../controllers/event_controller");
 //   res.json(rows);
 // });
 
-// GET events from specific user
+// GET specific event
 router.get("/:id", isAuth, async (req, res) => {
   //console.log("Back---->end", req.params);
-  const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
+  const { rows } = await db.query(`SELECT * from events WHERE id = $1`, [
     req.params.id,
   ]);
   //console.log({ event: rows });
-  res.json(rows);
+  res.json(rows[0]);
 });
 // GET events for logged in user. * DO NOT TOUCH*
 router.get("/", isAuth, async (req, res) => {
