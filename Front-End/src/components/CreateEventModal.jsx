@@ -41,7 +41,8 @@ const CreateEventModal = (props) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={() => handleSave(inputRef.current.value)}>Set</Button>
+        <Button onClick={() => { 
+          handleSave(inputRef.current.value)}} >Set</Button>
       </DialogActions>
     </Dialog>
   );

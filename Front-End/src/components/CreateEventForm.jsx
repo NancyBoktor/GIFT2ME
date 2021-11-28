@@ -44,7 +44,7 @@ export default function CreateEventForm(props) {
   };
 
   const handleClose = () => setOpen(false);
-
+  console.log("event date ",eventData.date);
   return (
     <div>
       <h1 className="event">Create Event </h1>
@@ -150,7 +150,7 @@ export default function CreateEventForm(props) {
               onClick={() => handleClickOpen({ key: "date", type: "date" })}
             >
               <h5 className="event-input-info">
-                {eventData.date ? eventData.date : (event?.date ? event.date : "Date")}
+                {eventData.date ? (new Date(eventData.date.split("-"))).toLocaleDateString() : (event?.date ? (new Date(event.date.split("-"))).toLocaleDateString()  : "Date")}
               </h5>
             </Button>
           </div>
