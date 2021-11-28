@@ -62,7 +62,7 @@ const Dashboard = () => {
     navigate('/events')
   }
   const edit = (id) => {
-    navigate(`/events/edit/${id}`);  //<- THIS ROUTE NEEDS TO BE CHANGED
+    navigate(`/events/edit/${id}`); 
   }
 
   return (
