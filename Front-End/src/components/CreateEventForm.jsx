@@ -185,26 +185,6 @@ export default function CreateEventForm(props) {
                 : (event?.description ? event.description : "Description")}
             </h5>
             </span>
-
-            {/* <Button
-                variant="outlined"
-                href="#outlined-buttons"
-                maxRows={4}
-                onClick={() =>
-                  handleClickOpen({
-                    key: "description",
-                    type: "text",
-                    multiline: true,                    
-                    dialogContent: "Please fill the description"
-                  })
-                }
-              >
-                <h5 className="event-input-info">
-                  {eventData.description
-                    ? eventData.description
-                    : "Description"}
-                </h5>
-              </Button> */}
           </div>
         </div>
 
@@ -219,7 +199,6 @@ export default function CreateEventForm(props) {
           handleSave={handleSave}
           required={modalData.required}
         />
-
       </div>
     </div>
   );

@@ -59,10 +59,10 @@ const Dashboard = () => {
   const handleClose = (eventId) => setShow({ ...show, [eventId]: false });
 
   const create = () => {
-    navigate('/events');
+    navigate('/events')
   }
-  const edit = () => {
-    navigate('/events/:id');  //<- THIS ROUTE NEEDS TO BE CHANGED
+  const edit = (id) => {
+    navigate(`/events/edit/${id}`);  //<- THIS ROUTE NEEDS TO BE CHANGED
   }
 
   return (
@@ -94,13 +94,15 @@ const Dashboard = () => {
           <tbody>
             {eventNames.map((event) => (
               <tr>
-                <td>{event.event_name}</td>
+                <td>{event.event_name}
+                {console.log("eventtt:", event)}
+                </td>
                 <td>
                 <a id="share" href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${event.event_name} on ${new Date(event.date).getDate()} / ${new Date(event.date).getMonth()} / ${new Date(event.date).getFullYear()} at ${event.address} %2C%0A here is my wishlist link :) ${window.location}/${event.id}`}>
                   <FontAwesomeIcon icon={['fas', 'share-alt']} /> 
                   </a>
                 </td>
-                <td className="click edit" onClick={create}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
+                <td className="click edit" onClick={() => edit(event.id)}><FontAwesomeIcon icon={['fas', 'edit']} /></td>
                 <td className="click trash" onClick={() => handleShow(event.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></td>
                 {ReactDOM.createPortal(
                   <Modal show={show[event.id]}>

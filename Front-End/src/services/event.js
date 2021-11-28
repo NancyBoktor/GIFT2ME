@@ -31,3 +31,18 @@ return axios({
     withCredentials: true,
   });
 };
+
+export const editEvent = async ({
+  event_id,
+  event_name,
+  date,
+  address,
+  description,
+}) => {
+  return axios({
+    url: `http://localhost:3001/api/events/${event_id}`,
+    method: "put",
+    data: { event_name, date, address, description },
+    withCredentials: true,
+  });
+};

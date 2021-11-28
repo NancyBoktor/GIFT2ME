@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import { createEvent } from "../services/event";
+import { editEvent } from "../services/event";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
@@ -53,7 +53,7 @@ export default function CreateEventPage() {
 
   const [gifts, setGifts] = useState([]);
   const { id } = useParams();
-  const [event, setEvent] = useState();
+  const [event, setEvent] = useState({});
   const [show, setShow] = useState({});
 
   const onCancel = () => {
@@ -61,10 +61,11 @@ export default function CreateEventPage() {
   };
 
   const [eventData, setEventData] = useState({
+    event_id: id,
     event_name: "",
     date: null,
     address: "",
-    description: "",
+    description: ""
   });
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export default function CreateEventPage() {
     (async () => {
     try {
       const { data } = await getEvent(id);
-  console.log("data:", data)
+  console.log("data999:", data)
   setEvent(data)
     } catch (e) {
       console.log("error:", e);
@@ -90,17 +91,29 @@ export default function CreateEventPage() {
   })()
   }, [id])
 
+  useEffect(() => {
+    const eventData = {
+      event_id: event.id,
+      event_name: event.event_name,
+      date: event.date,
+      address: event.address,
+      description: event.description
+    }
+    setEventData(eventData)
+  }, [event])
 
-  const handleCreateEvent = async () => {
+  const handleEditEvent = async () => {
     try {
-      const { data } = await createEvent(eventData);
-      setEventData({
-        event_name: "",
-        date: null,
-        address: "",
-        description: "",
-      })
-      navigate(`/events/${data.data.id}`);
+      await editEvent(eventData);
+      // setEventData({
+      //   event_id: "",
+      //   event_name: "",
+      //   date: null,
+      //   address: "",
+      //   description: "",
+      // })
+      // console.log("dataaaa:", data)
+      navigate(`/events/${id}`);
     } catch (e) {
       console.log("error:", e);
     }
@@ -157,10 +170,10 @@ export default function CreateEventPage() {
             variant="contained"
             href="#contained-buttons"
             onClick={() => {
-              handleCreateEvent();
+              handleEditEvent();
             }}
           >
-            <h5 className="create-event-button">Create Event</h5>
+            <h5 className="create-event-button">Edit Event</h5>
           </Button>
           <Button
             variant="contained"
