@@ -6,6 +6,7 @@ import "./CreateEventForm.scss";
 
 export default function CreateEventForm(props) {
   const { eventData, setEventData, event } = props;
+  console.log("event.data:", eventData)
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({
     type: "",
@@ -149,7 +150,7 @@ export default function CreateEventForm(props) {
               onClick={() => handleClickOpen({ key: "date", type: "date" })}
             >
               <h5 className="event-input-info">
-                {eventData.date ? eventData.date : "Date"}
+                {eventData.date ? eventData.date : (event?.date ? event.date : "Date")}
               </h5>
             </Button>
           </div>
@@ -165,7 +166,7 @@ export default function CreateEventForm(props) {
               <h5 className="event-input-info">
                 {eventData.address
                   ? eventData.address
-                  : "Address"}
+                  : (event?.address ? event.address : "Address")}
               </h5>
             </Button>
           </div>
@@ -181,7 +182,7 @@ export default function CreateEventForm(props) {
               }><h5 id="desc">
               {eventData.description
                 ? eventData.description
-                : "Description"}
+                : (event?.description ? event.description : "Description")}
             </h5>
             </span>
 
