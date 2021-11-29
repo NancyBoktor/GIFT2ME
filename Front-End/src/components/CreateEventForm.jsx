@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
+import WarningAlert from "./Alert";
 import { createEvent, getEvent, editEvent } from "../services/event";
 import "./CreateEventForm.scss";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ export default function CreateEventForm(props) {
     dialogContent: "",
     required: false,
   });
+  const [openWarningAlert, setOpenWarningAlert] = useState(false);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -43,6 +45,10 @@ export default function CreateEventForm(props) {
         console.log("DataEvent----->", data);
         // navigate(`/events/${data.data.id}`);     ----> ask
       } else {
+        if (eventData.event_name === "") {
+          setOpenWarningAlert(true);
+          return;
+        }
         const { data } = await createEvent(eventData);
         console.log("DataEvent----->", data);
         setSelectedEventId(data.data.id);
@@ -158,6 +164,7 @@ export default function CreateEventForm(props) {
               {selectedEventId ? "Edit Event" : "Create Event"}
             </h5>
           </Button>
+          {openWarningAlert && <WarningAlert />}
         </div>
 
         <CreateEventModal
