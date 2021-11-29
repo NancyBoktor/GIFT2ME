@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";

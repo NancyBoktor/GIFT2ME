@@ -41,6 +41,7 @@ export default function CreateEventForm(props) {
           event_id: selectedEventId,
         });
         console.log("DataEvent----->", data);
+        // navigate(`/events/${data.data.id}`);     ----> ask
       } else {
         const { data } = await createEvent(eventData);
         console.log("DataEvent----->", data);

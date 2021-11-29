@@ -25,11 +25,6 @@ import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
 import CreateGiftList from "../components/CreateGiftList";
 
-/* ------ axios functions ------- */
-import { getGifts } from "../services/gift";
-import { editEvent } from "../services/event";
-import { getEvent } from "../services/event";
-
 const theme = createTheme({
   palette: {
     cancel: {
