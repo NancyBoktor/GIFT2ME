@@ -152,12 +152,7 @@ export default function CreateEventForm(props) {
               </h5>
             </span>
           </div>
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleCreateEvent();
-            }}
-          >
+          <Button variant="contained" onClick={handleCreateEvent}>
             <h5 className="create-event-button">
               {selectedEventId ? "Edit Event" : "Create Event"}
             </h5>

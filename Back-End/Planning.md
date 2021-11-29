@@ -59,10 +59,10 @@ Components
 
 
 
-
-
-
-                                             event && wishList page
+                                                 app
+         
+dashboard
+                                             event && wishList page (state)
                                       /                 |                     \
      create Event form                            create gift modal              render gift list to specific event
             3S

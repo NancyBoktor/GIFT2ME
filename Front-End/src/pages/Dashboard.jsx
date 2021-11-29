@@ -65,7 +65,7 @@ const Dashboard = () => {
     navigate("/events");
   };
   const edit = (id) => {
-    navigate(`/events/edit/${id}`);
+    navigate(`/events/${id}/edit`);
   };
 
   return (

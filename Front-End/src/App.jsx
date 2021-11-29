@@ -9,8 +9,6 @@ import Logout from "./components/logout";
 import About from "./pages/About";
 import EditEvent from "./pages/EditEvent";
 import Event from "./pages/Event";
-import { useState } from "react";
-
 function App() {
   return (
     <BrowserRouter>
@@ -21,8 +19,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard key="events" />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/events" element={<CreateEvent />} />
-        <Route path="/events/edit/:id" element={<EditEvent />} />
-        <Route path="/events/:id" element={<CreateEvent />} />
+        <Route path="/events/:id/edit" element={<EditEvent />} />
+        <Route path="/events/:id" element={<Event />} />
 
         {/* <Route path="/events/:id" element={<Wishlist />} /> */}
         <Route path="/about" element={<About />} />

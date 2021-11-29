@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
@@ -10,14 +10,6 @@ import "./CreateEvent.scss";
 export default function CreateEventPage(props) {
   const [selectedEventId, setSelectedEventId] = useState(0);
   console.log("select", selectedEventId);
-  // const { setEventId } = props;
-  // useEffect(() => {
-  //   const handelConnectEventId = async (selectedEventId) => {
-  //     if (selectedEventId > 0) {
-  //       await setEventId(selectedEventId);
-  //     }
-  //   };
-  // }, [selectedEventId]);
 
   return (
     <>

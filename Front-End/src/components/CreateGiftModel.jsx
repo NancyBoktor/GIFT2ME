@@ -37,11 +37,9 @@ export default function CreateGiftModel(props) {
       return;
     }
     try {
-      const { data } = await createGift(giftInfo);
-      // console.log("create---gift--->data--->front-end", data);
-      // console.log(selectedEventId === data.data.event_id);
+      await createGift(giftInfo);
       onCancel();
-      navigate(`/events/${selectedEventId}`);
+      navigate(`/events/${selectedEventId}/edit`);
     } catch (e) {
       console.log("error:", e);
     }

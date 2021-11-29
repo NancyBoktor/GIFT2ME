@@ -29,20 +29,22 @@ export default function CreateGiftList(props) {
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
 
   const [gifts, setGifts] = useState([]);
+  const [giftsLength, setGiftsLength] = useState(gifts.length);
 
   const handelGiftsList = async (eventId) => {
     try {
       const response = await getGifts(eventId);
       setGifts(response.data.gifts);
+      setGiftsLength(gifts.length);
     } catch (e) {
       console.log("error:", e);
     }
   };
   useEffect(() => {
-    if (selectedEventId > 0) {
-      const newGift = handelGiftsList(selectedEventId);
+    if (selectedEventId || giftsLength > 0) {
+      handelGiftsList(selectedEventId);
     }
-  }, [selectedEventId]);
+  }, [selectedEventId, giftsLength]);
 
   const handleDelete = (giftId) => {
     return axios
@@ -50,9 +52,9 @@ export default function CreateGiftList(props) {
         withCredentials: true,
       })
       .then((res) => {
-        const newGifts = [...gifts];
         const index = gifts.findIndex((gift) => gift.id === giftId);
         gifts.splice(index, 1);
+        const newGifts = [...gifts];
         setGifts(newGifts);
       });
   };
