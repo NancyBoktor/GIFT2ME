@@ -28,26 +28,30 @@ router.put("/:id", isAuth, async (req, res) => {
   const user_id = req.current_user_id;
   const { event_name, date, address, description } = req.body;
   const event_id = req.params.id;
-  console.log("user_id:", user_id)
-  console.log("req.body:", { event_id, event_name, date, address, description })
+  //console.log("user_id:", user_id);
+  console.log("req.body:", {
+    event_id,
+    event_name,
+    date,
+    address,
+    description,
+  });
   const { rows } = await db.query(
-    `UPDATE events SET event_name = $1, date = $2, address = $3, description = $4 WHERE id = $5`,
-      [event_name, date, address, description, event_id
-    ]);
-  // res.json(rows[0]);
+    `UPDATE events SET event_name = $1, date = $2, address = $3, description = $4 WHERE id = $5 RETURNING id, event_name, date,address,description`,
+    [event_name, date, address, description, event_id]
+  );
+  console.log("{return from edit--backend}", rows[0]);
   res.json({ success: true, data: rows[0] });
-}
-)
-
+});
 
 // GET events for logged in user. * DO NOT TOUCH*
 router.get("/", isAuth, async (req, res) => {
-  console.log("req.current_user_id", req.current_user_id);
+  //console.log("req.current_user_id", req.current_user_id);
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [
     req.current_user_id,
   ]);
 
-  console.log({ event: rows });
+  //console.log({ event: rows });
   res.json(rows);
 });
 

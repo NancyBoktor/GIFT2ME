@@ -20,24 +20,24 @@ import { useParams } from "react-router-dom";
 // import axios from "axios";
 import { getEvent } from "../services/event";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../fontawesome";
 
 import axios from "axios";
 import { Modal } from "react-bootstrap";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ReactDOM from "react-dom";
 
 const theme = createTheme({
   palette: {
     cancel: {
-      main: '#808080',
+      main: "#808080",
     },
   },
 });
 
 export default function CreateEventPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [giftInfo, setGiftInfo] = useState({
     event_id: "",
     gift_name: "",
@@ -65,7 +65,7 @@ export default function CreateEventPage() {
     event_name: "",
     date: null,
     address: "",
-    description: ""
+    description: "",
   });
 
   useEffect(() => {
@@ -74,22 +74,21 @@ export default function CreateEventPage() {
     }
   }, [giftInfo.event_id]);
 
-
-  useEffect (() => {
-    if(!id) {
+  useEffect(() => {
+    if (!id) {
       return;
     }
     handelGiftsList(id);
     (async () => {
-    try {
-      const { data } = await getEvent(id);
-  console.log("data999:", data)
-  setEvent(data)
-    } catch (e) {
-      console.log("error:", e);
-    }
-  })()
-  }, [id])
+      try {
+        const { data } = await getEvent(id);
+        console.log("data999:", data);
+        setEvent(data);
+      } catch (e) {
+        console.log("error:", e);
+      }
+    })();
+  }, [id]);
 
   useEffect(() => {
     const eventData = {
@@ -97,14 +96,15 @@ export default function CreateEventPage() {
       event_name: event.event_name,
       date: event.date,
       address: event.address,
-      description: event.description
-    }
-    setEventData(eventData)
-  }, [event])
+      description: event.description,
+    };
+    setEventData(eventData);
+  }, [event]);
 
   const handleEditEvent = async () => {
     try {
-      await editEvent(eventData);
+      const data = await editEvent(eventData);
+      console.log("{edit-data-res}", data.data.data.id);
       // setEventData({
       //   event_id: "",
       //   event_name: "",
@@ -113,7 +113,7 @@ export default function CreateEventPage() {
       //   description: "",
       // })
       // console.log("dataaaa:", data)
-      // navigate(`/events/${id}`);
+      navigate(`/events/${data.data.data.id}`);
     } catch (e) {
       console.log("error:", e);
     }
@@ -145,17 +145,19 @@ export default function CreateEventPage() {
   };
 
   const handleDelete = (giftId) => {
-    console.log("giftId:", giftId)
+    console.log("giftId:", giftId);
     return axios
-      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, { withCredentials: true })
+      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log("res:", res)
-        const newGifts = [...gifts]
-        const index = gifts.findIndex((gift) => gift.id === giftId)
-        gifts.splice(index, 1)
-        setGifts(newGifts)
+        console.log("res:", res);
+        const newGifts = [...gifts];
+        const index = gifts.findIndex((gift) => gift.id === giftId);
+        gifts.splice(index, 1);
+        setGifts(newGifts);
       });
-  }
+  };
 
   const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
@@ -165,7 +167,11 @@ export default function CreateEventPage() {
       <Navbar />
       <div className="event-page">
         <div className="event-info">
-          <CreateEventForm eventData={eventData} event={event} setEventData={setEventData} />
+          <CreateEventForm
+            eventData={eventData}
+            event={event}
+            setEventData={setEventData}
+          />
           <Button
             variant="contained"
             href="#contained-buttons"
@@ -191,13 +197,12 @@ export default function CreateEventPage() {
               giftInfo={giftInfo}
               setGiftInfo={setGiftInfo}
               setGifts={setGifts}
-            
             />
           )}
         </div>
       </div>
       {gifts.length > 0 && (
-        <TableContainer >
+        <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <GiftListHeader />
             <TableBody>
@@ -213,41 +218,76 @@ export default function CreateEventPage() {
                   <TableCell align="right">{gift.price}</TableCell>
                   <TableCell align="right">{gift.quantity}</TableCell>
                   <TableCell align="right">{gift.notes}</TableCell>
-                  <TableCell align="right">{gift.most_wanted === true && <FontAwesomeIcon icon={['fas', 'heart']} /> } </TableCell>
-                  <TableCell align="right" onClick={() => {setOpenGiftModel(true);}}>
-                    <FontAwesomeIcon icon={['fas', 'edit']} /></TableCell>
-                    {openGiftModel && (
-            <CreateGiftModel
-              onCancel={onCancel}
-              event_id={event.id}
-              giftInfo={giftInfo}
-              setGiftInfo={setGiftInfo}
-              setGifts={setGifts}
-            />
-          )}
-                  <TableCell align="right" className="click trash" onClick={() => handleShow(gift.id)}><FontAwesomeIcon icon={['fas', 'trash']} /></TableCell>
+                  <TableCell align="right">
+                    {gift.most_wanted === true && (
+                      <FontAwesomeIcon icon={["fas", "heart"]} />
+                    )}{" "}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    onClick={() => {
+                      setOpenGiftModel(true);
+                    }}
+                  >
+                    <FontAwesomeIcon icon={["fas", "edit"]} />
+                  </TableCell>
+                  {openGiftModel && (
+                    <CreateGiftModel
+                      onCancel={onCancel}
+                      event_id={event.id}
+                      giftInfo={giftInfo}
+                      setGiftInfo={setGiftInfo}
+                      setGifts={setGifts}
+                    />
+                  )}
+                  <TableCell
+                    align="right"
+                    className="click trash"
+                    onClick={() => handleShow(gift.id)}
+                  >
+                    <FontAwesomeIcon icon={["fas", "trash"]} />
+                  </TableCell>
                   {ReactDOM.createPortal(
-                  <Modal show={show[gift.id]}>
-                    <Modal.Header closeButton onClick={() => handleClose(gift.id)}>
-                      <Modal.Title>Delete Gift</Modal.Title>
-                    </Modal.Header>
+                    <Modal show={show[gift.id]}>
+                      <Modal.Header
+                        closeButton
+                        onClick={() => handleClose(gift.id)}
+                      >
+                        <Modal.Title>Delete Gift</Modal.Title>
+                      </Modal.Header>
 
-                    <Modal.Body>
-                      <p className="confirm-msg">Are you sure you wish to delete this gift?</p>
-                      <p className="delete-warning">This action cannot be undone</p>
-                    </Modal.Body>
+                      <Modal.Body>
+                        <p className="confirm-msg">
+                          Are you sure you wish to delete this gift?
+                        </p>
+                        <p className="delete-warning">
+                          This action cannot be undone
+                        </p>
+                      </Modal.Body>
 
-                    <Modal.Footer>
-                      <div>
-                        <ThemeProvider theme={theme}>
-                          <Button onClick={() => handleClose(gift.id)} variant="outlined" color="cancel">Cancel</Button>
-                        </ThemeProvider>
-                      </div>
-                      <Button onClick={() => handleDelete(gift.id)} variant="outlined" color="error">Delete</Button>
-                    </Modal.Footer>
-                  </Modal>,
-                  document.body
-                )}
+                      <Modal.Footer>
+                        <div>
+                          <ThemeProvider theme={theme}>
+                            <Button
+                              onClick={() => handleClose(gift.id)}
+                              variant="outlined"
+                              color="cancel"
+                            >
+                              Cancel
+                            </Button>
+                          </ThemeProvider>
+                        </div>
+                        <Button
+                          onClick={() => handleDelete(gift.id)}
+                          variant="outlined"
+                          color="error"
+                        >
+                          Delete
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>,
+                    document.body
+                  )}
                 </TableRow>
               ))}
             </TableBody>
@@ -258,5 +298,3 @@ export default function CreateEventPage() {
     </>
   );
 }
-
-

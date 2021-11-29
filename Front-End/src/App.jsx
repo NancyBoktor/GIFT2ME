@@ -21,7 +21,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/events" element={<CreateEvent />} />
         <Route path="/events/edit/:id" element={<EditEvent />} />
-        <Route path="/events/:id" element={<Event />} />
+        <Route path="/events/:id" element={<CreateEvent />} />
 
         {/* <Route path="/events/:id" element={<Wishlist />} /> */}
         <Route path="/about" element={<About />} />

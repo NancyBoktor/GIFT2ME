@@ -18,28 +18,38 @@ const MenuProps = {
 };
 
 export default function MultipleSelectButton(props) {
+  const { selectedEventInfo, setSelectedEventInfo } = props;
+  const [eventsList, setEventsList] = useState([]);
+  const { setEventId } = props;
   const [eventName, setEventName] = useState("");
-  const [events, setEvents] = useState([]);
-
-  const setGiftInfo = props.setGiftInfo;
-
   const handleChange = (event) => {
-    setEventName(event.target.value);
-    setGiftInfo((giftInfo) => {
-      return { ...giftInfo, event_id: event.target.value };
+    const eventInfo = event.target.value;
+    console.log("eventInfo-->value", eventInfo);
+    setSelectedEventInfo({
+      ...selectedEventInfo,
+      event_id: eventInfo.id,
+      event_name: eventInfo.event_name,
+      date: eventInfo.date,
+      description: eventInfo.description,
+    });
+    setEventName(eventInfo.event_name);
+    setEventId((giftInfo) => {
+      return {
+        ...giftInfo,
+        event_id: eventInfo.id,
+      };
     });
   };
 
   const token = window.localStorage.getItem("token");
   const contents = JSON.parse(atob(token.split(".")[1]));
   const user_id = contents.id;
-  console.log("------>userid from token", user_id);
   useEffect(() => {
     getEvents(user_id).then((res) => {
-      setEvents(res.data);
+      setEventsList(res.data);
     });
   }, []);
-  console.log("eventName", eventName);
+
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -51,8 +61,8 @@ export default function MultipleSelectButton(props) {
           label="Event Name"
           onChange={handleChange}
         >
-          {events.map((event) => (
-            <MenuItem key={event.id} value={event.id}>
+          {eventsList.map((event) => (
+            <MenuItem key={event.id} value={event}>
               {event.event_name}
             </MenuItem>
           ))}

@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
-
+import { createEvent } from "../services/event";
 import "./CreateEventForm.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateEventForm(props) {
-  const { eventData, setEventData, event } = props;
-  console.log("event.data:", eventData)
+  const { selectedEventInfo } = props;
+  const navigate = useNavigate;
+
+  const [eventData, setEventData] = useState({
+    event_name: "",
+    date: null,
+    address: "",
+    description: "",
+  });
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({
     type: "",
@@ -15,6 +23,16 @@ export default function CreateEventForm(props) {
     dialogContent: "",
     required: false,
   });
+
+  const handleCreateEvent = async () => {
+    try {
+      const { data } = await createEvent(eventData);
+      navigate(`/events/${data.data.id}`);
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
+
   const handleClickOpen = ({
     key,
     type,
@@ -64,7 +82,7 @@ export default function CreateEventForm(props) {
         <div className="event-btn-fields">
           <div id="event-btns">
             <Button
-              style={{color: '#696666', fontFamily:'Raleway'}}
+              style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
               href="#outlined-buttons"
               onClick={() =>
@@ -74,54 +92,75 @@ export default function CreateEventForm(props) {
               <h1 className="event-name">
                 {eventData.event_name
                   ? eventData.event_name
-                  : (event?.event_name ? event.event_name : "Event Name")}
+                  : selectedEventInfo?.event_name
+                  ? selectedEventInfo.event_name
+                  : "Event Name"}
               </h1>
             </Button>
           </div>
           <div id="event-btns">
             <Button
-              style={{color: '#696666', fontFamily:'Raleway'}}
+              style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
               href="#outlined-buttons"
               onClick={() => handleClickOpen({ key: "date", type: "date" })}
             >
               <h5 className="event-input-info">
-                {eventData.date ? (new Date(eventData.date.split("-"))).toLocaleDateString() : (event?.date ? (new Date(event.date.split("-"))).toLocaleDateString()  : "Date")}
+                {eventData.date
+                  ? new Date(eventData.date.split("-")).toLocaleDateString()
+                  : selectedEventInfo?.date
+                  ? new Date(
+                      selectedEventInfo.date.split("-")
+                    ).toLocaleDateString()
+                  : "Date"}
               </h5>
             </Button>
           </div>
           <div id="event-btns">
             <Button
-              style={{color: '#696666', fontFamily:'Raleway'}}
+              style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
               href="#outlined-buttons"
-              onClick={() =>
-                handleClickOpen({ key: "address", type: "text" })
-              }
+              onClick={() => handleClickOpen({ key: "address", type: "text" })}
             >
               <h5 className="event-input-info">
                 {eventData.address
                   ? eventData.address
-                  : (event?.address ? event.address : "Address")}
+                  : selectedEventInfo?.address
+                  ? selectedEventInfo.address
+                  : "Address"}
               </h5>
             </Button>
           </div>
           <div id="event-btns">
-            <span 
+            <span
               onClick={() =>
                 handleClickOpen({
                   key: "description",
                   type: "text",
                   multiline: true,
-                  dialogContent: "Please fill the description"
+                  dialogContent: "Please fill the description",
                 })
-              }><h5 id="desc">
-              {eventData.description
-                ? eventData.description
-                : (event?.description ? event.description : "Description")}
-            </h5>
+              }
+            >
+              <h5 id="desc">
+                {eventData.description
+                  ? eventData.description
+                  : selectedEventInfo?.description
+                  ? selectedEventInfo.description
+                  : "Description"}
+              </h5>
             </span>
           </div>
+          <Button
+            variant="contained"
+            href="#contained-buttons"
+            onClick={() => {
+              handleCreateEvent();
+            }}
+          >
+            <h5 className="create-event-button">Create Event</h5>
+          </Button>
         </div>
 
         <CreateEventModal
