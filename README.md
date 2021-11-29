@@ -1,6 +1,4 @@
-# GIFT2ME
-
-Welcome to GIFT2ME! 
+# Welcome to GIFT2ME!
 
 A simple webapp designed to allow users to create events where they can share a gift wishlist with their friends and family!
 Upon visiting the site users are greeted with a simple homepage. From there they can choose to login or register from the navigation bar.
