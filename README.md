@@ -22,7 +22,7 @@ A View of the Homepage
 !["Homepage"](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/homepage.png?raw=true)
 
 TITLE
-![""](url)
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/Front-End/public/home-page.gif?raw=true)
 
 TITLE
 ![""](url)
