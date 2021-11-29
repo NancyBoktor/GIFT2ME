@@ -1,8 +1,7 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import { register } from "../services/auth";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.scss";
-import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer";
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,7 +16,6 @@ const theme = createTheme({
 
 const Register = () => {
   const navigate = useNavigate();
-
   const [newUserInfo, setNewUserInfo] = useState({
     first_name: "",
     last_name: "",
@@ -32,14 +30,9 @@ const Register = () => {
     try {
       const data = await register(newUserInfo);
       const token = data.data.token;
-      console.log("Token", token);
       localStorage.setItem("token", token);
-      console.log("Data", data);
       navigate("/dashboard");
     } catch (e) {
-      console.log(e.response);
-      console.log(e.response.status);
-      console.log(e.response.data);
       setErrorMsg(e.response.data.message);
     }
   };
@@ -47,7 +40,6 @@ const Register = () => {
   return (
     <>
       <div className="register-background">
-        
         <div className="parent-container">
           <section className="register-wrapper">
             <h2 className="register-title">Register</h2>

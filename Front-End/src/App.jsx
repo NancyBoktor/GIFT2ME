@@ -9,6 +9,7 @@ import Logout from "./components/logout";
 import About from "./pages/About";
 import EditEvent from "./pages/EditEvent";
 import Event from "./pages/Event";
+import { useState } from "react";
 
 function App() {
   return (

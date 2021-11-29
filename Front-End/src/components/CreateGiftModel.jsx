@@ -12,17 +12,14 @@ import "./CreateGiftModel.scss";
 
 import MultipleSelectButton from "./MultipleSelectButton";
 import { createGift } from "../services/gift";
-import { getEvent } from "../services/event";
 
 export default function CreateGiftModel(props) {
-  const { selectedEventInfo, setSelectedEventInfo } = props;
-  console.log(";;;;;;creategiftModel--selectedEventInfo");
-  // const navigate = useNavigate();
+  const { setSelectedEventId, selectedEventId } = props;
 
-  const { SelectEventId } = useParams();
-  console.log("selected event id ---params", SelectEventId);
+  const navigate = useNavigate();
+  const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
-    event_id: "",
+    event_id: selectedEventId,
     gift_name: "",
     price: 0,
     notes: "",
@@ -30,67 +27,34 @@ export default function CreateGiftModel(props) {
     quantity: 0,
     most_wanted: false,
   });
-  console.log(":::::", giftInfo);
-  // const [event, setEvent] = useState();
 
-  const [openGiftModel, setOpenGiftModel] = useState(false);
-
-  // const handelGiftsList = async (eventId) => {
-  //   try {
-  //     const response = await getGifts(eventId);
-
-  //     setGifts(response.data.gifts);
-  //   } catch (e) {
-  //     console.log("error:", e);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (giftInfo.event_id !== "") {
-  //     handelGiftsList(giftInfo.event_id);
-  //   }
-  // }, [giftInfo.event_id]);
+  const onCancel = () => {
+    setOpenGiftModel(false);
+  };
 
   const handleCreateGift = async () => {
-    if (!giftInfo.event_id) {
+    if (selectedEventId === 0) {
       return;
     }
     try {
       const { data } = await createGift(giftInfo);
-      console.log("data:", data);
-      props.onCancel();
-      setGifts((prev) => [...prev, data.data[0]]);
-      navigate(`/events/${data.data[0].event_id}`);
+      // console.log("create---gift--->data--->front-end", data);
+      // console.log(selectedEventId === data.data.event_id);
+      onCancel();
+      navigate(`/events/${selectedEventId}`);
     } catch (e) {
       console.log("error:", e);
     }
   };
 
-  useEffect(() => {
-    if (!selectedEventInfo.event_id) {
-      return;
-    }
-    handelGiftsList(selectedEventInfo.event_id);
-    (async () => {
-      try {
-        const { data } = await getEvent(selectedEventInfo.event_id);
-        // console.log("data:", data);
-        setEvent(data);
-      } catch (e) {
-        console.log("error:", e);
-      }
-    })();
-  }, [selectedEventInfo.event_id]);
-
-  const onCancel = () => {
-    setOpenGiftModel(false);
+  const handleSelectEvent = (event_id) => {
+    setSelectedEventId(event_id);
   };
 
   return (
     <div>
       <Button
         variant="contained"
-        href="#contained-buttons"
         onClick={() => {
           setOpenGiftModel(true);
         }}
@@ -120,9 +84,8 @@ export default function CreateGiftModel(props) {
                 autoComplete="off"
               >
                 <MultipleSelectButton
-                  setEventId={setGiftInfo}
-                  selectedEventInfo={selectedEventInfo}
-                  setSelectedEventInfo={setSelectedEventInfo}
+                  onChange={handleSelectEvent}
+                  selectedEventId={selectedEventId}
                 />
                 <div>
                   <TextField
@@ -195,11 +158,7 @@ export default function CreateGiftModel(props) {
               </Box>
               <div className="modal-buttons">
                 <Stack direction="row" spacing={2}>
-                  <Button
-                    variant="outlined"
-                    href="#outlined-buttons"
-                    //onClick={handleCreateGift}
-                  >
+                  <Button variant="outlined" onClick={handleCreateGift}>
                     ADD
                   </Button>
                 </Stack>

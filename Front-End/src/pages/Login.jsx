@@ -1,20 +1,19 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import { login } from "../services/auth";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     mybutton: {
-      main: '#72D6C9',
+      main: "#72D6C9",
     },
   },
 });
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,16 +29,11 @@ const Login = () => {
     try {
       const data = await login(userInfo);
       const token = data.data.token;
-      console.log("Token", token);
       localStorage.setItem("token", token);
-      console.log("Data", data);
       navigate("/dashboard");
     } catch (e) {
-      console.log(e);
+      console.error(e);
       if (e.response) {
-        console.log(e.response.status);
-        console.log(e.response.data);
-        console.log(e.response.data.message);
         setErrorMsg(e.response.data.message);
       }
     }
@@ -53,7 +47,6 @@ const Login = () => {
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <label>
-
               <input
                 type="email"
                 placeholder="email"
@@ -65,7 +58,6 @@ const Login = () => {
               />
             </label>
             <label>
-
               <input
                 type="password"
                 placeholder="**********"
@@ -78,22 +70,20 @@ const Login = () => {
             </label>
             <span className="error-msg">{errorMsg}</span>
             <div>
-            <ThemeProvider theme={theme}>
-              <Button
-                variant="contained"
-                color="mybutton"
-                type="submit"
-              >
-                Login
-              </Button>
+              <ThemeProvider theme={theme}>
+                <Button variant="contained" color="mybutton" type="submit">
+                  Login
+                </Button>
               </ThemeProvider>
             </div>
           </form>
           <div>
-            Don't have an account? | <Link to="/register"><span>Register</span></Link>
+            Don't have an account? |{" "}
+            <Link to="/register">
+              <span>Register</span>
+            </Link>
           </div>
         </section>
-
       </div>
       <Footer />
     </>

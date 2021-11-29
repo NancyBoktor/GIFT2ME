@@ -105,21 +105,12 @@ export default function CreateEventPage() {
     try {
       const data = await editEvent(eventData);
       console.log("{edit-data-res}", data.data.data.id);
-      // setEventData({
-      //   event_id: "",
-      //   event_name: "",
-      //   date: null,
-      //   address: "",
-      //   description: "",
-      // })
-      // console.log("dataaaa:", data)
       navigate(`/events/${data.data.data.id}`);
     } catch (e) {
       console.log("error:", e);
     }
   };
 
-  // console.log("event Date", eventData);
   const handelGetGifts = async () => {
     try {
       const gifts = await getGifts(event.id);
@@ -129,15 +120,10 @@ export default function CreateEventPage() {
     }
   };
 
-  // function createData(name, calories, fat, carbs, protein) {
-  //   return { name, calories, fat, carbs, protein };
-  // }
-
   const handelGiftsList = async (eventId) => {
-    // console.log("........eventId", eventId);
     try {
       const response = await getGifts(eventId);
-      //console.log("gifts--->--->", gifts);
+
       setGifts(response.data.gifts);
     } catch (e) {
       console.log("error:", e);
@@ -174,7 +160,6 @@ export default function CreateEventPage() {
           />
           <Button
             variant="contained"
-            href="#contained-buttons"
             onClick={() => {
               handleEditEvent();
             }}
@@ -183,7 +168,6 @@ export default function CreateEventPage() {
           </Button>
           <Button
             variant="contained"
-            href="#contained-buttons"
             onClick={() => {
               setOpenGiftModel(true);
             }}

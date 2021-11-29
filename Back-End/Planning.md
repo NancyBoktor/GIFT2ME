@@ -56,3 +56,21 @@ Components
 - gifter - form
 - footer
 - navbar
+
+
+
+
+
+
+                                             event && wishList page
+                                      /                 |                     \
+     create Event form                            create gift modal              render gift list to specific event
+            3S
+    /       |         \     
+  create    render     render
+   new      Selected    edit
+  event     event       event
+
+         coneection
+            |
+        with MultipleSelctBotton

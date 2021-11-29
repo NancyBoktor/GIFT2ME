@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { renderEventForm, openGiftModel, setOpenGiftModel } = props;
+  const { selectedEventId, openGiftModel, setOpenGiftModel } = props;
 
   const [show, setShow] = useState({});
 
@@ -38,24 +38,24 @@ export default function CreateGiftList(props) {
       console.log("error:", e);
     }
   };
-  //   useEffect(() => {
-  //     if (renderEventForm.event_id !== "") {
-  //       handelGiftsList(renderEventForm.event_id);
-  //     }
-  //   }, [renderEventForm.event_id]);
+  useEffect(() => {
+    if (selectedEventId > 0) {
+      const newGift = handelGiftsList(selectedEventId);
+    }
+  }, [selectedEventId]);
 
-  //   const handleDelete = (giftId) => {
-  //     return axios
-  //       .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, {
-  //         withCredentials: true,
-  //       })
-  //       .then((res) => {
-  //         const newGifts = [...gifts];
-  //         const index = gifts.findIndex((gift) => gift.id === giftId);
-  //         gifts.splice(index, 1);
-  //         setGifts(newGifts);
-  //       });
-  //   };
+  const handleDelete = (giftId) => {
+    return axios
+      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        const newGifts = [...gifts];
+        const index = gifts.findIndex((gift) => gift.id === giftId);
+        gifts.splice(index, 1);
+        setGifts(newGifts);
+      });
+  };
   return (
     <div>
       {gifts.length > 0 && (
@@ -127,7 +127,7 @@ export default function CreateGiftList(props) {
                           </ThemeProvider>
                         </div>
                         <Button
-                         // onClick={() => handleDelete(gift.id)}
+                          onClick={() => handleDelete(gift.id)}
                           variant="outlined"
                           color="error"
                         >

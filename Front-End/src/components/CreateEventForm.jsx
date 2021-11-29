@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
-import { createEvent } from "../services/event";
+import { createEvent, getEvent, editEvent } from "../services/event";
 import "./CreateEventForm.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateEventForm(props) {
-  const { selectedEventInfo } = props;
-  const navigate = useNavigate;
-
+  const { selectedEventId, setSelectedEventId } = props;
+  const navigate = useNavigate();
   const [eventData, setEventData] = useState({
     event_name: "",
     date: null,
@@ -24,10 +23,30 @@ export default function CreateEventForm(props) {
     required: false,
   });
 
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const { data } = await getEvent(selectedEventId);
+      setEventData(data);
+    };
+    if (selectedEventId) {
+      fetchEvent();
+    }
+  }, [selectedEventId]);
+
   const handleCreateEvent = async () => {
     try {
-      const { data } = await createEvent(eventData);
-      navigate(`/events/${data.data.id}`);
+      if (selectedEventId) {
+        const { data } = await editEvent({
+          ...eventData,
+          event_id: selectedEventId,
+        });
+        console.log("DataEvent----->", data);
+      } else {
+        const { data } = await createEvent(eventData);
+        console.log("DataEvent----->", data);
+        setSelectedEventId(data.data.id);
+        navigate(`/events/${data.data.id}`);
+      }
     } catch (e) {
       console.log("error:", e);
     }
@@ -84,17 +103,12 @@ export default function CreateEventForm(props) {
             <Button
               style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
-              href="#outlined-buttons"
               onClick={() =>
                 handleClickOpen({ key: "event_name", type: "text" })
               }
             >
               <h1 className="event-name">
-                {eventData.event_name
-                  ? eventData.event_name
-                  : selectedEventInfo?.event_name
-                  ? selectedEventInfo.event_name
-                  : "Event Name"}
+                {eventData.event_name ? eventData.event_name : "Event Name"}
               </h1>
             </Button>
           </div>
@@ -102,16 +116,11 @@ export default function CreateEventForm(props) {
             <Button
               style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
-              href="#outlined-buttons"
               onClick={() => handleClickOpen({ key: "date", type: "date" })}
             >
               <h5 className="event-input-info">
                 {eventData.date
                   ? new Date(eventData.date.split("-")).toLocaleDateString()
-                  : selectedEventInfo?.date
-                  ? new Date(
-                      selectedEventInfo.date.split("-")
-                    ).toLocaleDateString()
                   : "Date"}
               </h5>
             </Button>
@@ -120,15 +129,10 @@ export default function CreateEventForm(props) {
             <Button
               style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
-              href="#outlined-buttons"
               onClick={() => handleClickOpen({ key: "address", type: "text" })}
             >
               <h5 className="event-input-info">
-                {eventData.address
-                  ? eventData.address
-                  : selectedEventInfo?.address
-                  ? selectedEventInfo.address
-                  : "Address"}
+                {eventData.address ? eventData.address : "Address"}
               </h5>
             </Button>
           </div>
@@ -144,22 +148,19 @@ export default function CreateEventForm(props) {
               }
             >
               <h5 id="desc">
-                {eventData.description
-                  ? eventData.description
-                  : selectedEventInfo?.description
-                  ? selectedEventInfo.description
-                  : "Description"}
+                {eventData.description ? eventData.description : "Description"}
               </h5>
             </span>
           </div>
           <Button
             variant="contained"
-            href="#contained-buttons"
             onClick={() => {
               handleCreateEvent();
             }}
           >
-            <h5 className="create-event-button">Create Event</h5>
+            <h5 className="create-event-button">
+              {selectedEventId ? "Edit Event" : "Create Event"}
+            </h5>
           </Button>
         </div>
 

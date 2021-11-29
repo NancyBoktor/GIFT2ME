@@ -17,7 +17,7 @@ const createGift = async (req, res, next) => {
      VALUES ($1, $2, $3, $4 , $5, $6, $7) RETURNING * `,
       [event_id, gift_name, price, notes, store_url, quantity, most_wanted]
     );
-    //console.log("giftData", rows);
+    console.log("giftData---------->", rows);
     res.json({ success: true, data: rows });
   } catch (error) {
     console.log(error);

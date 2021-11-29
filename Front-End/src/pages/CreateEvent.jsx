@@ -1,21 +1,23 @@
-import "../fontawesome";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import CreateGiftModel from "../components/CreateGiftModel";
 import CreateGiftList from "../components/CreateGiftList";
 import Footer from "../components/Footer";
+import "../fontawesome";
 import "./CreateEvent.scss";
-import { useState } from "react";
 
 export default function CreateEventPage(props) {
-  const [selectedEventInfo, setRenderEventInfo] = useState({
-    event_id: "",
-    event_name: "",
-    date: null,
-    address: "",
-    description: "",
-  });
-  console.log("{{{{{{{{----renderEventInfo-----Mainpage", selectedEventInfo);
+  const [selectedEventId, setSelectedEventId] = useState(0);
+  console.log("select", selectedEventId);
+  // const { setEventId } = props;
+  // useEffect(() => {
+  //   const handelConnectEventId = async (selectedEventId) => {
+  //     if (selectedEventId > 0) {
+  //       await setEventId(selectedEventId);
+  //     }
+  //   };
+  // }, [selectedEventId]);
 
   return (
     <>
@@ -23,17 +25,14 @@ export default function CreateEventPage(props) {
       <div className="event-page">
         <div className="event-info">
           <CreateEventForm
-            selectedEventInfo={selectedEventInfo}
-            setRenderEventInfo={setRenderEventInfo}
+            selectedEventId={selectedEventId}
+            setSelectedEventId={setSelectedEventId}
           />
           <CreateGiftModel
-            selectedEventInfo={selectedEventInfo}
-            setRenderEventInfo={setRenderEventInfo}
+            setSelectedEventId={setSelectedEventId}
+            selectedEventId={selectedEventId}
           />
-          <CreateGiftList
-            selectedEventInfo={selectedEventInfo}
-            setRenderEventInfo={setRenderEventInfo}
-          />
+          <CreateGiftList selectedEventId={selectedEventId} />
         </div>
       </div>
 
