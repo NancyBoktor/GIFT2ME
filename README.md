@@ -18,10 +18,7 @@ When the quantity of an item hits zero the item will be reserved and can no long
 A resevered badge will appear on that specific gift.
 
 ## Sample Pages
-A View of the Homepage
-!["Homepage"](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/homepage.png?raw=true)
-
-TITLE
+Homepage View
 ![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/Front-End/public/home-page.gif?raw=true)
 
 TITLE
