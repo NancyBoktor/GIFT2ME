@@ -69,7 +69,7 @@ export default function CreateEventPage() {
 
   useEffect(() => {
     if (giftInfo.event_id !== "") {
-      handelGiftsList(giftInfo.event_id);
+      handleGiftsList(giftInfo.event_id);
     }
   }, [giftInfo.event_id]);
 
@@ -78,7 +78,7 @@ export default function CreateEventPage() {
     if(!id) {
       return;
     }
-    handelGiftsList(id);
+    handleGiftsList(id);
     (async () => {
     try {
       const { data } = await getEvent(id);
@@ -100,14 +100,14 @@ export default function CreateEventPage() {
         address: "",
         description: "",
       })
-      navigate(`/events/${data.data.id}`);
+      navigate(`/events/edit/${data.data.id}`);
     } catch (e) {
       console.log("error:", e);
     }
   };
 
   // console.log("event Date", eventData);
-  const handelGetGifts = async () => {
+  const handleGetGifts = async () => {
     try {
       const gifts = await getGifts(event.id);
       setGifts(gifts);
@@ -116,11 +116,8 @@ export default function CreateEventPage() {
     }
   };
 
-  // function createData(name, calories, fat, carbs, protein) {
-  //   return { name, calories, fat, carbs, protein };
-  // }
 
-  const handelGiftsList = async (eventId) => {
+  const handleGiftsList = async (eventId) => {
     // console.log("........eventId", eventId);
     try {
       const response = await getGifts(eventId);
