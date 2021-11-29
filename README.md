@@ -4,10 +4,13 @@ Welcome to GIFT2ME!
 
 A simple webapp designed to allow users to create events where they can share a gift wishlist with their friends and family!
 Upon visiting the site users are greeted with a simple homepage. From there they can choose to login or register from the navigation bar.
-After logging in or registering, users are immediately redirected to their dashboard. Notice the customized welcome message in the navigation bar once a user logs in.
+After logging in or registering, users are immediately redirected to their dashboard. 
+
+Notice the customized welcome message in the navigation bar once a user logs in.
 
 From the dashboard users can press the create event button to navigate to the create event page. From there they can input event details then start adding gifts they would like to receive.
 Only a name for the event is required, all other fields are optional.
+
 For the adding a gift, users have the option of selecting previously created events or the current one being created and must input at least the name of the gift wanted.
 Users can also edit or delete each gift added via an edit/delete modal.
 
