@@ -19,7 +19,7 @@ A resevered badge will appear on that specific gift.
 
 ## Sample Pages
 Homepage View
-![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/Front-End/public/home-page.gif?raw=true)
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/home-page.gif?raw=true)
 
 TITLE
 ![""](url)
