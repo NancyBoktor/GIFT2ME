@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -16,8 +14,6 @@ import { createGift } from "../services/gift";
 
 export default function CreateGiftModel(props) {
   const { setSelectedEventId, selectedEventId } = props;
-
-  // const navigate = useNavigate();
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
@@ -58,7 +54,6 @@ export default function CreateGiftModel(props) {
       // }
       await createGift(giftInfo);
       onCancel();
-      // navigate(`/events/${selectedEventId}/edit`);
     } catch (e) {
       console.log("error:", e);
     }

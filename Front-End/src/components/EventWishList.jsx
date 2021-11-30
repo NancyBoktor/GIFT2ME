@@ -31,12 +31,7 @@ export default function CreateGiftList(props) {
     try {
       const { data } = await updateGift(event_id, gift_id);
       if (data.success) {
-        // const newGifts = gifts.map((g) => {
-        //   if (g.id === gift_id) {
-        //     return { ...g, quantity: g.quantity - 1 };
-        //   }
-        //   return g;
-        // });
+     
         setGifts(data.data);
       }
       navigate(`/invitation/${event_id}`, { replace: true });

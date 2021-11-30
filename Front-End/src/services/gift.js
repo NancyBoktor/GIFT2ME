@@ -9,7 +9,6 @@ export const createGift = async ({
   quantity,
   most_wanted,
 }) => {
-  console.log("+++++++++++", event_id);
   return axios({
     url: "http://localhost:3001/api/gifts",
     method: "post",
