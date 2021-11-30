@@ -13,6 +13,7 @@ import { createTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import { updateGift } from "../services/gift";
+
 const theme = createTheme({
   palette: {
     cancel: {
@@ -22,21 +23,33 @@ const theme = createTheme({
 });
 
 export default function CreateGiftList(props) {
-  const { gifts, id } = props;
-  //const navigate = useNavigate();
+  const { gifts, setGifts, event_id } = props;
+  const navigate = useNavigate();
   const [reserved, setReserved] = useState(false);
-  //const [giftQuantity, setGiftQuantity] = useState();
-  //const [Disabled, setDisabled] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(false);
 
-  // const handleOnClick = async () => {
-  //   if (giftQuantity === 0) {
-  //     setDisabled(true);
-  //     setReserved(true);
-  //     return;
-  //   }
-  //   await updateGift(id);
-  //   navigate(`/invitation/${id}`);
-  // };
+  const handleOnClick = async (gift_quantity, gift_id) => {
+    if (gift_quantity === 0) {
+      setDisabledButton(true);
+      setReserved(true);
+      return;
+    }
+    try {
+      const { data } = await updateGift(event_id, gift_id);
+      if (data.success) {
+        // const newGifts = gifts.map((g) => {
+        //   if (g.id === gift_id) {
+        //     return { ...g, quantity: g.quantity - 1 };
+        //   }
+        //   return g;
+        // });
+        setGifts(data.data);
+      }
+      navigate(`/invitation/${event_id}`, { replace: true });
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
 
   return (
     <div>
@@ -52,6 +65,7 @@ export default function CreateGiftList(props) {
                 <TableCell align="right">Notes</TableCell>
                 <TableCell align="right">Most Wanted</TableCell>
                 <TableCell align="right">Reservation</TableCell>
+                <TableCell align="right">Gifters</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -74,10 +88,15 @@ export default function CreateGiftList(props) {
                   </TableCell>
                   <TableCell
                     align="right"
-                    // onClick={handleOnClick}
+                    onClick={() => {
+                      handleOnClick(gift.quantity, gift.id);
+                    }}
                   >
-                    <Button>{reserved ? "Reserved" : "Reserve"}</Button>
+                    <Button disabled={disabledButton}>
+                      {reserved ? "Reserved" : "Reserve"}
+                    </Button>
                   </TableCell>
+                  <TableCell align="right">Maram</TableCell>
                 </TableRow>
               ))}
             </TableBody>

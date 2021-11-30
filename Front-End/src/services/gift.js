@@ -35,11 +35,11 @@ export const getGifts = async (event_id) => {
   });
 };
 
-// export const updateGift = async (event_id) => {
-//   return axios({
-//     url: `http://localhost:3001/api/gift/${gift_id}`,
-//     method: "put",
-//     data: { event_id },
-//     withCredentials: true,
-//   });
-// };
+export const updateGift = async (event_id,gift_id) => {
+  return axios({
+    url: `http://localhost:3001/api/gift/${gift_id}`,
+    method: "put",
+    data: { event_id },
+    withCredentials: true,
+  });
+};

@@ -30,6 +30,6 @@ app.use("/api/events", eventsRouter);
 app.use("/api/gifts", giftsRouter);
 app.use("/api/gifters", giftersRouter);
 app.use("/api/selectedGifts", selectedGiftsRouter);
-// app.use("/api/gift", editGiftQuatity);
+app.use("/api/gift", editGiftQuatity);
 
 module.exports = app;
