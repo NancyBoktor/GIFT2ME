@@ -56,7 +56,7 @@ router.get("/", isAuth, async (req, res) => {
 });
 
 // Delete an event for specific user
-router.delete("/delete/:id", isAuth, async (req, res) => {
+router.delete("/:id/delete", isAuth, async (req, res) => {
   console.log("REQ.PARAMS:", req.params.id);
   const { rows } = await db.query(`DELETE from events WHERE id = $1`, [
     req.params.id,

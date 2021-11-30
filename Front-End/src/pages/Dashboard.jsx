@@ -46,7 +46,7 @@ const Dashboard = () => {
   const handleDelete = (eventId) => {
     console.log("EVENTID:", eventId);
     return axios
-      .delete(`http://localhost:3001/api/events/delete/${eventId}`, {
+      .delete(`http://localhost:3001/api/events/${eventId}/delete`, {
         withCredentials: true,
       })
       .then((res) => {

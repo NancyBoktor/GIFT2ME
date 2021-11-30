@@ -57,7 +57,7 @@ export default function CreateGiftList(props) {
 
   const handleDelete = (giftId) => {
     return axios
-      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, { //<-swap order
+      .delete(`http://localhost:3001/api/gifts/${giftId}/delete`, {
         withCredentials: true,
       })
       // .then((res) => {
