@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
@@ -35,12 +34,17 @@ const theme = createTheme({
 
 export default function EditEvent() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [selectedEventId, setSelectedEventId] = useState(id);
 
   // useEffect(() => {
   //   handleGiftsList(id);
   // }, [id]);
+
+  const invitationPage = (id) => {
+    navigate(`/invitation/${id}`);
+  };
 
   return (
     <>
@@ -58,6 +62,7 @@ export default function EditEvent() {
           <CreateGiftList selectedEventId={selectedEventId} />
         </div>
       </div>
+      <Button onClick={() => invitationPage(id)}>View your invitation</Button>
       <Footer />
     </>
   );

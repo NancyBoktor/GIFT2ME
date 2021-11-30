@@ -7,40 +7,39 @@ import EventWishList from "../components/EventWishList";
 import GifterEventInfo from "../components/GifterEventInfo";
 import { getGifts } from "../services/gift";
 
-export default function Wishlist() {
+export default function Event() {
   const { id } = useParams();
 
   const [eventInfo, setEventInfo] = useState({});
   const [gifts, setGifts] = useState([]);
 
+  const handleEventInfo = async (id) => {
+    try {
+      const response = await getEvent(id);
+      setEventInfo(response.data);
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
+  const handleGiftsList = async (id) => {
+    try {
+      const response = await getGifts(id);
+      setGifts(response.data.gifts);
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
+
   useEffect(() => {
-    const handelEventInfo = async (id) => {
-      try {
-        const response = await getEvent(id);
-        setEventInfo(response.data);
-      } catch (e) {
-        console.log("error:", e);
-      }
-    };
-    const handelGiftsList = async (id) => {
-      try {
-        const response = await getGifts(id);
-        setGifts(response.data.gifts);
-      } catch (e) {
-        console.log("error:", e);
-      }
-    };
-    handelGiftsList(id);
-    handelEventInfo(id);
+    handleGiftsList(id);
+    handleEventInfo(id);
   }, []);
 
-  console.log("LLLLL");
   return (
     <>
       <Navbar />
       <GifterEventInfo eventInfo={eventInfo} />
       <EventWishList gifts={gifts} event_id={id} setGifts={setGifts} />
-
       <Footer />
     </>
   );

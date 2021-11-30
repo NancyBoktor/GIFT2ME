@@ -49,6 +49,10 @@ export default function CreateEventForm(props) {
   const handleCreateEvent = async () => {
     try {
       if (selectedEventId) {
+        if (eventData.event_name === "") {
+          setOpenWarningAlert(true);
+          return;
+        }
         const { data } = await editEvent({
           ...eventData,
           event_id: selectedEventId,

@@ -14,10 +14,7 @@ export default function CreateEventPage(props) {
 
   const [selectedEventId, setSelectedEventId] = useState(0);
   console.log("select", selectedEventId);
-  // const invitationPage = (id) => {
-  //   navigate(`/invitation/${id}`);
-  // };
-  // if (id) <Navigate to={`/events/${id}/edit`} />;
+  
   return (
     <>
       <Navbar />
@@ -29,7 +26,6 @@ export default function CreateEventPage(props) {
           />
         </div>
       </div>
-      {/* <Button onClick={() => invitationPage(id)}>View your invitation</Button> */}
       <Footer />
     </>
   );

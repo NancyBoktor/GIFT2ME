@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
@@ -25,15 +25,9 @@ const theme = createTheme({
 export default function CreateGiftList(props) {
   const { gifts, setGifts, event_id } = props;
   const navigate = useNavigate();
-  const [reserved, setReserved] = useState(false);
-  const [disabledButton, setDisabledButton] = useState(false);
+ 
 
-  const handleOnClick = async (gift_quantity, gift_id) => {
-    if (gift_quantity === 0) {
-      setDisabledButton(true);
-      setReserved(true);
-      return;
-    }
+  const handleOnClick = async (gift_id) => {
     try {
       const { data } = await updateGift(event_id, gift_id);
       if (data.success) {
@@ -77,7 +71,9 @@ export default function CreateGiftList(props) {
                   <TableCell component="th" scope="row">
                     {gift.gift_name}
                   </TableCell>
-                  <TableCell align="right">{gift.store_url}</TableCell>
+                  <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
+                    <a href={gift.store_url} target="_blank" > {gift.store_url} </a>
+                  </TableCell>
                   <TableCell align="right">{gift.price}</TableCell>
                   <TableCell align="right">{gift.quantity}</TableCell>
                   <TableCell align="right">{gift.notes}</TableCell>
@@ -88,12 +84,13 @@ export default function CreateGiftList(props) {
                   </TableCell>
                   <TableCell
                     align="right"
-                    onClick={() => {
-                      handleOnClick(gift.quantity, gift.id);
-                    }}
                   >
-                    <Button disabled={disabledButton}>
-                      {reserved ? "Reserved" : "Reserve"}
+                    <Button 
+                      disabled={gift.quantity < 1} 
+                      onClick={() => {
+                      handleOnClick(gift.id);
+                    }}>
+                      {gift.quantity < 1 ? "Reserved" : "Reserve"}
                     </Button>
                   </TableCell>
                   <TableCell align="right">Maram</TableCell>
@@ -103,6 +100,7 @@ export default function CreateGiftList(props) {
           </Table>
         </TableContainer>
       )}
+      
     </div>
   );
 }

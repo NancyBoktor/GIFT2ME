@@ -14,6 +14,8 @@ import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { getGifts } from "../services/gift";
 import "../components/CreateGiftList.scss";
+ 
+
 const theme = createTheme({
   palette: {
     cancel: {
@@ -63,7 +65,7 @@ export default function CreateGiftList(props) {
     <div>
       {gifts.length > 0 && (
         <TableContainer>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: "650px" }} aria-label="simple table">
             <GiftListHeader />
             <TableBody>
               {gifts.map((gift) => (
@@ -74,7 +76,9 @@ export default function CreateGiftList(props) {
                   <TableCell component="th" scope="row">
                     {gift.gift_name}
                   </TableCell>
-                  <TableCell align="center">{gift.store_url}</TableCell>
+                  <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
+                    <a href={gift.store_url} target="_blank" > {gift.store_url} </a>
+                  </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>
                   <TableCell align="center">{gift.notes}</TableCell>
