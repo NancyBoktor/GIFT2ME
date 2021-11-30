@@ -7,7 +7,7 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color:rgb(217, 236, 235);
+  background-color:rgb(208, 236, 235);
   border-radius: 10%;
 }
 
@@ -23,3 +23,19 @@
   display: flex;
   justify-content: center;
 }
+
+.wishlist {
+  margin-top: 100px;
+}
+
+.add-gift-btn {
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+.create-event-btn {
+  margin-top: -15px;
+  margin-left: 165px;
+}
+

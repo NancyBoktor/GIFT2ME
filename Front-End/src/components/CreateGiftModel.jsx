@@ -56,15 +56,17 @@ export default function CreateGiftModel(props) {
   };
 
   return (
-    <div>
+    <div className="wishlist">
+      <div className="add-gift-btn">
       <Button
         variant="contained"
         onClick={() => {
           setOpenGiftModel(true);
         }}
       >
-        <h5 className="create-event-button">Add Gifts</h5>
+        <h5>Add Gift</h5>
       </Button>
+      </div>
       {openGiftModel && (
         <Modal
           open={true}

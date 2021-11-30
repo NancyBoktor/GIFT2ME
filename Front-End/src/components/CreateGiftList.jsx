@@ -74,11 +74,11 @@ export default function CreateGiftList(props) {
                   <TableCell component="th" scope="row">
                     {gift.gift_name}
                   </TableCell>
-                  <TableCell align="right">{gift.store_url}</TableCell>
-                  <TableCell align="right">{gift.price}</TableCell>
-                  <TableCell align="right">{gift.quantity}</TableCell>
-                  <TableCell align="right">{gift.notes}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">{gift.store_url}</TableCell>
+                  <TableCell align="center">{gift.price}</TableCell>
+                  <TableCell align="center">{gift.quantity}</TableCell>
+                  <TableCell align="center">{gift.notes}</TableCell>
+                  <TableCell align="center">
                     {gift.most_wanted === true && (
                       <FontAwesomeIcon
                         className="heart"
@@ -87,7 +87,7 @@ export default function CreateGiftList(props) {
                     )}
                   </TableCell>
                   <TableCell
-                    align="right"
+                    align="center"
                     onClick={() => {
                       setOpenGiftModel(true);
                     }}
@@ -96,7 +96,7 @@ export default function CreateGiftList(props) {
                   </TableCell>
                   {openGiftModel && <CreateGiftModel />}
                   <TableCell
-                    align="right"
+                    align="center"
                     className="click trash"
                     onClick={() => handleShow(gift.id)}
                   >
