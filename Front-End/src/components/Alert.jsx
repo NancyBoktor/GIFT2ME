@@ -6,7 +6,7 @@ export default function WarningAlert() {
   return (
     <Stack sx={{ width: "100%" }} spacing={2}>
       <Alert variant="outlined" severity="error">
-        Please fill required fields ;)
+        Please fill required fields
       </Alert>
     </Stack>
   );
