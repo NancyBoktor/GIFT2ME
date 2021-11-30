@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { getGifts } from "../services/gift";
+import "../components/CreateGiftList.scss";
 const theme = createTheme({
   palette: {
     cancel: {
@@ -79,7 +80,10 @@ export default function CreateGiftList(props) {
                   <TableCell align="right">{gift.notes}</TableCell>
                   <TableCell align="right">
                     {gift.most_wanted === true && (
-                      <FontAwesomeIcon icon={["fas", "heart"]} />
+                      <FontAwesomeIcon
+                        className="heart"
+                        icon={["fas", "heart"]}
+                      />
                     )}
                   </TableCell>
                   <TableCell

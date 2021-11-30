@@ -10,7 +10,7 @@ const giftsRouter = require("./routes/gifts");
 const selectedGiftsRouter = require("./routes/selectedGifts");
 const giftersRouter = require("./routes/gifters");
 const authRouter = require("./routes/auth");
-
+const editGiftQuatity = require("./routes/gift");
 const app = express();
 const corsOption = {
   origin: [process.env.CLIENTSIDE_DOMAIN],
@@ -30,5 +30,6 @@ app.use("/api/events", eventsRouter);
 app.use("/api/gifts", giftsRouter);
 app.use("/api/gifters", giftersRouter);
 app.use("/api/selectedGifts", selectedGiftsRouter);
+// app.use("/api/gift", editGiftQuatity);
 
 module.exports = app;

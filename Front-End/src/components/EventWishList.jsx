@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
-import GiftListHeader from "../components/GiftListHeader";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ReactDOM from "react-dom";
-import CreateGiftModel from "./CreateGiftModel";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Modal } from "react-bootstrap";
+
+import { createTheme } from "@mui/material/styles";
+
 import { Button } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
-// import { getGifts } from "../services/gift";
-// import { getEvent } from "../services/event";
+import { updateGift } from "../services/gift";
 const theme = createTheme({
   palette: {
     cancel: {
@@ -22,42 +20,23 @@ const theme = createTheme({
     },
   },
 });
+
 export default function CreateGiftList(props) {
-  const { gifts } = props;
-  //   const { id } = useParams();
-
+  const { gifts, id } = props;
+  //const navigate = useNavigate();
   const [reserved, setReserved] = useState(false);
+  //const [giftQuantity, setGiftQuantity] = useState();
+  //const [Disabled, setDisabled] = useState(false);
 
-  //   const [gifts, setGifts] = useState([]);
-  //   const [eventInfo, setEventInfo] = useState({});
-  //   const [giftsLength, setGiftsLength] = useState(gifts.length);
-
-  //   const handelGiftsList = async (id) => {
-  //     try {
-  //       const response = await getGifts(id);
-  //       setGifts(response.data.gifts);
-  //       setGiftsLength(gifts.length);
-  //     } catch (e) {
-  //       console.log("error:", e);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     handelGiftsList(id);
-  //   }, [id, giftsLength]);
-
-  //   const handelEventInfo = async (id) => {
-  //     try {
-  //       const response = await getEvent(id);
-  //       setEventInfo(response.data.gifts);
-  //     } catch (e) {
-  //       console.log("error:", e);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     handelEventInfo(id);
-  //   }, [id]);
+  // const handleOnClick = async () => {
+  //   if (giftQuantity === 0) {
+  //     setDisabled(true);
+  //     setReserved(true);
+  //     return;
+  //   }
+  //   await updateGift(id);
+  //   navigate(`/invitation/${id}`);
+  // };
 
   return (
     <div>
@@ -93,7 +72,10 @@ export default function CreateGiftList(props) {
                       <FontAwesomeIcon icon={["fas", "heart"]} />
                     )}
                   </TableCell>
-                  <TableCell align="right" onClick={() => {}}>
+                  <TableCell
+                    align="right"
+                    // onClick={handleOnClick}
+                  >
                     <Button>{reserved ? "Reserved" : "Reserve"}</Button>
                   </TableCell>
                 </TableRow>

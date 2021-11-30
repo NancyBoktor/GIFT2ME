@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getEvent } from "../services/event";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -36,7 +36,6 @@ export default function Wishlist() {
       console.log("error:", e);
     }
   };
-
   useEffect(() => {
     handelEventInfo(id);
   }, [id]);
@@ -44,7 +43,7 @@ export default function Wishlist() {
     <>
       <Navbar />
       <GifterEventInfo eventInfo={eventInfo} />
-      <EventWishList gifts={gifts} />
+      <EventWishList gifts={gifts} id={id} />
       <Footer />
     </>
   );
