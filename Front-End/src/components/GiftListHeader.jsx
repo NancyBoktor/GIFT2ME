@@ -13,13 +13,13 @@ export default function GiftListHeader() {
     <TableHead>
       <TableRow>
         <TableCell>Gift Name</TableCell>
-        <TableCell align="right">URL</TableCell>
-        <TableCell align="right">Price&nbsp;($)</TableCell>
-        <TableCell align="right">Quantity</TableCell>
-        <TableCell align="right">Notes</TableCell>
-        <TableCell align="right">Most Wanted</TableCell>
-        <TableCell align="right">Edit</TableCell>
-        <TableCell align="right">Delete</TableCell>
+        <TableCell align="center">URL</TableCell>
+        <TableCell align="center">Price&nbsp;($)</TableCell>
+        <TableCell align="center">QTY</TableCell>
+        <TableCell align="center">Notes</TableCell>
+        <TableCell align="center">Most Wanted</TableCell>
+        <TableCell align="center">Edit</TableCell>
+        <TableCell align="center">Delete</TableCell>
       </TableRow>
     </TableHead>
   );

@@ -91,7 +91,7 @@ export default function CreateEventForm(props) {
 
   return (
     <div>
-      <h1 className="event">Create Event </h1>
+      <h1 className="event">{selectedEventId ? "Edit Event" : "Create Event"}</h1>
       <div className="event-form-wrapper">
         <div className="event-card-row">
           <div class="card">
@@ -159,11 +159,14 @@ export default function CreateEventForm(props) {
               </h5>
             </span>
           </div>
+          <div className="create-event-btn">
           <Button variant="contained" onClick={handleCreateEvent}>
+            
             <h5 className="create-event-button">
               {selectedEventId ? "Edit Event" : "Create Event"}
             </h5>
           </Button>
+          </div>
           {openWarningAlert && <WarningAlert />}
         </div>
 
