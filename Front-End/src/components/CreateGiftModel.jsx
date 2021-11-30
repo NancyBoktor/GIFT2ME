@@ -11,12 +11,14 @@ import Modal from "@mui/material/Modal";
 import "./CreateGiftModel.scss";
 
 import MultipleSelectButton from "./MultipleSelectButton";
+import WarningAlert from "./Alert";
 import { createGift } from "../services/gift";
 
 export default function CreateGiftModel(props) {
   const { setSelectedEventId, selectedEventId } = props;
 
   const navigate = useNavigate();
+  const [openWarningAlert, setOpenWarningAlert] = useState(false);
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
     event_id: selectedEventId,
@@ -37,6 +39,10 @@ export default function CreateGiftModel(props) {
       return;
     }
     try {
+      if (giftInfo.gift_name === "") {
+        setOpenWarningAlert(true);
+        return;
+      }
       await createGift(giftInfo);
       onCancel();
       navigate(`/events/${selectedEventId}/edit`);
@@ -159,6 +165,7 @@ export default function CreateGiftModel(props) {
                   <Button variant="outlined" onClick={handleCreateGift}>
                     ADD
                   </Button>
+                  {openWarningAlert && <WarningAlert />}
                 </Stack>
               </div>
             </div>
