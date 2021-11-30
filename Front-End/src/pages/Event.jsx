@@ -9,6 +9,7 @@ import { getGifts } from "../services/gift";
 
 export default function Wishlist() {
   const { id } = useParams();
+
   const [eventInfo, setEventInfo] = useState({});
   const [gifts, setGifts] = useState([]);
 
@@ -39,6 +40,7 @@ export default function Wishlist() {
       <Navbar />
       <GifterEventInfo eventInfo={eventInfo} />
       <EventWishList gifts={gifts} event_id={id} setGifts={setGifts} />
+
       <Footer />
     </>
   );

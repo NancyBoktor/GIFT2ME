@@ -26,8 +26,19 @@ export default function CreateEventForm(props) {
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
 
   useEffect(() => {
+    return console.log("-->event-date", eventData.date);
+
+    // eventData.date &&
+    //   console.log(
+    //     "--->eventDare/object",
+    //     new Date(eventData.date.split("-")).toLocaleDateString()
+    //   );
+  }, [eventData.date]);
+
+  useEffect(() => {
     const fetchEvent = async () => {
       const { data } = await getEvent(selectedEventId);
+      console.log("->Data", data);
       setEventData(data);
     };
     if (selectedEventId) {
@@ -43,16 +54,17 @@ export default function CreateEventForm(props) {
           event_id: selectedEventId,
         });
         console.log("DataEvent----->", data);
-        // navigate(`/events/${data.data.id}`);     ----> ask
       } else {
         if (eventData.event_name === "") {
           setOpenWarningAlert(true);
           return;
         }
         const { data } = await createEvent(eventData);
+
         console.log("DataEvent----->", data);
         setSelectedEventId(data.data.id);
-        navigate(`/events/${data.data.id}`);
+
+        data.success && navigate(`/events/${data.data.id}/edit`);
       }
     } catch (e) {
       console.log("error:", e);
@@ -84,6 +96,7 @@ export default function CreateEventForm(props) {
   const handleSave = (value) => {
     const { key } = modalData;
     setEventData({ ...eventData, [key]: value });
+    //console.log("hhhhhhhhhh", key);
     handleClose();
   };
 
@@ -91,7 +104,9 @@ export default function CreateEventForm(props) {
 
   return (
     <div>
-      <h1 className="event">{selectedEventId ? "Edit Event" : "Create Event"}</h1>
+      <h1 className="event">
+        {selectedEventId ? "Edit Event" : "Create Event"}
+      </h1>
       <div className="event-form-wrapper">
         <div className="event-card-row">
           <div class="card">
@@ -123,11 +138,26 @@ export default function CreateEventForm(props) {
             <Button
               style={{ color: "#696666", fontFamily: "Raleway" }}
               variant="outlined"
-              onClick={() => handleClickOpen({ key: "date", type: "date" })}
+              onClick={() =>
+                handleClickOpen({
+                  key: "date",
+                  type: "date",
+                  // value: new Date(eventData.date)
+                  //   .toLocaleDateString()
+                  //   .replaceAll("/", "-"),
+                })
+              }
             >
               <h5 className="event-input-info">
                 {eventData.date
-                  ? new Date(eventData.date.split("-")).toLocaleDateString()
+                  ? `${eventData.date.replaceAll("/", "-").split("-")[0]}-${
+                      eventData.date.replaceAll("/", "-").split("-")[1]
+                    }-${
+                      eventData.date
+                        .replaceAll("/", "-")
+                        .split("-")[2]
+                        .split("T")[0]
+                    }`
                   : "Date"}
               </h5>
             </Button>
@@ -160,12 +190,11 @@ export default function CreateEventForm(props) {
             </span>
           </div>
           <div className="create-event-btn">
-          <Button variant="contained" onClick={handleCreateEvent}>
-            
-            <h5 className="create-event-button">
-              {selectedEventId ? "Edit Event" : "Create Event"}
-            </h5>
-          </Button>
+            <Button variant="contained" onClick={handleCreateEvent}>
+              <h5 className="create-event-button">
+                {selectedEventId ? "Edit Event" : "Create Event"}
+              </h5>
+            </Button>
           </div>
           {openWarningAlert && <WarningAlert />}
         </div>

@@ -67,6 +67,9 @@ const Dashboard = () => {
   const edit = (id) => {
     navigate(`/events/${id}/edit`);
   };
+  const invitationPage = (id) => {
+    navigate(`/invitation/${id}`);
+  };
 
   return (
     <>
@@ -93,7 +96,7 @@ const Dashboard = () => {
             <tbody>
               {eventNames.map((event) => (
                 <tr>
-                  <td>
+                  <td onClick={() => invitationPage(event.id)}>
                     {event.event_name}
                     {console.log("eventtt:", event)}
                   </td>

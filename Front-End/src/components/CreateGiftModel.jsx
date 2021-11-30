@@ -58,14 +58,14 @@ export default function CreateGiftModel(props) {
   return (
     <div className="wishlist">
       <div className="add-gift-btn">
-      <Button
-        variant="contained"
-        onClick={() => {
-          setOpenGiftModel(true);
-        }}
-      >
-        <h5>Add Gift</h5>
-      </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setOpenGiftModel(true);
+          }}
+        >
+          <h5>Add Gift</h5>
+        </Button>
       </div>
       {openGiftModel && (
         <Modal
@@ -80,7 +80,7 @@ export default function CreateGiftModel(props) {
             </Button>
 
             <div>Add Gift </div>
-            <div className="create-Gift-form">
+            <div className="create-Gift-form"> 
               <Box
                 component="form"
                 sx={{
@@ -93,82 +93,87 @@ export default function CreateGiftModel(props) {
                   onChange={handleSelectEvent}
                   selectedEventId={selectedEventId}
                 />
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="What would you like?"
+                  placeholder="Chocolate!!"
+                  multiline
+                  maxRows={4}
+                  value={giftInfo.gift_name}
+                  onChange={(event) =>
+                    setGiftInfo({
+                      ...giftInfo,
+                      gift_name: event.target.value,
+                    })
+                  }
+                  required
+                  autoComplete="off"
+                />
+                <TextField
+                  id="outlined-textarea"
+                  label="Website Link (optional)"
+                  placeholder="http://...."
+                  href={giftInfo}
+                  value={giftInfo.store_url}
+                  onChange={(event) =>
+                    setGiftInfo({
+                      ...giftInfo,
+                      store_url: event.target.value,
+                    })
+                  }
+                  multiline
+                />
+                <TextField
+                  id="outlined-textarea"
+                  label="Notes (optional)"
+                  placeholder="no white chocolate >:("
+                  value={giftInfo.notes}
+                  onChange={(event) =>
+                    setGiftInfo({ ...giftInfo, notes: event.target.value })
+                  }
+                  multiline
+                />
+                <TextField
+                  id="outlined-name"
+                  label="Price (optional)"
+                  placeholder="$"
+                  value={giftInfo.price}
+                  onChange={(event) =>
+                    setGiftInfo({ ...giftInfo, price: event.target.value })
+                  }
+                />
+                <TextField
+                  id="outlined-name"
+                  label="Quantity (optional)"
+                  placeholder="Number"
+                  value={giftInfo.quantity}
+                  onChange={(event) =>
+                    setGiftInfo({ ...giftInfo, quantity: event.target.value })
+                  }
+                />
                 <div>
-                  <TextField
-                    id="outlined-multiline-flexible"
-                    label="What would you like?"
-                    placeholder="Chocolate!!"
-                    multiline
-                    maxRows={4}
-                    value={giftInfo.gift_name}
-                    onChange={(event) =>
-                      setGiftInfo({
-                        ...giftInfo,
-                        gift_name: event.target.value,
-                      })
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        defaultChecked={giftInfo.most_wanted}
+                        className="d-block"
+                      />
                     }
-                    required
-                    autoComplete="off"
-                  />
-                  <TextField
-                    id="outlined-textarea"
-                    label="Website Link (optional)"
-                    placeholder="http://...."
-                    href={giftInfo}
-                    value={giftInfo.store_url}
+                    label="Most Wanted"
+                    defaultValue={false}
                     onChange={(event) =>
-                      setGiftInfo({
-                        ...giftInfo,
-                        store_url: event.target.value,
-                      })
-                    }
-                    multiline
-                  />
-                  <TextField
-                    id="outlined-textarea"
-                    label="Notes (optional)"
-                    placeholder="no white chocolate >:("
-                    value={giftInfo.notes}
-                    onChange={(event) =>
-                      setGiftInfo({ ...giftInfo, notes: event.target.value })
-                    }
-                    multiline
-                  />
-                  <TextField
-                    id="outlined-name"
-                    label="Price (optional)"
-                    placeholder="$"
-                    value={giftInfo.price}
-                    onChange={(event) =>
-                      setGiftInfo({ ...giftInfo, price: event.target.value })
-                    }
-                  />
-                  <TextField
-                    id="outlined-name"
-                    label="Quantity (optional)"
-                    placeholder="Number"
-                    value={giftInfo.quantity}
-                    onChange={(event) =>
-                      setGiftInfo({ ...giftInfo, quantity: event.target.value })
+                      setGiftInfo({ ...giftInfo, most_wanted: true })
                     }
                   />
                 </div>
-                <FormControlLabel
-                  control={<Checkbox defaultChecked={giftInfo.most_wanted} />}
-                  label="Most Wanted"
-                  defaultValue={false}
-                  onChange={(event) =>
-                    setGiftInfo({ ...giftInfo, most_wanted: true })
-                  }
-                />
               </Box>
               <div className="modal-buttons">
                 <Stack direction="row" spacing={2}>
                   <div>
-                  <Button variant="outlined" onClick={handleCreateGift}>
-                    ADD
-                  </Button>
-                  {openWarningAlert && <WarningAlert />}
+                    <Button variant="outlined" onClick={handleCreateGift}>
+                      ADD
+                    </Button>
+                    {openWarningAlert && <WarningAlert />}
                   </div>
                 </Stack>
               </div>

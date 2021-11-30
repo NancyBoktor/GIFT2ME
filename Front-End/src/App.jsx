@@ -8,7 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Logout from "./components/logout";
 import About from "./pages/About";
 import EditEvent from "./pages/EditEvent";
-import Event from "./pages/Event";
+// import Event from "./pages/Event";
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +20,6 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/events" element={<CreateEvent />} />
         <Route path="/events/:id/edit" element={<EditEvent />} />
-        <Route path="/events/:id" element={<Event />} />
         <Route path="/invitation/:id" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
       </Routes>

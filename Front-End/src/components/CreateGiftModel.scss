@@ -1,22 +1,25 @@
 .create-gift-model {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 500px;
-  height: 650px;
-  margin-top: 20px;
+  width: 30%;
+  height: auto;
+  min-height: max-content;
+  max-height: 100vh;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
-  background-color:rgb(208, 236, 235);
-  border-radius: 10%;
+  background-color: rgb(208, 236, 235);
+  border-radius: 25px;
+  padding: 1em;
+  overflow-y: auto;
 }
 
-.create--form {
+.create-Gift-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 1em;
 }
 
 .modal-buttons {
@@ -38,4 +41,3 @@
   margin-top: -15px;
   margin-left: 165px;
 }
-
