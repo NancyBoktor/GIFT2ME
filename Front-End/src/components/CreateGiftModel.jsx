@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -17,7 +17,7 @@ import { createGift } from "../services/gift";
 export default function CreateGiftModel(props) {
   const { setSelectedEventId, selectedEventId } = props;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
@@ -27,10 +27,19 @@ export default function CreateGiftModel(props) {
     notes: "",
     store_url: "",
     quantity: 1,
-    most_wanted: false,
+    most_wanted: false
   });
 
   const onCancel = () => {
+    setGiftInfo({
+      event_id: selectedEventId,
+      gift_name: "",
+      price: 0,
+      notes: "",
+      store_url: "",
+      quantity: 1,
+      most_wanted: false
+    })
     setOpenGiftModel(false);
   };
 
@@ -43,9 +52,13 @@ export default function CreateGiftModel(props) {
         setOpenWarningAlert(true);
         return;
       }
+      // if (giftInfo.store_url !== "http") {
+        //setOpenWarningAlert(true); // <- change alert wording
+        //return;
+      // }
       await createGift(giftInfo);
       onCancel();
-      navigate(`/events/${selectedEventId}/edit`);
+      // navigate(`/events/${selectedEventId}/edit`);
     } catch (e) {
       console.log("error:", e);
     }

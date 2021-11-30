@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { getGifts } from "../services/gift";
 
 /* ------ Styling ------- */
 import { Button } from "@mui/material";
@@ -37,10 +38,24 @@ export default function EditEvent() {
   const navigate = useNavigate();
 
   const [selectedEventId, setSelectedEventId] = useState(id);
+  const [gifts, setGifts] = useState([]);
 
   // useEffect(() => {
   //   handleGiftsList(id);
   // }, [id]);
+  const handleGiftsList = async (eventId) => {
+    try {
+      const response = await getGifts(eventId);
+      setGifts(response.data.gifts);
+    } catch (e) {
+      console.log("error:", e);
+    }
+  };
+  useEffect(() => {
+    if (selectedEventId) {
+      handleGiftsList(selectedEventId);
+    }
+  }, [gifts]);
 
   const invitationPage = (id) => {
     navigate(`/invitation/${id}`);
@@ -59,7 +74,7 @@ export default function EditEvent() {
             setSelectedEventId={setSelectedEventId}
             selectedEventId={selectedEventId}
           />
-          <CreateGiftList selectedEventId={selectedEventId} />
+          <CreateGiftList selectedEventId={selectedEventId} gifts={gifts}/>
         </div>
       </div>
       <Button onClick={() => invitationPage(id)}>View your invitation</Button>

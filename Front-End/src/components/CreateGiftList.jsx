@@ -12,7 +12,7 @@ import CreateGiftModel from "./CreateGiftModel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
-import { getGifts } from "../services/gift";
+// import { getGifts } from "../services/gift";
 import "../components/CreateGiftList.scss";
  
 
@@ -24,42 +24,48 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { selectedEventId, openGiftModel, setOpenGiftModel } = props;
+  const { openGiftModel, setOpenGiftModel, gifts } = props;
 
   const [show, setShow] = useState({});
 
   const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
 
-  const [gifts, setGifts] = useState([]);
-  const [giftsLength, setGiftsLength] = useState(gifts.length);
+  // const [gifts, setGifts] = useState([]);
+  // const [giftsLength, setGiftsLength] = useState(gifts.length);
 
-  const handelGiftsList = async (eventId) => {
-    try {
-      const response = await getGifts(eventId);
-      setGifts(response.data.gifts);
-      setGiftsLength(gifts.length);
-    } catch (e) {
-      console.log("error:", e);
-    }
-  };
-  useEffect(() => {
-    if (selectedEventId || giftsLength > 0) {
-      handelGiftsList(selectedEventId);
-    }
-  }, [selectedEventId, giftsLength]);
+  // const handleGiftsList = async (eventId) => {
+  //   try {
+  //     const response = await getGifts(eventId);
+  //     setGifts(response.data.gifts);
+  //     setGiftsLength(response.data.gifts.length);
+  //   } catch (e) {
+  //     console.log("error:", e);
+  //   }
+  // };
+  // useEffect(() => {
+  //   if (selectedEventId) {
+  //     handleGiftsList(selectedEventId);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if (selectedEventId) {
+  //     handleGiftsList(selectedEventId);
+  //   }
+  // }, []);
 
   const handleDelete = (giftId) => {
     return axios
-      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, {
+      .delete(`http://localhost:3001/api/gifts/delete/${giftId}`, { //<-swap order
         withCredentials: true,
       })
-      .then((res) => {
-        const index = gifts.findIndex((gift) => gift.id === giftId);
-        gifts.splice(index, 1);
-        const newGifts = [...gifts];
-        setGifts(newGifts);
-      });
+      // .then((res) => {
+      //   const index = gifts.findIndex((gift) => gift.id === giftId);
+      //   gifts.splice(index, 1);
+        // const newGifts = [...gifts];
+        // setGifts(newGifts);
+      // });
   };
   return (
     <div>
@@ -92,13 +98,10 @@ export default function CreateGiftList(props) {
                   </TableCell>
                   <TableCell
                     align="center"
-                    onClick={() => {
-                      setOpenGiftModel(true);
-                    }}
                   >
                     <FontAwesomeIcon icon={["fas", "edit"]} />
                   </TableCell>
-                  {openGiftModel && <CreateGiftModel />}
+                 
                   <TableCell
                     align="center"
                     className="click trash"
