@@ -26,7 +26,7 @@ export default function CreateGiftModel(props) {
     price: 0,
     notes: "",
     store_url: "",
-    quantity: 0,
+    quantity: 1,
     most_wanted: false,
   });
 
@@ -80,7 +80,7 @@ export default function CreateGiftModel(props) {
             </Button>
 
             <div>Add Gift </div>
-            <div className="create-Gift-form"> 
+            <div className="create-Gift-form">
               <Box
                 component="form"
                 sx={{
