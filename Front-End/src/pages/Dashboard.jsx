@@ -108,7 +108,7 @@ const Dashboard = () => {
                         event.date
                       ).getFullYear()} at ${
                         event.address
-                      } %2C%0A here is my wishlist link :) ${window.location}/${
+                      } %2C%0A here is my wishlist link :) invitation/${
                         event.id
                       }`}
                     >

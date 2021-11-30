@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import Wishlist from "./pages/Event";
 import CreateEvent from "./pages/CreateEvent";
 import Dashboard from "./pages/Dashboard";
 import Logout from "./components/logout";
@@ -21,8 +21,7 @@ function App() {
         <Route path="/events" element={<CreateEvent />} />
         <Route path="/events/:id/edit" element={<EditEvent />} />
         <Route path="/events/:id" element={<Event />} />
-
-        {/* <Route path="/events/:id" element={<Wishlist />} /> */}
+        <Route path="/invitation/:id" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
