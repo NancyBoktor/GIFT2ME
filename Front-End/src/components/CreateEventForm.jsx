@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
-import WarningAlert from "./Alert";
+import WarningAlert from "./WarningAlert";
+import SuccessAlert from "./SuccessAlert";
 import { createEvent, getEvent, editEvent } from "../services/event";
 import "./CreateEventForm.scss";
 
@@ -25,6 +26,7 @@ export default function CreateEventForm(props) {
     required: false
   });
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
+  const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
 
   useEffect(() => {
     return console.log("-->event-date", eventData.date);
@@ -60,6 +62,7 @@ export default function CreateEventForm(props) {
         setSelectedEventId(data.data.id);
         data.success && navigate(`/events/${data.data.id}/edit`);
       }
+      setOpenSuccessAlert(true);
     } catch (e) {
       console.log("error:", e);
     }
@@ -180,6 +183,7 @@ export default function CreateEventForm(props) {
             </span>
           </div>
           <div className="create-event-btn">
+          {openSuccessAlert && <SuccessAlert />}  
           {openWarningAlert && <WarningAlert />}
             <Button variant="contained" onClick={handleCreateEvent}>
               <h5 className="create-event-button">
