@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
@@ -12,8 +13,8 @@ import CreateGiftModel from "./CreateGiftModel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
+import { getGifts, getGift } from "../services/gift";
 import "../components/CreateGiftList.scss";
- 
 
 const theme = createTheme({
   palette: {
@@ -23,19 +24,46 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { openGiftModel, setOpenGiftModel, gifts } = props;
-
+  const { selectedEventId } = props;
+  const [editMode, SetEditMode] = useState(false);
+  const [openGiftModel, setOpenGiftModel] = useState(false);
   const [show, setShow] = useState({});
 
   const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
 
-  const handleDelete = (giftId) => {
-    return axios
-      .delete(`http://localhost:3001/api/gifts/${giftId}/delete`, {
-        withCredentials: true,
-      })
+  const [gifts, setGifts] = useState([]);
+
+  const [giftsLength, setGiftsLength] = useState(gifts.length);
+  const [selectedGiftInfo, setSelectedGiftInfo] = useState({});
+  const handelGiftsList = async (eventId) => {
+    try {
+      const response = await getGifts(eventId);
+      setGifts(response.data.gifts);
+      setGiftsLength(gifts.length);
+    } catch (e) {
+      console.log("error:", e);
+    }
   };
+  useEffect(() => {
+    if (selectedEventId || giftsLength > 0) {
+      handelGiftsList(selectedEventId);
+    }
+  }, [selectedEventId, giftsLength]);
+
+  const handleDelete = (giftId) => {
+    return axios.delete(`http://localhost:3001/api/gifts/${giftId}/delete`, {
+      withCredentials: true,
+    });
+  };
+  const selectGiftInfo = async () => {
+    const giftInfo = await getGift(selectedEventId, selectedGiftInfo.id);
+    setSelectedGiftInfo(selectedGiftInfo);
+  };
+  useEffect(() => {
+    selectGiftInfo();
+  }, [editMode === true]);
+
   return (
     <div>
       {gifts.length > 0 && (
@@ -48,11 +76,24 @@ export default function CreateGiftList(props) {
                   key={gift.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
+<<<<<<< HEAD
                   <TableCell>
                     {gift.gift_name}
                   </TableCell>
                   <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
                     <a href={gift.store_url} target="_blank" rel="noreferrer"> {gift.store_url} </a>
+=======
+                  <TableCell>{gift.gift_name}</TableCell>
+                  <TableCell
+                    align="center"
+                    className="truncate"
+                    sx={{ maxWidth: 250 }}
+                  >
+                    <a href={gift.store_url} target="_blank">
+                      {" "}
+                      {gift.store_url}{" "}
+                    </a>
+>>>>>>> 8eb53616e50d24e1bbd37f01bbb3e8d48eb76eae
                   </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>
@@ -67,10 +108,23 @@ export default function CreateGiftList(props) {
                   </TableCell>
                   <TableCell
                     align="center"
+                    onClick={() => {
+                      setOpenGiftModel(true);
+                      SetEditMode(true);
+                      setSelectedGiftInfo({ ...selectGiftInfo, id: gift.id });
+                    }}
                   >
                     <FontAwesomeIcon icon={["fas", "edit"]} />
                   </TableCell>
-                 
+                  {openGiftModel && editMode && (
+                    <CreateGiftModel
+                      selectedEventId={selectedEventId}
+                      editMode={editMode}
+                      SetEditMode={SetEditMode}
+                      openGiftModel={openGiftModel}
+                      giftInfo={selectedGiftInfo}
+                    />
+                  )}
                   <TableCell
                     align="center"
                     className="click trash"

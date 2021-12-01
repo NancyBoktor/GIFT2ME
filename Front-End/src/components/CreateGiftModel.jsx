@@ -13,7 +13,11 @@ import WarningAlert from "./Alert";
 import { createGift } from "../services/gift";
 
 export default function CreateGiftModel(props) {
-  const { setSelectedEventId, selectedEventId } = props;
+  const { selectedEventId, setSelectedEventId, selectedGiftInfo } = props;
+
+  const navigate = useNavigate();
+  const { editMode, SetEditMode } = props;
+  console.log(editMode);
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
@@ -23,9 +27,9 @@ export default function CreateGiftModel(props) {
     notes: "",
     store_url: "",
     quantity: 1,
-    most_wanted: false
+    most_wanted: false,
   });
-
+  console.log("---->setGiftInfoModel", giftInfo);
   const onCancel = () => {
     setGiftInfo({
       event_id: selectedEventId,
@@ -34,9 +38,10 @@ export default function CreateGiftModel(props) {
       notes: "",
       store_url: "",
       quantity: 1,
-      most_wanted: false
-    })
+      most_wanted: false,
+    });
     setOpenGiftModel(false);
+    SetEditMode(false);
   };
 
   const handleCreateGift = async () => {
@@ -48,10 +53,10 @@ export default function CreateGiftModel(props) {
         setOpenWarningAlert(true);
         return;
       }
-      // if (giftInfo.store_url !== "http") {
-        //setOpenWarningAlert(true); // <- change alert wording
-        //return;
-      // }
+      if (selectedGiftInfo.id > 0) {
+        setGiftInfo(selectedGiftInfo);
+        return;
+      }
       await createGift(giftInfo);
       onCancel();
     } catch (e) {
@@ -65,17 +70,19 @@ export default function CreateGiftModel(props) {
 
   return (
     <div className="wishlist">
-      <div className="add-gift-btn">
-        <Button
-          variant="contained"
-          onClick={() => {
-            setOpenGiftModel(true);
-          }}
-        >
-          <h5>Add Gift</h5>
-        </Button>
-      </div>
-      {openGiftModel && (
+      {editMode === false && (
+        <div className="add-gift-btn">
+          <Button
+            variant="contained"
+            onClick={() => {
+              setOpenGiftModel(true);
+            }}
+          >
+            <h5>Add Gift</h5>
+          </Button>
+        </div>
+      )}
+      {(openGiftModel || editMode) && (
         <Modal
           open={true}
           onClose={onCancel}
@@ -179,11 +186,12 @@ export default function CreateGiftModel(props) {
                 <Stack direction="row" spacing={2}>
                   <div>
                     <div id="gift-alert">
-                      {openWarningAlert && <WarningAlert />} 
+                      {openWarningAlert && <WarningAlert />}
                     </div>
                     <Button variant="outlined" onClick={handleCreateGift}>
-                      ADD
-                    </Button>                    
+                      {editMode ? "Edit" : "ADD"}
+                    </Button>
+                    {openWarningAlert && <WarningAlert />}
                   </div>
                 </Stack>
               </div>

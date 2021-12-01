@@ -29,18 +29,18 @@ router.put("/:id", isAuth, async (req, res) => {
   const { event_name, date, address, description } = req.body;
   const event_id = req.params.id;
   //console.log("user_id:", user_id);
-  console.log("req.body:", {
-    event_id,
-    event_name,
-    date,
-    address,
-    description,
-  });
+  // console.log("req.body:", {
+  //   event_id,
+  //   event_name,
+  //   date,
+  //   address,
+  //   description,
+  // });
   const { rows } = await db.query(
     `UPDATE events SET event_name = $1, date = $2, address = $3, description = $4 WHERE id = $5 RETURNING id, event_name, date,address,description`,
     [event_name, date, address, description, event_id]
   );
-  console.log("{return from edit--backend}", rows[0]);
+  //console.log("{return from edit--backend}", rows[0]);
   res.json({ success: true, data: rows[0] });
 });
 
