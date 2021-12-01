@@ -1,4 +1,4 @@
-$primary: rgb(70, 197, 219);
+$primary: #46C5DB;
 $secondary: #72D6C9;
 $terinary: #D11071;
 $button: rgb(105, 102, 102);
@@ -27,10 +27,8 @@ $link: #0d6efd;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // color: $secondary;
-  // color: $terinary;
-  // color: $primary;
   color: white;
+  font-size: larger;
 }
 
 .reg-btn {

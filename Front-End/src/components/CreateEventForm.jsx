@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import CreateEventModal from "./CreateEventModal";
 import WarningAlert from "./Alert";
 import { createEvent, getEvent, editEvent } from "../services/event";
 import "./CreateEventForm.scss";
-import { useNavigate } from "react-router-dom";
+
 
 export default function CreateEventForm(props) {
   const { selectedEventId, setSelectedEventId } = props;
@@ -13,7 +14,7 @@ export default function CreateEventForm(props) {
     event_name: "",
     date: null,
     address: "",
-    description: "",
+    description: ""
   });
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({
@@ -21,24 +22,17 @@ export default function CreateEventForm(props) {
     key: "",
     multiline: false,
     dialogContent: "",
-    required: false,
+    required: false
   });
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
 
   useEffect(() => {
     return console.log("-->event-date", eventData.date);
-
-    // eventData.date &&
-    //   console.log(
-    //     "--->eventDare/object",
-    //     new Date(eventData.date.split("-")).toLocaleDateString()
-    //   );
   }, [eventData.date]);
 
   useEffect(() => {
     const fetchEvent = async () => {
       const { data } = await getEvent(selectedEventId);
-      console.log("->Data", data);
       setEventData(data);
     };
     if (selectedEventId) {
@@ -57,17 +51,13 @@ export default function CreateEventForm(props) {
           ...eventData,
           event_id: selectedEventId,
         });
-        console.log("DataEvent----->", data);
       } else {
         if (eventData.event_name === "") {
           setOpenWarningAlert(true);
           return;
         }
         const { data } = await createEvent(eventData);
-
-        console.log("DataEvent----->", data);
         setSelectedEventId(data.data.id);
-
         data.success && navigate(`/events/${data.data.id}/edit`);
       }
     } catch (e) {
@@ -80,7 +70,7 @@ export default function CreateEventForm(props) {
     type,
     multiline = false,
     dialogContent,
-    required = false,
+    required = false
   }) => {
     setOpen(true);
     setModalData({
@@ -88,7 +78,7 @@ export default function CreateEventForm(props) {
       key,
       multiline,
       dialogContent,
-      required,
+      required
     });
   };
 
@@ -100,7 +90,6 @@ export default function CreateEventForm(props) {
   const handleSave = (value) => {
     const { key } = modalData;
     setEventData({ ...eventData, [key]: value });
-    //console.log("hhhhhhhhhh", key);
     handleClose();
   };
 
@@ -145,10 +134,7 @@ export default function CreateEventForm(props) {
               onClick={() =>
                 handleClickOpen({
                   key: "date",
-                  type: "date",
-                  // value: new Date(eventData.date)
-                  //   .toLocaleDateString()
-                  //   .replaceAll("/", "-"),
+                  type: "date"
                 })
               }
             >
@@ -184,7 +170,7 @@ export default function CreateEventForm(props) {
                   key: "description",
                   type: "text",
                   multiline: true,
-                  dialogContent: "Please fill the description",
+                  dialogContent: "Please fill the description"
                 })
               }
             >

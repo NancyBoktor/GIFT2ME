@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
@@ -14,7 +14,6 @@ import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import "../components/CreateGiftList.scss";
  
-
 const theme = createTheme({
   palette: {
     cancel: {

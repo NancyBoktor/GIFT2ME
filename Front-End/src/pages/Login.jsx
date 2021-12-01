@@ -19,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const [errorMsg, setErrorMsg] = useState("");

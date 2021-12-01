@@ -1,4 +1,4 @@
-$primary: rgb(70, 197, 219);
+$primary: #46C5DB;
 $secondary: #72D6C9;
 $terinary: #D11071;
 $button: #696666;
@@ -28,9 +28,7 @@ $link: #0d6efd;
 
 #event-btns {
   display:flex;
-  color: $button;
-  // justify-content: center;
-  
+  color: $button;  
 }
 
 #desc {

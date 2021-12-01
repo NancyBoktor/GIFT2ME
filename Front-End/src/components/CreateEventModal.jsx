@@ -7,7 +7,7 @@ import {
   DialogContentText,
   TextField,
   DialogActions,
-  Button,
+  Button
 } from "@mui/material";
 
 const CreateEventModal = (props) => {
@@ -20,7 +20,7 @@ const CreateEventModal = (props) => {
     multiline = false,
     required = false,
     defaultValue,
-    handleSave,
+    handleSave
   } = props;
   return (
     <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
