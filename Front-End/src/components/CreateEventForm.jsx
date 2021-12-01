@@ -187,7 +187,7 @@ export default function CreateEventForm(props) {
           {openWarningAlert && <WarningAlert />}
             <Button variant="contained" onClick={handleCreateEvent}>
               <h5 className="create-event-button">
-                {selectedEventId ? "Edit Event" : "Create Event"}
+                {selectedEventId ? "Edit" : "Create Event"}
               </h5>
             </Button>
             
