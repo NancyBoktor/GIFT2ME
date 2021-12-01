@@ -178,10 +178,12 @@ export default function CreateGiftModel(props) {
               <div className="modal-buttons">
                 <Stack direction="row" spacing={2}>
                   <div>
+                    <div id="gift-alert">
+                      {openWarningAlert && <WarningAlert />} 
+                    </div>
                     <Button variant="outlined" onClick={handleCreateGift}>
                       ADD
-                    </Button>
-                    {openWarningAlert && <WarningAlert />}
+                    </Button>                    
                   </div>
                 </Stack>
               </div>
