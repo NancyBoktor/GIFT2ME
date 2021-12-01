@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -33,6 +31,15 @@ export default function CreateGiftModel(props) {
   });
   console.log("---->setGiftInfoModel", giftInfo);
   const onCancel = () => {
+    setGiftInfo({
+      event_id: selectedEventId,
+      gift_name: "",
+      price: 0,
+      notes: "",
+      store_url: "",
+      quantity: 1,
+      most_wanted: false,
+    });
     setOpenGiftModel(false);
     SetEditMode(false);
   };
@@ -52,7 +59,6 @@ export default function CreateGiftModel(props) {
       }
       await createGift(giftInfo);
       onCancel();
-      navigate(`/events/${selectedEventId}/edit`);
     } catch (e) {
       console.log("error:", e);
     }
@@ -83,13 +89,13 @@ export default function CreateGiftModel(props) {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <div className="create-gift-model">
+          <div className="create-gift-modal">
             <Button className="close-button" onClick={onCancel}>
               X
             </Button>
 
             <div>Add Gift </div>
-            <div className="create-Gift-form">
+            <div className="create-gift-form">
               <Box
                 component="form"
                 sx={{
@@ -179,6 +185,9 @@ export default function CreateGiftModel(props) {
               <div className="modal-buttons">
                 <Stack direction="row" spacing={2}>
                   <div>
+                    <div id="gift-alert">
+                      {openWarningAlert && <WarningAlert />}
+                    </div>
                     <Button variant="outlined" onClick={handleCreateGift}>
                       {editMode ? "Edit" : "ADD"}
                     </Button>

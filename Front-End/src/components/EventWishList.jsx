@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
@@ -25,24 +25,13 @@ const theme = createTheme({
 export default function CreateGiftList(props) {
   const { gifts, setGifts, event_id } = props;
   const navigate = useNavigate();
-  const [reserved, setReserved] = useState(false);
-  const [disabledButton, setDisabledButton] = useState(false);
+ 
 
-  const handleOnClick = async (gift_quantity, gift_id) => {
-    if (gift_quantity === 0) {
-      setDisabledButton(true);
-      setReserved(true);
-      return;
-    }
+  const handleOnClick = async (gift_id) => {
     try {
       const { data } = await updateGift(event_id, gift_id);
       if (data.success) {
-        // const newGifts = gifts.map((g) => {
-        //   if (g.id === gift_id) {
-        //     return { ...g, quantity: g.quantity - 1 };
-        //   }
-        //   return g;
-        // });
+     
         setGifts(data.data);
       }
       navigate(`/invitation/${event_id}`, { replace: true });
@@ -53,19 +42,20 @@ export default function CreateGiftList(props) {
 
   return (
     <div>
+    <div className="event-info">
       {gifts.length > 0 && (
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Gift Name</TableCell>
-                <TableCell align="right">URL</TableCell>
-                <TableCell align="right">Price&nbsp;($)</TableCell>
-                <TableCell align="right">Quantity</TableCell>
-                <TableCell align="right">Notes</TableCell>
-                <TableCell align="right">Most Wanted</TableCell>
-                <TableCell align="right">Reservation</TableCell>
-                <TableCell align="right">Gifters</TableCell>
+                <TableCell align="center">URL</TableCell>
+                <TableCell align="center">Price&nbsp;($)</TableCell>
+                <TableCell align="center">Quantity</TableCell>
+                <TableCell align="center">Notes</TableCell>
+                <TableCell align="center">Most Wanted</TableCell>
+                <TableCell align="center">Reservation</TableCell>
+                <TableCell align="center">Gifters</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -74,35 +64,40 @@ export default function CreateGiftList(props) {
                   key={gift.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell>
                     {gift.gift_name}
                   </TableCell>
-                  <TableCell align="right">{gift.store_url}</TableCell>
-                  <TableCell align="right">{gift.price}</TableCell>
-                  <TableCell align="right">{gift.quantity}</TableCell>
-                  <TableCell align="right">{gift.notes}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
+                    <a href={gift.store_url} target="_blank" > {gift.store_url} </a>
+                  </TableCell>
+                  <TableCell align="center">{gift.price}</TableCell>
+                  <TableCell align="center">{gift.quantity}</TableCell>
+                  <TableCell align="center">{gift.notes}</TableCell>
+                  <TableCell align="center">
                     {gift.most_wanted === true && (
-                      <FontAwesomeIcon icon={["fas", "heart"]} />
+                      <FontAwesomeIcon className="heart" icon={["fas", "heart"]} />
                     )}
                   </TableCell>
                   <TableCell
-                    align="right"
-                    onClick={() => {
-                      handleOnClick(gift.quantity, gift.id);
-                    }}
+                    align="center"
                   >
-                    <Button disabled={disabledButton}>
-                      {reserved ? "Reserved" : "Reserve"}
+                    <Button 
+                      disabled={gift.quantity < 1} 
+                      onClick={() => {
+                      handleOnClick(gift.id);
+                    }}>
+                      {gift.quantity < 1 ? "Reserved" : "Reserve"}
                     </Button>
                   </TableCell>
-                  <TableCell align="right">Maram</TableCell>
+                  <TableCell align="center">Maram</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       )}
+      
+    </div>
     </div>
   );
 }

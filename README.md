@@ -31,4 +31,6 @@ TITLE
 
 ## Future Considerations
 
+- Use media queries to display the app nicely on multiple devices (e.g. mobile)
+
     

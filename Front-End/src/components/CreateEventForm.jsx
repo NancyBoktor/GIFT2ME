@@ -49,6 +49,10 @@ export default function CreateEventForm(props) {
   const handleCreateEvent = async () => {
     try {
       if (selectedEventId) {
+        if (eventData.event_name === "") {
+          setOpenWarningAlert(true);
+          return;
+        }
         const { data } = await editEvent({
           ...eventData,
           event_id: selectedEventId,
@@ -190,13 +194,15 @@ export default function CreateEventForm(props) {
             </span>
           </div>
           <div className="create-event-btn">
+          {openWarningAlert && <WarningAlert />}
             <Button variant="contained" onClick={handleCreateEvent}>
               <h5 className="create-event-button">
                 {selectedEventId ? "Edit Event" : "Create Event"}
               </h5>
             </Button>
+            
           </div>
-          {openWarningAlert && <WarningAlert />}
+          
         </div>
 
         <CreateEventModal

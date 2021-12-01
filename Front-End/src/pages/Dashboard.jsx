@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import "./Dashboard.scss";
+import axios from "axios";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../fontawesome";
-import axios from "axios";
+
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../fontawesome";
+import "./Dashboard.scss";
 
 const theme = createTheme({
   palette: {
@@ -46,7 +48,7 @@ const Dashboard = () => {
   const handleDelete = (eventId) => {
     console.log("EVENTID:", eventId);
     return axios
-      .delete(`http://localhost:3001/api/events/delete/${eventId}`, {
+      .delete(`http://localhost:3001/api/events/${eventId}/delete`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -96,22 +98,21 @@ const Dashboard = () => {
             <tbody>
               {eventNames.map((event) => (
                 <tr>
-                  <td onClick={() => invitationPage(event.id)}>
-                    {event.event_name}
-                    {console.log("eventtt:", event)}
+                  <td className="invitation" onClick={() => invitationPage(event.id)}>
+                    {event.event_name}                  
                   </td>
                   <td>
                     <a
                       id="share"
                       href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${
                         event.event_name
-                      } on ${new Date(event.date).getDate()} / ${new Date(
+                      } event on ${new Date(event.date).getDate()} / ${new Date(
                         event.date
                       ).getMonth()} / ${new Date(
                         event.date
                       ).getFullYear()} at ${
                         event.address
-                      } %2C%0A here is my wishlist link :) invitation/${
+                      } %2C%0A here is my wishlist link :) http://localhost:3002/invitation/${
                         event.id
                       }`}
                     >

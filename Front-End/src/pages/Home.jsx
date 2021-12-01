@@ -19,6 +19,7 @@ const theme = createTheme({
 });
 
 const Home = () => {
+  const token = window.localStorage.getItem('token')
   return (
     <>
       <Navbar />
@@ -38,9 +39,9 @@ const Home = () => {
               className="reg-btn"
               style={{ textDecoration: "none" }}
             >
-              <Button variant="contained" color="pink" size="large">
+              {!token && (<Button variant="contained" color="pink" size="large">
                 Register Now
-              </Button>
+              </Button>)}
             </Link>
           </ThemeProvider>
         </div>
