@@ -13,7 +13,7 @@ const { route } = require("./gifts");
 // });
 
 // GET specific event
-router.get("/:id", isAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {   // <- removed isAuth to allow gifters to see data
   //console.log("Back---->end", req.params);
   const { rows } = await db.query(`SELECT * from events WHERE id = $1`, [
     req.params.id,
@@ -44,7 +44,7 @@ router.put("/:id", isAuth, async (req, res) => {
   res.json({ success: true, data: rows[0] });
 });
 
-// GET events for logged in user. * DO NOT TOUCH*
+// GET events for logged in user.
 router.get("/", isAuth, async (req, res) => {
   //console.log("req.current_user_id", req.current_user_id);
   const { rows } = await db.query(`SELECT * from events WHERE user_id = $1`, [

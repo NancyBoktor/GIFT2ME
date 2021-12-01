@@ -104,7 +104,7 @@ const Dashboard = () => {
                   <td>
                     <a
                       id="share"
-                      href={`mailto:?subject=${userName}'s Invitaion&body=Hi%2C%0AI would like to invite you to my ${
+                      href={`mailto:?subject=${userName}'s Invitation&body=Hi%2C%0AI would like to invite you to my ${
                         event.event_name
                       } event on ${new Date(event.date).getDate()} / ${new Date(
                         event.date

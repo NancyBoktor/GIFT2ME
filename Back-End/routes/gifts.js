@@ -4,9 +4,9 @@ const { db } = require("../lib/db");
 const { isAuth } = require("../middleware/auth_middle");
 const { createGift, getGifts } = require("../controllers/gift_controller");
 /* GET all gifts */
-router.get("/", isAuth, getGifts);
+router.get("/", getGifts);   // <- removed isAuth so gifters can see gift list
 
-// POST CREAT NEW GIFT
+// POST CREATE NEW GIFT
 router.post("/", isAuth, createGift);
 
 // GET gifts from specific user
