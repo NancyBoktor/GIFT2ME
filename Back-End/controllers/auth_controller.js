@@ -11,14 +11,14 @@ const login = async (req, res, next) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: "Please fill all required fields",
+      message: "Please fill all required fields"
     });
   }
   const user = await getUserByEmail(email);
   if (!user) {
     return res.status(401).json({
       success: false,
-      message: "Wrong email or password",
+      message: "Wrong email or password"
     });
   }
   bcrypt.compare(password, user.password, function (err, samePassword) {
@@ -54,14 +54,14 @@ const register = async (req, res, next) => {
   if (!first_name || !last_name || !email || !password || !confirm_password) {
     return res.status(400).json({
       success: false,
-      message: "Please fill all required fields",
+      message: "Please fill all required fields"
     });
   }
   // validtaion the password
   if (password !== confirm_password) {
     return res.status(400).json({
       success: false,
-      message: "Password must match",
+      message: "Password must match"
     });
   }
   // validtaion the email
@@ -69,7 +69,7 @@ const register = async (req, res, next) => {
   if (user && user.email) {
     return res.status(400).json({
       success: false,
-      message: "This email already exist",
+      message: "This email already exist"
     });
   }
   const hashPassword = await bcrypt.hash(password, salt);
@@ -86,7 +86,7 @@ const register = async (req, res, next) => {
   const token = createToken({
     id: newUser.id,
     first_name: newUser.first_name,
-    last_name: newUser.last_name,
+    last_name: newUser.last_name
   });
   console.log("token:", token);
 
