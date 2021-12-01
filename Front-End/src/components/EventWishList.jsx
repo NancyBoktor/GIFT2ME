@@ -43,7 +43,6 @@ export default function CreateGiftList(props) {
                 <TableCell align="center">Notes</TableCell>
                 <TableCell align="center">Most Wanted</TableCell>
                 <TableCell align="center">Reservation</TableCell>
-                <TableCell align="center">Gifters</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -77,7 +76,6 @@ export default function CreateGiftList(props) {
                       {gift.quantity < 1 ? "Reserved" : "Reserve"}
                     </Button>
                   </TableCell>
-                  <TableCell align="center">Maram</TableCell>
                 </TableRow>
               ))}
             </TableBody>
