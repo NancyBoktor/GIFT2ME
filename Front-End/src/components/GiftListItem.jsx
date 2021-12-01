@@ -13,10 +13,10 @@ export default function GiftListItem() {
         <TableHead>
           <TableRow>
             <TableCell>Gift Name</TableCell>
-            <TableCell align="right">URL</TableCell>
-            <TableCell align="right">Notes</TableCell>
-            <TableCell align="right">Price&nbsp;($)</TableCell>
-            <TableCell align="right">Quantity</TableCell>
+            <TableCell align="center">URL</TableCell>
+            <TableCell align="center">Notes</TableCell>
+            <TableCell align="center">Price&nbsp;($)</TableCell>
+            <TableCell align="center">Quantity</TableCell>
           </TableRow>
         </TableHead>
       </Table>
