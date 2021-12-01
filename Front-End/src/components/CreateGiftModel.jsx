@@ -103,7 +103,7 @@ export default function CreateGiftModel(props) {
                 />
                 <TextField
                   id="outlined-multiline-flexible"
-                  label="What would you like?"
+                  label="What would you like? (required)"
                   placeholder="Chocolate!!"
                   multiline
                   maxRows={4}
@@ -152,7 +152,7 @@ export default function CreateGiftModel(props) {
                 />
                 <TextField
                   id="outlined-name"
-                  label="Quantity (optional)"
+                  label="Quantity (required)"
                   placeholder="Number"
                   value={giftInfo.quantity}
                   onChange={(event) =>
