@@ -54,7 +54,9 @@ export default function EditEvent() {
           <CreateGiftList selectedEventId={selectedEventId} gifts={gifts}/>
         </div>
       </div>
-      <Button onClick={() => invitationPage(id)}>View your invitation</Button>
+      <div className="view-invitation">
+      <Button onClick={() => invitationPage(id)}>  View your invitation → </Button>
+      </div>
       <Footer />
     </>
   );

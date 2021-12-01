@@ -1,3 +1,9 @@
+$primary: #46C5DB;
+$secondary: #72D6C9;
+$terinary: #D11071;
+$button: rgb(105, 102, 102);
+
+
 .event-page {
   width: inherit;
   display: flex;
@@ -16,6 +22,7 @@
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0em; //--------------------> fix layout
 }
 .event-input {
   margin-bottom: 20px !important;
@@ -56,4 +63,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.view-invitation{
+  display: flex;
+  justify-content: end;
+}
+
+
 
