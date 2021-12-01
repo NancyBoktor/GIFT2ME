@@ -52,7 +52,7 @@ export default function CreateGiftList(props) {
                     {gift.gift_name}
                   </TableCell>
                   <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
-                    <a href={gift.store_url} target="_blank" > {gift.store_url} </a>
+                    <a href={gift.store_url} target="_blank" rel="noreferrer"> {gift.store_url} </a>
                   </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>

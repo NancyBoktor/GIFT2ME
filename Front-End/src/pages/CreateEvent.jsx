@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
 import Footer from "../components/Footer";

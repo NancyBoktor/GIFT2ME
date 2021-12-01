@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
@@ -8,19 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { createTheme } from "@mui/material/styles";
-
 import { Button } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import { updateGift } from "../services/gift";
-
-const theme = createTheme({
-  palette: {
-    cancel: {
-      main: "#808080",
-    },
-  },
-});
 
 export default function CreateGiftList(props) {
   const { gifts, setGifts, event_id } = props;
@@ -41,7 +30,6 @@ export default function CreateGiftList(props) {
   };
 
   return (
-    <div>
     <div className="event-info">
       {gifts.length > 0 && (
         <TableContainer>
@@ -68,7 +56,7 @@ export default function CreateGiftList(props) {
                     {gift.gift_name}
                   </TableCell>
                   <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
-                    <a href={gift.store_url} target="_blank" > {gift.store_url} </a>
+                    <a href={gift.store_url} target="_blank" rel="noreferrer"> {gift.store_url} </a>
                   </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>
@@ -97,7 +85,6 @@ export default function CreateGiftList(props) {
         </TableContainer>
       )}
       
-    </div>
     </div>
   );
 }
