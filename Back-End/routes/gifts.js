@@ -19,7 +19,7 @@ router.get("/:id", isAuth, async (req, res) => {
 
 // Delete a gift for specific event
 router.delete("/delete/:id", isAuth, async (req, res) => {
-  console.log("REQ.PARAMS:", req.params.id);
+  //console.log("REQ.PARAMS:", req.params.id);
   const { rows } = await db.query(`DELETE from gifts WHERE id = $1`, [
     req.params.id,
   ]);

@@ -15,9 +15,11 @@ import WarningAlert from "./Alert";
 import { createGift } from "../services/gift";
 
 export default function CreateGiftModel(props) {
-  const { setSelectedEventId, selectedEventId } = props;
+  const { selectedEventId, setSelectedEventId, selectedGiftInfo } = props;
 
   const navigate = useNavigate();
+  const { editMode, SetEditMode } = props;
+  console.log(editMode);
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
   const [openGiftModel, setOpenGiftModel] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
@@ -29,9 +31,10 @@ export default function CreateGiftModel(props) {
     quantity: 1,
     most_wanted: false,
   });
-
+  console.log("---->setGiftInfoModel", giftInfo);
   const onCancel = () => {
     setOpenGiftModel(false);
+    SetEditMode(false);
   };
 
   const handleCreateGift = async () => {
@@ -41,6 +44,10 @@ export default function CreateGiftModel(props) {
     try {
       if (giftInfo.gift_name === "") {
         setOpenWarningAlert(true);
+        return;
+      }
+      if (selectedGiftInfo.id > 0) {
+        setGiftInfo(selectedGiftInfo);
         return;
       }
       await createGift(giftInfo);
@@ -57,17 +64,19 @@ export default function CreateGiftModel(props) {
 
   return (
     <div className="wishlist">
-      <div className="add-gift-btn">
-        <Button
-          variant="contained"
-          onClick={() => {
-            setOpenGiftModel(true);
-          }}
-        >
-          <h5>Add Gift</h5>
-        </Button>
-      </div>
-      {openGiftModel && (
+      {editMode === false && (
+        <div className="add-gift-btn">
+          <Button
+            variant="contained"
+            onClick={() => {
+              setOpenGiftModel(true);
+            }}
+          >
+            <h5>Add Gift</h5>
+          </Button>
+        </div>
+      )}
+      {(openGiftModel || editMode) && (
         <Modal
           open={true}
           onClose={onCancel}
@@ -171,7 +180,7 @@ export default function CreateGiftModel(props) {
                 <Stack direction="row" spacing={2}>
                   <div>
                     <Button variant="outlined" onClick={handleCreateGift}>
-                      ADD
+                      {editMode ? "Edit" : "ADD"}
                     </Button>
                     {openWarningAlert && <WarningAlert />}
                   </div>

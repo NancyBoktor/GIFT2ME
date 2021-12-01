@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
@@ -12,7 +13,7 @@ import CreateGiftModel from "./CreateGiftModel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
-import { getGifts } from "../services/gift";
+import { getGifts, getGift } from "../services/gift";
 import "../components/CreateGiftList.scss";
 const theme = createTheme({
   palette: {
@@ -22,16 +23,18 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { selectedEventId, openGiftModel, setOpenGiftModel } = props;
-
+  const { selectedEventId } = props;
+  const [editMode, SetEditMode] = useState(false);
+  const [openGiftModel, setOpenGiftModel] = useState(false);
   const [show, setShow] = useState({});
 
   const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
 
   const [gifts, setGifts] = useState([]);
-  const [giftsLength, setGiftsLength] = useState(gifts.length);
 
+  const [giftsLength, setGiftsLength] = useState(gifts.length);
+  const [selectedGiftInfo, setSelectedGiftInfo] = useState({});
   const handelGiftsList = async (eventId) => {
     try {
       const response = await getGifts(eventId);
@@ -59,6 +62,14 @@ export default function CreateGiftList(props) {
         setGifts(newGifts);
       });
   };
+  const selectGiftInfo = async () => {
+    const giftInfo = await getGift(selectedEventId, selectedGiftInfo.id);
+    setSelectedGiftInfo(selectedGiftInfo);
+  };
+  useEffect(() => {
+    selectGiftInfo();
+  }, [editMode === true]);
+
   return (
     <div>
       {gifts.length > 0 && (
@@ -90,11 +101,21 @@ export default function CreateGiftList(props) {
                     align="center"
                     onClick={() => {
                       setOpenGiftModel(true);
+                      SetEditMode(true);
+                      setSelectedGiftInfo({ ...selectGiftInfo, id: gift.id });
                     }}
                   >
                     <FontAwesomeIcon icon={["fas", "edit"]} />
                   </TableCell>
-                  {openGiftModel && <CreateGiftModel />}
+                  {openGiftModel && editMode && (
+                    <CreateGiftModel
+                      selectedEventId={selectedEventId}
+                      editMode={editMode}
+                      SetEditMode={SetEditMode}
+                      openGiftModel={openGiftModel}
+                      giftInfo={selectedGiftInfo}
+                    />
+                  )}
                   <TableCell
                     align="center"
                     className="click trash"

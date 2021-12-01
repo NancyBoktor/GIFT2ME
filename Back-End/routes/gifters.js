@@ -7,7 +7,7 @@ const { isAuth } = require("../middleware/auth_middle");
 
 router.get("/", async (req, res, next) => {
   const { rows } = await db.query(`SELECT * from gifters`);
-  console.log({ gifter: rows });
+  // console.log({ gifter: rows });
   res.json(rows);
 });
 
@@ -16,7 +16,7 @@ router.get("/:id", isAuth, async (req, res, next) => {
   const { rows } = await db.query(`SELECT * from gifters WHERE user_id = $1`, [
     req.current_user_id,
   ]);
-  console.log({ gifter: rows });
+  // console.log({ gifter: rows });
   res.json(rows);
 });
 

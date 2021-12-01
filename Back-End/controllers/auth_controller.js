@@ -30,11 +30,11 @@ const login = async (req, res, next) => {
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
-      email:user.email
+      email: user.email,
     });
     res.cookie("token", token, {
-      secure: true, 
-      httpOnly: true
+      secure: true,
+      httpOnly: true,
     });
     res.status(200).json({ success: true, message: "Login successful", token });
   });
@@ -42,14 +42,14 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   const { email, password, first_name, last_name, confirm_password } = req.body;
-  console.log(
-    "userInfo:",
-    email,
-    password,
-    first_name,
-    last_name,
-    confirm_password
-  );
+  // console.log(
+  //   "userInfo:",
+  //   email,
+  //   password,
+  //   first_name,
+  //   last_name,
+  //   confirm_password
+  // );
   // validtaion
   if (!first_name || !last_name || !email || !password || !confirm_password) {
     return res.status(400).json({
@@ -82,17 +82,17 @@ const register = async (req, res, next) => {
     [email, hashPassword, first_name, last_name]
   );
   const newUser = rows[0];
-  console.log("newUser:", newUser);
+  //console.log("newUser:", newUser);
   const token = createToken({
     id: newUser.id,
     first_name: newUser.first_name,
     last_name: newUser.last_name,
   });
-  console.log("token:", token);
+  //console.log("token:", token);
 
   res.cookie("token", token, {
     secure: true,
-    httpOnly: true
+    httpOnly: true,
   });
 
   res
@@ -101,7 +101,7 @@ const register = async (req, res, next) => {
 };
 
 const logout = (req, res, next) => {
-  console.log("logout", req.cookie);
+  //console.log("logout", req.cookie);
   res.clearCookie("token");
   res.status(200).json({ sucess: true, message: "Logout successfully" });
 };
