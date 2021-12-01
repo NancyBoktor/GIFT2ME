@@ -1,4 +1,5 @@
 import "./GifterEventInfo.scss";
+
 export default function GifterEventInfo(props) {
   const { eventInfo } = props;
   return (

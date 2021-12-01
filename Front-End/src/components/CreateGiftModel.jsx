@@ -82,13 +82,13 @@ export default function CreateGiftModel(props) {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <div className="create-gift-model">
+          <div className="create-gift-modal">
             <Button className="close-button" onClick={onCancel}>
               X
             </Button>
 
             <div>Add Gift </div>
-            <div className="create-Gift-form">
+            <div className="create-gift-form">
               <Box
                 component="form"
                 sx={{

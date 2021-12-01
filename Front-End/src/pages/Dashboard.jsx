@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import "./Dashboard.scss";
+import axios from "axios";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../fontawesome";
-import axios from "axios";
+
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../fontawesome";
+import "./Dashboard.scss";
 
 const theme = createTheme({
   palette: {
@@ -96,9 +98,8 @@ const Dashboard = () => {
             <tbody>
               {eventNames.map((event) => (
                 <tr>
-                  <td onClick={() => invitationPage(event.id)}>
-                    {event.event_name}
-                    {console.log("eventtt:", event)}
+                  <td className="invitation" onClick={() => invitationPage(event.id)}>
+                    {event.event_name}                  
                   </td>
                   <td>
                     <a

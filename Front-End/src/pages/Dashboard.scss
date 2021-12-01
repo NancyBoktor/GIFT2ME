@@ -16,6 +16,8 @@ $button: rgb(105, 102, 102);
 
 .create-event-btn {
   margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .event-container {
@@ -72,6 +74,10 @@ td {
 
 th {
   border: 0;
+}
+
+.invitation:hover {
+  cursor: pointer;
 }
 
 #share {

@@ -74,7 +74,7 @@ export default function CreateGiftList(props) {
                   <TableCell align="right">{gift.notes}</TableCell>
                   <TableCell align="right">
                     {gift.most_wanted === true && (
-                      <FontAwesomeIcon icon={["fas", "heart"]} />
+                      <FontAwesomeIcon className="heart" icon={["fas", "heart"]} />
                     )}
                   </TableCell>
                   <TableCell
