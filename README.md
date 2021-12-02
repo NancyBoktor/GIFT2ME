@@ -22,8 +22,8 @@ When the quantity of an item hits zero the item will be reserved and can no long
 Homepage View
 ![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/home-page.gif?raw=true)
 
-TITLE
-![""](url)
+Registration
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/register.gif?raw=true)
 
 TITLE
 ![""](url)
