@@ -14,10 +14,9 @@ Users can also edit or delete each gift added via an edit/delete modal.
 
 Once an event and gifts have been added the dashboard will update with the newly created event. Users can share, edit or delete an event. 
 Pressing the share icon will open the user's email with an autofilled message featuring the link to that respective event's wishlist.
-Friends or family that go to the share link can now choose which gift they would like to buy.
+Friends or family that go to the share link can now choose which gift they would like to reserve.
 
-<!-- When the quantity of an item hits zero the item will be reserved and can no longer be selected by other guests.
-A resevered badge will appear on that specific gift. -->
+When the quantity of an item hits zero the item will be reserved and can no longer be selected.
 
 ## Sample Pages
 Homepage View
@@ -31,6 +30,10 @@ TITLE
 
 ## Future Considerations
 
-- Use media queries to display the app nicely on multiple devices (e.g. mobile)
+- Use media queries to display the app nicely across multiple devices (e.g. mobile)
+- Add the name of the gifter on the invitation page.
+- Design updates
+- Implement more share options (e.g. SMS invites)
+
 
     
