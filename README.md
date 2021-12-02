@@ -25,8 +25,8 @@ Homepage View
 Registration Example with Error Message
 ![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/register.gif?raw=true)
 
-TITLE
-![""](url)
+Edit an Event
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/edit-event.gif?raw=true)
 
 ## Future Considerations
 
