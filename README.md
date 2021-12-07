@@ -28,6 +28,15 @@ Registration Example with Error Message
 Edit an Event
 ![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/edit-event.gif?raw=true)
 
+Add Gift to Wishlist
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/add-gift.gif?raw=true)
+
+Invitation Page - example of a gifter making a reservation
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/reserve.gif?raw=true)
+
+Dashboard Page - example of deleting an event
+![Alt Text](https://github.com/NancyBoktor/GIFT2ME/blob/master/docs/dashboard-delete.gif?raw=true)
+
 ## Future Considerations
 
 - Use media queries to display the app nicely across multiple devices (e.g. mobile)
