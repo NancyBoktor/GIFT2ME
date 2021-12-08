@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateEvent from "./pages/CreateEvent";
 import Dashboard from "./pages/Dashboard";
-import Logout from "./components/logout";
+import Logout from "./components/Logout";
 import About from "./pages/About";
 import EditEvent from "./pages/EditEvent";
 import Event from "./pages/Event";
