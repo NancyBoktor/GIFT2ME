@@ -15,12 +15,12 @@ describe('Footer', () => {
   })
 
   test('should render author names on page', () => {
-    const component = render(
+    const { getByTestId } = render(
       <BrowserRouter>
         <Footer />
       </BrowserRouter>,
     )
-    const authors = component.getByTestId('authors');
+    const authors = getByTestId('authors');
     expect(authors.textContent).toBe('Made with ❤️ Maram - Nancy - Shanna');
   })
 })
