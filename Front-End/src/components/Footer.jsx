@@ -8,7 +8,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div>
-          <p>Made with ❤️ Maram - Nancy - Shanna</p>
+          <p data-testid="authors">Made with ❤️ Maram - Nancy - Shanna</p>
         </div>
         <div>
           © 2021 GIFT2ME, Inc.

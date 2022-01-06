@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
-import { cleanup, screen, render } from '@testing-library/react'
+import { cleanup, render } from '@testing-library/react'
+// import "@testing-library/jest-dom/extend-expect" <-optional
 import Footer from '../Footer'
 
 afterEach(cleanup)
@@ -14,12 +15,12 @@ describe('Footer', () => {
   })
 
   test('should render author names on page', () => {
-    render(
+    const component = render(
       <BrowserRouter>
         <Footer />
       </BrowserRouter>,
     )
-    const authors = screen.getByText('Made with ❤️ Maram - Nancy - Shanna')
-    expect(authors).toBe('<p>Made with ❤️ Maram - Nancy - Shanna</p>')
+    const authors = component.getByTestId('authors');
+    expect(authors.textContent).toBe('Made with ❤️ Maram - Nancy - Shanna');
   })
 })
