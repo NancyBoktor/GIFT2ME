@@ -32,7 +32,7 @@ export default function EditEvent() {
     if (selectedEventId) {
       handleGiftsList(selectedEventId);
     }
-  }, [gifts]);
+  }, []);
 
   const invitationPage = (id) => {
     navigate(`/invitation/${id}`);
@@ -50,8 +50,13 @@ export default function EditEvent() {
           <CreateGiftModel
             setSelectedEventId={setSelectedEventId}
             selectedEventId={selectedEventId}
+            onCreate={handleGiftsList}
           />
-          <CreateGiftList selectedEventId={selectedEventId} gifts={gifts}/>
+          <CreateGiftList
+            selectedEventId={selectedEventId}
+            gifts={gifts}
+            setSelectedEventId={setSelectedEventId}
+          />
         </div>
       </div>
       <Button onClick={() => invitationPage(id)}>View your invitation</Button>

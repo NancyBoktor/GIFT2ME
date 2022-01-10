@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
@@ -8,12 +9,14 @@ import TableContainer from "@mui/material/TableContainer";
 import GiftListHeader from "../components/GiftListHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactDOM from "react-dom";
-import CreateGiftModel from "./CreateGiftModel";
+import EditGiftModel from "./EditGiftModel";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
 import "../components/CreateGiftList.scss";
- 
+
+import { getGiftInfo } from "../services/gift";
 const theme = createTheme({
   palette: {
     cancel: {
@@ -22,19 +25,32 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { openGiftModel, setOpenGiftModel, gifts } = props;
+  //const { event_id } = useParams();
+  //console.log("-----eventId", event_id);
+  const [giftInfo, setGiftInfo] = useState({});
+  const [openGiftModel, setOpenGiftModel] = useState(false);
+  const { gifts, selectedEventId, setSelectedEventId } = props;
 
-  const [show, setShow] = useState({});
+  const [show, setShow] = useState({
+    event_id: selectedEventId,
+  });
 
   const handleShow = (giftId) => setShow({ ...show, [giftId]: true });
   const handleClose = (giftId) => setShow({ ...show, [giftId]: false });
 
   const handleDelete = (giftId) => {
-    return axios
-      .delete(`http://localhost:3001/api/gifts/${giftId}/delete`, {
-        withCredentials: true,
-      })
+    return axios.delete(`http://localhost:3001/api/gifts/${giftId}/delete`, {
+      withCredentials: true,
+    });
   };
+  //--------------------------------->
+  const handelgetGiftInfo = async (selectedEventId, gift_id) => {
+    // event.preventDefault();
+    const { data } = await getGiftInfo(selectedEventId, gift_id);
+    setGiftInfo(data.data);
+    setOpenGiftModel(true);
+  };
+
   return (
     <div>
       {gifts.length > 0 && (
@@ -47,11 +63,15 @@ export default function CreateGiftList(props) {
                   key={gift.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell>
-                    {gift.gift_name}
-                  </TableCell>
-                  <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
-                    <a href={gift.store_url} target="_blank" rel="noreferrer"> {gift.store_url} </a>
+                  <TableCell>{gift.gift_name}</TableCell>
+                  <TableCell
+                    align="center"
+                    className="truncate"
+                    sx={{ maxWidth: 250 }}
+                  >
+                    <a href={gift.store_url} target="_blank" rel="noreferrer">
+                      {gift.store_url}
+                    </a>
                   </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>
@@ -64,12 +84,16 @@ export default function CreateGiftList(props) {
                       />
                     )}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                  >
-                    <FontAwesomeIcon icon={["fas", "edit"]} />
+                  <TableCell align="center">
+                    <FontAwesomeIcon
+                      icon={["fas", "edit"]}
+                      onClick={() => {
+                        handelgetGiftInfo(selectedEventId, gift.id);
+                        setOpenGiftModel(true);
+                      }}
+                    />
                   </TableCell>
-                 
+
                   <TableCell
                     align="center"
                     className="click trash"
@@ -123,6 +147,15 @@ export default function CreateGiftList(props) {
             </TableBody>
           </Table>
         </TableContainer>
+      )}
+      {openGiftModel && (
+        <EditGiftModel
+          giftInfo={giftInfo}
+          openGiftModel={openGiftModel}
+          setOpenGiftModel={setOpenGiftModel}
+          setSelectedEventId={setSelectedEventId}
+          selectedEventId={selectedEventId}
+        />
       )}
     </div>
   );

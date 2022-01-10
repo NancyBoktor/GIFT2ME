@@ -11,16 +11,14 @@ import { Button } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
 import { updateGift } from "../services/gift";
 
-export default function CreateGiftList(props) {
+export default function EventWishList(props) {
   const { gifts, setGifts, event_id } = props;
   const navigate = useNavigate();
- 
 
   const handleOnClick = async (gift_id) => {
     try {
       const { data } = await updateGift(event_id, gift_id);
       if (data.success) {
-     
         setGifts(data.data);
       }
       navigate(`/invitation/${event_id}`, { replace: true });
@@ -51,28 +49,35 @@ export default function CreateGiftList(props) {
                   key={gift.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell>
-                    {gift.gift_name}
-                  </TableCell>
-                  <TableCell align="center" className="truncate" sx={{ maxWidth: 250 }} >
-                    <a href={gift.store_url} target="_blank" rel="noreferrer"> {gift.store_url} </a>
+                  <TableCell>{gift.gift_name}</TableCell>
+                  <TableCell
+                    align="center"
+                    className="truncate"
+                    sx={{ maxWidth: 250 }}
+                  >
+                    <a href={gift.store_url} target="_blank" rel="noreferrer">
+                      {" "}
+                      {gift.store_url}{" "}
+                    </a>
                   </TableCell>
                   <TableCell align="center">{gift.price}</TableCell>
                   <TableCell align="center">{gift.quantity}</TableCell>
                   <TableCell align="center">{gift.notes}</TableCell>
                   <TableCell align="center">
                     {gift.most_wanted === true && (
-                      <FontAwesomeIcon className="heart" icon={["fas", "heart"]} />
+                      <FontAwesomeIcon
+                        className="heart"
+                        icon={["fas", "heart"]}
+                      />
                     )}
                   </TableCell>
-                  <TableCell
-                    align="center"
-                  >
-                    <Button 
-                      disabled={gift.quantity < 1} 
+                  <TableCell align="center">
+                    <Button
+                      disabled={gift.quantity < 1}
                       onClick={() => {
-                      handleOnClick(gift.id);
-                    }}>
+                        handleOnClick(gift.id);
+                      }}
+                    >
                       {gift.quantity < 1 ? "Reserved" : "Reserve"}
                     </Button>
                   </TableCell>
@@ -82,7 +87,6 @@ export default function CreateGiftList(props) {
           </Table>
         </TableContainer>
       )}
-      
     </div>
   );
 }
