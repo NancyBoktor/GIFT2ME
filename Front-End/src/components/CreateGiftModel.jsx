@@ -9,7 +9,7 @@ import Modal from "@mui/material/Modal";
 import "./CreateGiftModel.scss";
 
 import MultipleSelectButton from "./MultipleSelectButton";
-import WarningAlert from "./Alert";
+import WarningAlert from "./WarningAlert";
 import { createGift } from "../services/gift";
 
 export default function CreateGiftModel(props) {

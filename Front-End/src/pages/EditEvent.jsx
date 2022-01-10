@@ -59,7 +59,9 @@ export default function EditEvent() {
           />
         </div>
       </div>
-      <Button onClick={() => invitationPage(id)}>View your invitation</Button>
+      <div className="view-invitation">
+      <Button onClick={() => invitationPage(id)}>  View your invitation → </Button>
+      </div>
       <Footer />
     </>
   );
